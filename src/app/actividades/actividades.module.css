@@ -1,0 +1,197 @@
+.timelineContainer {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.headerAction {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 3rem;
+}
+
+.agendaButton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line);
+  font-family: var(--font-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  letter-spacing: 0.05em;
+}
+
+.agendaButton:hover {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+.timeline {
+  position: relative;
+  padding-left: 3rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--line);
+  z-index: 0;
+}
+
+.activityItem {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+
+.timelineMarker {
+  position: absolute;
+  left: -3rem;
+  z-index: 1;
+}
+
+.iconCircle {
+  width: 30px;
+  height: 30px;
+  background-color: var(--paper);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 0.8rem;
+  box-shadow: 0 0 0 4px var(--paper);
+}
+
+.activityItem:hover .iconCircle {
+  background-color: var(--accent);
+  color: var(--paper);
+}
+
+.card {
+  flex: 1;
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.activityItem:hover .card {
+  transform: translateX(10px);
+}
+
+.imageContainer {
+  width: 280px;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 87, 34, 0.1), transparent);
+  mix-blend-mode: multiply;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.itemCategory {
+  font-family: var(--font-text);
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.itemTitle {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.itemDescription {
+  font-family: var(--font-text);
+  font-size: 1rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.meta {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.metaItem svg {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+@media (max-width: 850px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .imageContainer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .timeline::before {
+    display: none;
+  }
+  .timeline {
+    padding-left: 0;
+  }
+  .timelineMarker {
+    position: static;
+    margin-bottom: 1rem;
+  }
+}

@@ -1,0 +1,75 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.constructionView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  margin-top: 2rem;
+}
+
+.iconCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.message {
+  font-family: var(--font-text);
+  font-size: 1.125rem;
+  color: var(--ink-soft);
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.placeholderGrid {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dashedBox {
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
+  border: 2px dashed var(--line);
+  border-radius: var(--r-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--ink-mute);
+  letter-spacing: 0.1em;
+}

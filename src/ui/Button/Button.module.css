@@ -1,0 +1,23 @@
+.button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.primary {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.secondary {
+  background-color: transparent;
+  border: 1px solid #1a1a1a;
+  color: #1a1a1a;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
