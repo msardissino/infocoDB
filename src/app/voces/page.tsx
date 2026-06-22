@@ -15,6 +15,7 @@ export default function VocesPage() {
         subtitle="Entrevistas, testimonios y relatos en primera persona sobre la vida en el centro."
         metadata="EDICIÓN N° 1 · ABRIL 2026"
         icon={faComments}
+        backgroundImage="/images/covers/cover-voces.jpeg"
       >
         <div className={styles.container}>
           <Breadcrumb items={[{ label: "VOCES" }]} />

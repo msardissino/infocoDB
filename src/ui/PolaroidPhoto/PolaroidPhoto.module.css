@@ -1,0 +1,69 @@
+.polaroidContainer {
+  position: relative;
+  background-color: #fcfbfa;
+  padding: 12px 12px 24px 12px;
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.05),
+    0 4px 6px rgba(0, 0, 0, 0.03),
+    0 0 1px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 2;
+}
+
+.polaroidContainer:hover {
+  transform: scale(1.03) rotate(0deg) !important;
+  box-shadow: 
+    0 15px 30px rgba(0, 0, 0, 0.08),
+    0 6px 10px rgba(0, 0, 0, 0.04);
+  z-index: 15;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #eee;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.square {
+  padding-top: 100%; /* Cuadrado 1:1 */
+}
+
+.landscape {
+  padding-top: 68%; /* Formato apaisado 3:2 aproximado */
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.08) contrast(1.02); /* Toque análogo sutil */
+}
+
+.photoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+}
+
+.caption {
+  font-family: var(--font-handwritten);
+  font-size: 1.35rem;
+  color: #2b2b2b;
+  text-align: center;
+  margin-top: 12px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  word-break: break-word;
+}

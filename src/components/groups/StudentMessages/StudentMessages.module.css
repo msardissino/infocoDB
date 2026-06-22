@@ -1,0 +1,91 @@
+.container {
+  background-color: #ffffff; /* M3 Elevated Card */
+  border: none;
+  border-radius: var(--r-xl);
+  padding: 1.5rem; /* Standardized M3 padding (24px) */
+  box-shadow: var(--elevation-1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.boardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line); /* M3 Divider */
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-family: var(--font-text);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin: 0;
+}
+
+.heartIcon {
+  color: var(--accent);
+  font-size: 1.1rem;
+  opacity: 0.8;
+  transform: rotate(-5deg);
+}
+
+.boardBody {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem; /* Standardized gap (24px) */
+  align-items: stretch;
+}
+
+.noteWrapper {
+  display: flex;
+  height: 100%;
+}
+
+.boardPostIt {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.25rem 1rem !important;
+}
+
+.messageText {
+  font-family: var(--font-handwritten);
+  font-size: 1.35rem;
+  line-height: 1.25;
+  color: #2c2a27;
+  margin-bottom: 0.75rem;
+}
+
+.author {
+  font-family: var(--font-handwritten);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent);
+  align-self: flex-end;
+}
+
+/* Responsive Rules */
+@media (max-width: 1200px) {
+  .boardBody {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+  .boardBody {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .messageText {
+    font-size: 1.25rem;
+  }
+}

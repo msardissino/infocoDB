@@ -1,0 +1,223 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-text);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  border-bottom: 2px solid rgba(255, 108, 47, 0.1);
+  padding-bottom: 0.5rem;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Desktop Grid */
+.desktopGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.memberCard {
+  background-color: #ffffff;
+  border: 1px solid rgba(29, 28, 26, 0.12); /* M3 Outlined Card */
+  border-radius: var(--r-lg);
+  padding: 1rem; /* Standardized M3 padding (16px) */
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.memberCard:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: var(--elevation-1);
+}
+
+.avatarRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--line); /* M3 Divider */
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.avatarWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 108, 47, 0.25);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nameBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.memberName {
+  font-family: var(--font-handwritten);
+  font-size: 1.45rem;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.memberIcon {
+  color: var(--accent);
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+/* Details list */
+.detailsList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-left: 0.25rem;
+}
+
+.detailItem {
+  font-family: var(--font-text);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  position: relative;
+  padding-left: 0.75rem;
+}
+
+.detailItem::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* Mobile Stack */
+.mobileStack {
+  display: none; /* Oculto por defecto en desktop */
+}
+
+/* Responsive Rules */
+@media (max-width: 1024px) {
+  .desktopGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .desktopGrid {
+    display: none;
+  }
+  
+  .mobileStack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .mobileMemberCard {
+    background-color: #fdfbf7;
+    border: 1px solid rgba(29, 28, 26, 0.08);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+  }
+  
+  .mobileHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .mobileLeft {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .mobileAvatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 108, 47, 0.2);
+  }
+  
+  .mobileNameBadge {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  
+  .mobileExpandBtn {
+    background: none;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mobileDetails {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease-out, padding 0.25s ease-out;
+    padding: 0 1rem;
+  }
+  
+  .expanded {
+    max-height: 150px; /* Ajuste para desplegar la lista */
+    padding: 0 1rem 1rem 3.25rem; /* Alineado con el nombre */
+    border-top: 1px dashed rgba(29, 28, 26, 0.05);
+    padding-top: 0.75rem;
+  }
+  
+  .viewAllBtn {
+    background: none;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--font-text);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--r-pill);
+    cursor: pointer;
+    margin: 1rem auto 0 auto;
+    transition: all 0.2s ease;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+  }
+  
+  .viewAllBtn:hover {
+    background-color: var(--accent);
+    color: var(--paper);
+  }
+}

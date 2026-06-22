@@ -56,7 +56,7 @@ export const SectionHero: React.FC<SectionHeroProps> = ({
           {metadata && <p className={styles.metadata}>{metadata}</p>}
         </div>
         
-        {icon && (
+        {icon && !backgroundImage && (
           <div className={styles.watermark}>
             <FontAwesomeIcon icon={icon} className={styles.largeIcon} />
           </div>

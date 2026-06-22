@@ -15,6 +15,7 @@ export default function AgendaPage() {
         subtitle="Mantenete al tanto de los próximos talleres, salidas y fechas especiales."
         metadata="ACTUALIZADO: ABRIL 2026"
         icon={faCalendarDay}
+        backgroundImage="/images/covers/cover_agenda.jpeg"
       >
         <div className={styles.container}>
           <Breadcrumb items={[{ label: "AGENDA" }]} />

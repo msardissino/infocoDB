@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--accent);
+  border-bottom: 1px solid var(--line); /* M3 Divider */
+  padding-bottom: 0.75rem;
+}
+
+.cameraIcon {
+  font-size: 1.1rem;
+}
+
+.title {
+  font-family: var(--font-text);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.galleryWrapper {
+  width: 100%;
+}
+
+.galleryScroll {
+  display: flex;
+  gap: 2.5rem;
+  padding: 1.5rem 0.5rem;
+  flex-wrap: nowrap; /* Force single row on all desktop sizes */
+  overflow-x: auto; /* graceful fallback for smaller viewports */
+  scrollbar-width: none; /* Hide scrollbar for Clean look */
+  flex: 1;
+  min-width: 0;
+}
+
+.galleryScroll::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome/Safari */
+}
+
+.photoContainer {
+  flex-shrink: 0;
+}
+
+/* Mobile scrolling adaptation */
+@media (max-width: 900px) {
+  .galleryScroll {
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+}

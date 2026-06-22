@@ -1,0 +1,232 @@
+.sectionContainer {
+  width: 100%;
+}
+
+/* Binder Paper Sheet */
+.binderPaper {
+  position: relative;
+  background-color: #fcfcf9;
+  border: 1px solid rgba(29, 28, 26, 0.08);
+  border-radius: var(--r-xl);
+  /* Standardized M3 large container rounding */
+  box-shadow: var(--elevation-1);
+  /* Unified M3 Elevated Card shadow */
+  padding: 1.5rem 1.5rem 1.5rem 3.5rem;
+  /* Margen izquierdo mayor */
+}
+
+/* Binder Holes */
+.binderHoles {
+  position: absolute;
+  left: 12px;
+  top: 8%;
+  bottom: 8%;
+  width: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.hole {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--cream);
+  /* Mismo color del fondo de la página para emular hueco */
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(29, 28, 26, 0.05);
+}
+
+/* Vertical Red Margin Line */
+.marginLine {
+  position: absolute;
+  left: 45px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  border-left: 1px solid rgba(239, 83, 80, 0.35);
+  /* Rojo tenue de libreta */
+  border-right: 1px dashed rgba(239, 83, 80, 0.15);
+}
+
+/* Paper Content */
+.paperContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--accent);
+  border-bottom: 1px solid var(--line);
+  /* M3 Divider matching GroupObjective */
+  padding-bottom: 0.75rem;
+}
+
+.iconCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 108, 47, 0.08);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  border: 1px solid rgba(255, 108, 47, 0.2);
+}
+
+.penIcon {
+  font-size: 1.1rem;
+}
+
+.title {
+  font-family: var(--font-text);
+  font-size: 0.75rem;
+  /* Standard M3 card title size matching GroupObjective */
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Q&A Grid (3 columns on desktop) */
+.qaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  /* Standard M3 gap (24px) */
+}
+
+.qaBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.question {
+  font-family: var(--font-text);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin: 0;
+  line-height: 1.35;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.qText {
+  flex: 1;
+}
+
+.qMarker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background-color: rgba(255, 108, 47, 0.08);
+  border: 1px solid rgba(255, 108, 47, 0.2);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 900;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.sportsBadge {
+  font-size: 0.85rem;
+  line-height: 1;
+  margin-left: 2px;
+}
+
+.answer {
+  font-family: var(--font-text);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  /* M3 Body standard line-height */
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* Unified Keywords Footer */
+.keywordsFooter {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  /* M3 Solid Divider */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.keywordsTitle {
+  font-family: var(--font-text);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+
+.keywordsList {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.keywordItem {
+  font-family: var(--font-handwritten);
+  font-size: 1.4rem;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.keywordSeparator {
+  color: var(--accent);
+  font-size: 1.2rem;
+  opacity: 0.6;
+}
+
+.keywordsSmiley {
+  font-family: var(--font-handwritten);
+  font-size: 1.4rem;
+  color: var(--accent);
+  margin-left: 0.5rem;
+}
+
+/* Responsive Rules */
+@media (max-width: 1200px) {
+  .qaGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .binderPaper {
+    padding: 1.75rem 1.5rem 2rem 2.5rem;
+  }
+
+  .marginLine {
+    left: 32px;
+  }
+
+  .binderHoles {
+    left: 6px;
+    top: 12%;
+    bottom: 12%;
+  }
+
+  .qaGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

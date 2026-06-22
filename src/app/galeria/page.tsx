@@ -8,13 +8,14 @@ export default function GaleriaPage() {
   return (
     <main>
       <SectionHero
-        variant="light"
+        variant="dark"
         category="GALERIA"
         subCategory="REGISTRO VISUAL"
         title="NUESTRA VIDA EN IMAGENES"
         subtitle="Un archivo de momentos, obras y encuentros capturados a traves del lente."
         metadata="CENTRO DE DIA · INTRES"
         icon={faCamera}
+        backgroundImage="/images/covers/cover_galeria.jpeg"
       >
         <div className={styles.container}>
           <Breadcrumb items={[{ label: "GALERÍA" }]} />

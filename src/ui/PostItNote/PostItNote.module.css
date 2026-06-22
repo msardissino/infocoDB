@@ -1,0 +1,63 @@
+.postIt {
+  position: relative;
+  width: 100%;
+  padding: 1.5rem 1.25rem 1.25rem 1.25rem;
+  box-shadow: 
+    2px 8px 15px rgba(0, 0, 0, 0.05),
+    1px 2px 4px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 2;
+  border-bottom-right-radius: 30px 4px; /* Simula doblado leve de esquina */
+}
+
+.postIt:hover {
+  transform: scale(1.05) rotate(0deg) !important;
+  box-shadow: 
+    5px 15px 25px rgba(0, 0, 0, 0.08),
+    2px 5px 8px rgba(0, 0, 0, 0.04);
+  z-index: 10;
+}
+
+/* Pequeño pin decorativo */
+.pin {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: rgba(29, 28, 26, 0.25);
+  border-radius: 50%;
+}
+
+.content {
+  font-family: var(--font-handwritten);
+  font-size: 1.2rem;
+  line-height: 1.3;
+  color: #2c2a27;
+  word-break: break-word;
+}
+
+/* Colores Pastel */
+.yellow {
+  background-color: #fff7c2;
+  border-left: 3px solid rgba(251, 192, 45, 0.3);
+}
+
+.pink {
+  background-color: #ffdbe6;
+  border-left: 3px solid rgba(194, 24, 91, 0.2);
+}
+
+.green {
+  background-color: #d2f8e1;
+  border-left: 3px solid rgba(56, 142, 60, 0.2);
+}
+
+.blue {
+  background-color: #cfe9fc;
+  border-left: 3px solid rgba(25, 118, 210, 0.2);
+}

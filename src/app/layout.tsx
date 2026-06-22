@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Manrope } from "next/font/google";
+import { Bebas_Neue, Manrope, Kalam } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
@@ -15,6 +15,12 @@ const manrope = Manrope({
   variable: "--font-manrope",
 });
 
+const kalam = Kalam({
+  weight: ["300", "400", "700"],
+  subsets: ["latin"],
+  variable: "--font-kalam",
+});
+
 export const metadata: Metadata = {
   title: "INFOCO | Desde Adentro",
   description: "Revista del centro INTRES",
@@ -27,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${bebasNeue.variable} ${manrope.variable}`}>
+      <body className={`${bebasNeue.variable} ${manrope.variable} ${kalam.variable}`}>
         <Header />
         {children}
         <Footer />

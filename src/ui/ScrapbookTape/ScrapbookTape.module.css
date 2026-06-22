@@ -1,0 +1,46 @@
+.tape {
+  position: absolute;
+  z-index: 10;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  pointer-events: none;
+  opacity: 0.7;
+  backdrop-filter: blur(0.5px);
+  
+  /* Borde rasgado a la izquierda y derecha en vertical */
+  clip-path: polygon(
+    0% 0%, 100% 0%, 
+    97% 10%, 100% 20%, 97% 30%, 100% 40%, 97% 50%, 100% 60%, 97% 70%, 100% 80%, 97% 90%, 100% 100%, 
+    0% 100%, 
+    3% 90%, 0% 80%, 3% 70%, 0% 60%, 3% 50%, 0% 40%, 3% 30%, 0% 20%, 3% 10%
+  );
+}
+
+.translucent {
+  background-color: rgba(255, 255, 255, 0.35);
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.orange {
+  background-color: rgba(255, 108, 47, 0.35);
+  border-left: 1px solid rgba(255, 108, 47, 0.4);
+  border-right: 1px solid rgba(255, 108, 47, 0.4);
+}
+
+.yellow {
+  background-color: rgba(255, 223, 128, 0.45);
+  border-left: 1px solid rgba(255, 223, 128, 0.5);
+  border-right: 1px solid rgba(255, 223, 128, 0.5);
+}
+
+.washi {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 108, 47, 0.15),
+    rgba(255, 108, 47, 0.15) 10px,
+    rgba(255, 255, 255, 0.25) 10px,
+    rgba(255, 255, 255, 0.25) 20px
+  );
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
