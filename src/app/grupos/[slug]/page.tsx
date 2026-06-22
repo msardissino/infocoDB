@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useGroup } from "@/hooks/useGroup";
 import { GroupHeroHeader } from "@/components/groups/GroupHeroHeader/GroupHeroHeader";
 import { TutorInterview } from "@/components/groups/TutorInterview/TutorInterview";
@@ -50,7 +50,6 @@ const AccordionPanel: React.FC<AccordionPanelProps> = ({
 
 export default function GroupDetailPage() {
   const params = useParams();
-  const router = useRouter();
   const slug = params.slug as string;
 
   const { group, loading, error } = useGroup(slug);
