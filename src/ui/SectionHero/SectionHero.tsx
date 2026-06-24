@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import styles from "./SectionHero.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -33,7 +34,7 @@ export const SectionHero: React.FC<SectionHeroProps> = ({
       <div className={containerClass}>
         {backgroundImage && (
           <div className={styles.bgLayer}>
-            <img src={backgroundImage} alt="" className={styles.bgImage} />
+            <Image src={backgroundImage} alt="" className={styles.bgImage} fill priority unoptimized />
             <div className={styles.bgOverlay}></div>
           </div>
         )}

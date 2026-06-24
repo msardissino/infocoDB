@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import styles from "./PolaroidPhoto.module.css";
 import { ScrapbookTape } from "../ScrapbookTape/ScrapbookTape";
 
@@ -48,7 +49,7 @@ export const PolaroidPhoto: React.FC<PolaroidPhotoProps> = ({
         />
       )}
       <div className={`${styles.imageWrapper} ${styles[aspectRatio]}`}>
-        <img src={src} alt={alt} className={styles.image} />
+        <Image src={src} alt={alt} className={styles.image} width={600} height={600} unoptimized />
         <div className={styles.photoOverlay}></div>
       </div>
       {caption && (

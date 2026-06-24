@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import styles from "./NewsSection.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
@@ -36,7 +37,7 @@ export const NewsSection = () => {
         {newsItems.map((item) => (
           <div key={item.id} className={styles.card}>
             <div className={styles.imageWrapper}>
-              <img src={item.image} alt={item.title} className={styles.image} />
+              <Image src={item.image} alt={item.title} className={styles.image} width={400} height={250} unoptimized />
             </div>
             <div className={styles.content}>
               <div className={styles.textContent}>

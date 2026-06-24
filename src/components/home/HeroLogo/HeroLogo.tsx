@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import styles from "./HeroLogo.module.css";
 
 export const HeroLogo = () => {
@@ -8,7 +9,7 @@ export const HeroLogo = () => {
         <h1 className={styles.hugeLogo}>
           INF
           <span className={styles.shutterIcon}>
-            <img src="/logo-infoco.svg" alt="INFOCO" style={{ height: '0.8em', width: 'auto', transform: 'translateY(10%)' }} />
+            <Image src="/logo-infoco.svg" alt="INFOCO" width={80} height={80} style={{ height: '0.8em', width: 'auto', transform: 'translateY(10%)' }} />
           </span>
           CO
         </h1>

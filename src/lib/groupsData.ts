@@ -9,8 +9,7 @@ export const GROUPS_DATA: GroupDetail[] = [
     establishedYear: 2023,
     heroCollage: [
       "/images/group/campeones_del_flow/todos.jpg",
-      "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&auto=format&fit=crop"
+      "/images/group/campeones_del_flow/todosDos.jpg"
     ],
     tutor: {
       name: "Agustín Pis Perez",
@@ -55,9 +54,7 @@ export const GROUPS_DATA: GroupDetail[] = [
     ],
     moments: [
       { imageUrl: "/images/group/campeones_del_flow/todosDos.jpg", caption: "Patio acústico", rotation: -3 },
-      { imageUrl: "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?q=80&w=400&auto=format&fit=crop", caption: "Impro general", rotation: 4 },
-      { imageUrl: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=400&auto=format&fit=crop", caption: "Charla de miércoles", rotation: -2 },
-      { imageUrl: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=400&auto=format&fit=crop", caption: "Noche de Talentos", rotation: 3 }
+      { imageUrl: "/images/group/campeones_del_flow/todos.jpg", caption: "Impro general", rotation: 4 }
     ],
     momentsCaption: "Seguimos creciendo juntos"
   },
@@ -65,21 +62,21 @@ export const GROUPS_DATA: GroupDetail[] = [
     slug: "buenas-vibras",
     name: "Buenas Vibras",
     description: "Conversaciones, juegos y momentos cotidianos compartidos desde el cuidado.",
-    memberCount: 8,
+    memberCount: 5,
     establishedYear: 2024,
     heroCollage: [
-      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&auto=format&fit=crop"
+      "/images/group/buenas_vibras/Brian.jpg",
+      "/images/group/buenas_vibras/Gianni.jpg",
+      "/images/group/buenas_vibras/Martina.jpg"
     ],
     tutor: {
-      name: "Ana Laura Estévez",
+      name: "Catalina",
       role: "TUTORA DEL GRUPO",
-      avatarUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop",
+      avatarUrl: "/images/group/buenas_vibras/Catalina - Tutora.jpg",
       bio: "Coordinadora de talleres de integración. Cree en el poder de la cotidianidad y el juego para sanar vínculos.",
       quote: "El encuentro verdadero ocurre cuando nos escuchamos despacio.",
       formation: [
-        "Terapista Ocupacional (UNQ)",
+        "Terapista Ocupacional",
         "Especialista en dinámicas lúdicas comunitarias",
         "Tallerista de estimulación cognitiva y social"
       ]
@@ -98,44 +95,95 @@ export const GROUPS_DATA: GroupDetail[] = [
       keywords: ["Escucha", "Mateada", "Cuidado"]
     },
     members: [
-      { name: "Pedro", icon: "leaf", details: ["Hacer la huerta", "Tomar mate dulce", "Caminar en el parque"], avatarUrl: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=150&auto=format&fit=crop" },
-      { name: "Marta", icon: "coffee", details: ["Tejer pulóveres", "Contar historias de antes", "Cuidar las plantas"], avatarUrl: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=150&auto=format&fit=crop" },
-      { name: "Gaby", icon: "bolt", details: ["Fútbol de mesa", "Escuchar rock nacional", "Reparar objetos rotos"], avatarUrl: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=150&auto=format&fit=crop" },
-      { name: "Sofi", icon: "sun", details: ["Ejercicios de yoga", "Escribir reflexiones", "Mimarse con gatos"], avatarUrl: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?q=80&w=150&auto=format&fit=crop" }
+      { name: "Brian", icon: "bolt", details: ["Música y ritmo", "Fútbol con amigos", "Compartir mates"], avatarUrl: "/images/group/buenas_vibras/Brian.jpg" },
+      { name: "Gianni", icon: "star", details: ["Juegos de estrategia", "Dibujar cómics", "Escuchar rock"], avatarUrl: "/images/group/buenas_vibras/Gianni.jpg" },
+      { name: "Martina", icon: "heart", details: ["Pintar mandalas", "Hacer pulseras", "Cuidar plantas"], avatarUrl: "/images/group/buenas_vibras/Martina.jpg" },
+      { name: "Valentina", icon: "sun", details: ["Bailar coreografías", "Ver series y pelis", "Salir al parque"], avatarUrl: "/images/group/buenas_vibras/Valentina.jpg" },
+      { name: "Yazmin", icon: "music", details: ["Escribir poesía", "Tocar el piano", "Mates dulces"], avatarUrl: "/images/group/buenas_vibras/Yazmin.jpg" }
     ],
     messages: [
-      { text: "Gracias Ana por tu paciencia infinita y tu dulzura.", author: "Pedro", color: "blue" },
-      { text: "Los mates de los viernes son lo mejor de toda la semana.", author: "Marta", color: "yellow" },
-      { text: "Gracias por hacernos reír tanto y escucharnos siempre.", author: "Gaby", color: "green" }
+      { text: "Gracias Catalina por tu paciencia infinita y tu dulzura.", author: "Martina", color: "blue" },
+      { text: "Los mates de los viernes son lo mejor de toda la semana.", author: "Gianni", color: "yellow" },
+      { text: "Gracias por hacernos reír tanto y escucharnos siempre.", author: "Brian", color: "green" }
     ],
     moments: [
-      { imageUrl: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=400&auto=format&fit=crop", caption: "Juegos de mesa", rotation: -2 },
-      { imageUrl: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=400&auto=format&fit=crop", caption: "Tarde de mates", rotation: 3 },
-      { imageUrl: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=400&auto=format&fit=crop", caption: "Risas compartidas", rotation: -4 }
+      { imageUrl: "/images/group/buenas_vibras/Brian.jpg", caption: "Compartiendo momentos", rotation: -2 },
+      { imageUrl: "/images/group/buenas_vibras/Gianni.jpg", caption: "Tarde de risas", rotation: 3 },
+      { imageUrl: "/images/group/buenas_vibras/Martina.jpg", caption: "Risas compartidas", rotation: -4 }
     ],
     momentsCaption: "El valor de compartir momentos simples"
+  },
+  {
+    slug: "corazones-en-equipo",
+    name: "Corazones en Equipo",
+    description: "Un espacio de encuentro, recreación y apoyo mutuo donde cada corazón late en sintonía.",
+    memberCount: 6,
+    establishedYear: 2023,
+    heroCollage: [
+      "/images/group/corazones_en_equipo/Dalila.jpg",
+      "/images/group/corazones_en_equipo/Lucia.jpg",
+      "/images/group/corazones_en_equipo/Lujan.jpg"
+    ],
+    tutor: {
+      name: "Sebastián",
+      role: "TUTOR DEL GRUPO",
+      avatarUrl: "/images/group/corazones_en_equipo/Sebastian - Tutor.jpg",
+      bio: "Coordinador de actividades recreativas y artísticas. Apasionado por la música y el trabajo grupal.",
+      quote: "La música y el juego nos conectan desde el alma.",
+      formation: [
+        "Profesor de Educación Musical",
+        "Tallerista de Expresión Corporal",
+        "Especialista en abordajes integrales comunitarios"
+      ]
+    },
+    objective: "Consolidar vínculos de confianza y compañerismo, promoviendo la participación activa en proyectos artísticos y expresivos.",
+    interview: {
+      qaList: [
+        { question: "¿Cómo surge Corazones en Equipo?", answer: "Nace del deseo de unir nuestras pasiones por el arte, la música y el juego en un solo gran latido." },
+        { question: "¿Qué rol juega la música en tus talleres?", answer: "Es fundamental, nos ayuda a sintonizar nuestros ritmos, liberar tensiones y crear un clima alegre." },
+        { question: "¿Qué es lo que más valorás del grupo?", answer: "La inmensa empatía que demuestran. Siempre están listos para escucharse y apoyarse." }
+      ],
+      keywords: ["Unidad", "Expresión", "Empatía"]
+    },
+    members: [
+      { name: "Dalila", icon: "heart", details: ["Pintar y dibujar", "Escuchar música pop", "Juegos de mesa"], avatarUrl: "/images/group/corazones_en_equipo/Dalila.jpg" },
+      { name: "Lucia", icon: "sun", details: ["Hacer manualidades", "Tomar mates charlando", "Pasear"], avatarUrl: "/images/group/corazones_en_equipo/Lucia.jpg" },
+      { name: "Lujan", icon: "star", details: ["Cocinar cosas ricas", "Cuidar las plantas", "Escuchar radio"], avatarUrl: "/images/group/corazones_en_equipo/Lujan.jpg" },
+      { name: "Miguel", icon: "smile", details: ["Fútbol", "Jugar a las cartas", "Compartir risas"], avatarUrl: "/images/group/corazones_en_equipo/Miguel.jpg" },
+      { name: "Milagros", icon: "music", details: ["Bailar y cantar", "Hacer pulseras", "Ver películas"], avatarUrl: "/images/group/corazones_en_equipo/Milagros.jpg" },
+      { name: "Valentin", icon: "bolt", details: ["Videojuegos", "Hacer chistes", "Salir a caminar"], avatarUrl: "/images/group/corazones_en_equipo/Valentin.jpg" }
+    ],
+    messages: [
+      { text: "Gracias Sebas por traer siempre tanta buena energía y música.", author: "Dalila", color: "pink" },
+      { text: "Nos hacés sentir parte de un equipo de verdad.", author: "Valentin", color: "green" },
+      { text: "Gracias por la paciencia y los momentos compartidos.", author: "Lucia", color: "yellow" }
+    ],
+    moments: [
+      { imageUrl: "/images/group/corazones_en_equipo/Dalila.jpg", caption: "Talleres y expresión", rotation: -2 },
+      { imageUrl: "/images/group/corazones_en_equipo/Lucia.jpg", caption: "Creatividad compartida", rotation: 3 },
+      { imageUrl: "/images/group/corazones_en_equipo/Lujan.jpg", caption: "Risas y mates", rotation: -3 }
+    ],
+    momentsCaption: "Sintonizando nuestros corazones"
   },
   {
     slug: "la-banda-colorida",
     name: "La banda colorida",
     description: "Un grupo atravesado por lo artístico, lo visual y las formas libres de crear.",
-    memberCount: 9,
+    memberCount: 4,
     establishedYear: 2022,
     heroCollage: [
-      "https://images.unsplash.com/photo-1460661419201-fd4cecea8f82?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1541411591963-95d11b8ca2ea?q=80&w=600&auto=format&fit=crop"
+      "/images/group/la_banda_colorida/Tamara - Tutora.jpg"
     ],
     tutor: {
-      name: "Santiago Bernasconi",
-      role: "TUTOR DEL GRUPO",
-      avatarUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop",
-      bio: "Artista visual y docente de educación artística. Impulsor del muralismo comunitario como herramienta social.",
+      name: "Tamara",
+      role: "TUTORA DEL GRUPO",
+      avatarUrl: "/images/group/la_banda_colorida/Tamara - Tutora.jpg",
+      bio: "Artista visual y docente de educación artística. Impulsora del muralismo comunitario como herramienta social.",
       quote: "El arte no es para hacerlo bien, es para liberarse.",
       formation: [
         "Lic. en Artes Visuales (UNA)",
         "Tallerista de arte terapia comunitaria",
-        "Coordinador de proyectos de arte callejero e integración"
+        "Coordinadora de proyectos de arte callejero e integración"
       ]
     },
     objective: "Dar rienda suelta a la imaginación mediante técnicas plásticas, texturas y colores, dejando plasmada nuestra identidad en las paredes.",
@@ -143,28 +191,22 @@ export const GROUPS_DATA: GroupDetail[] = [
       qaList: [
         { question: "¿Por qué pintar juntos?", answer: "Porque el color colectivo tiene una fuerza que el lienzo individual no puede igualar." },
         { question: "¿Qué hacés con los errores en la pintura?", answer: "Los transformamos en una nueva idea. El error en el arte es el inicio de tu propio estilo." },
-        { question: "¿Cuál es el mayor logro de este grupo?", answer: "Ver la sonrisa de todos cuando inauguramos el gran mural del patio. Nos llevó un mes de trabajo." },
-        { question: "¿Qué materiales prefieren?", answer: "La pintura acrílica y las acuarelas, pero a veces experimentamos con collage de diarios." },
-        { question: "¿Se escucha música mientras pintan?", answer: "Sí, de todo. Desde folclore hasta rock nacional. La música ayuda a liberar la mano." },
-        { question: "¿Qué le dirías a alguien que dice 'no sé pintar'?", answer: "Que venga igual. No buscamos perfección, buscamos expresar lo que llevamos dentro." }
+        { question: "¿Cuál es el mayor logro de este grupo?", answer: "Ver la sonrisa de todos cuando inauguramos el gran mural del patio. Nos llevó un mes de trabajo." }
       ],
       keywords: ["Expresión", "Pintura", "Libertad"]
     },
     members: [
-      { name: "Lucas", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=150&auto=format&fit=crop" },
-      { name: "Elena", icon: "heart", details: ["Pintar con acuarelas", "Escuchar música clásica", "Hacer collages"], avatarUrl: "https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=150&auto=format&fit=crop" },
-      { name: "Marcos", icon: "music", details: ["Tocar la batería", "Grafiti y lettering", "Ver pelis de acción"], avatarUrl: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?q=80&w=150&auto=format&fit=crop" },
-      { name: "Cami", icon: "smile", details: ["Modelar arcilla", "Adoptar gatitos", "Decorar tortas dulces"], avatarUrl: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=150&auto=format&fit=crop" }
+      { name: "Lucas", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
+      { name: "Elena", icon: "heart", details: ["Pintar con acuarelas", "Escuchar música clásica", "Hacer collages"] },
+      { name: "Marcos", icon: "music", details: ["Tocar la batería", "Grafiti y lettering", "Ver pelis de acción"] },
+      { name: "Cami", icon: "smile", details: ["Modelar arcilla", "Adoptar gatitos", "Decorar tortas dulces"] }
     ],
     messages: [
-      { text: "Santi nos diste la confianza para agarrar el pincel sin miedo.", author: "Lucas", color: "pink" },
-      { text: "El taller de arte es mi cable a tierra. ¡Gracias totales!", author: "Elena", color: "yellow" },
-      { text: "Por más paredes llenas de color y buena música de fondo.", author: "Marcos", color: "green" }
+      { text: "Tamara nos diste la confianza para agarrar el pincel sin miedo.", author: "Lucas", color: "pink" },
+      { text: "El taller de arte es mi cable a tierra. ¡Gracias totales!", author: "Elena", color: "yellow" }
     ],
     moments: [
-      { imageUrl: "https://images.unsplash.com/photo-1460661419201-fd4cecea8f82?q=80&w=400&auto=format&fit=crop", caption: "Manos a la obra", rotation: 3 },
-      { imageUrl: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=400&auto=format&fit=crop", caption: "Taller creativo", rotation: -3 },
-      { imageUrl: "https://images.unsplash.com/photo-1541411591963-95d11b8ca2ea?q=80&w=400&auto=format&fit=crop", caption: "Detalle del mural", rotation: 2 }
+      { imageUrl: "/images/group/la_banda_colorida/Tamara - Tutora.jpg", caption: "Espacio creativo", rotation: 3 }
     ],
     momentsCaption: "El color que nos une y nos expresa"
   },
@@ -172,103 +214,49 @@ export const GROUPS_DATA: GroupDetail[] = [
     slug: "quienes-somos",
     name: "¿Quiénes somos?",
     description: "Preguntas compartidas para pensar la identidad, la historia y los vínculos.",
-    memberCount: 7,
+    memberCount: 4,
     establishedYear: 2021,
     heroCollage: [
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=600&auto=format&fit=crop"
+      "/images/group/quienes_somos/todos.jpg"
     ],
     tutor: {
-      name: "Laura Benítez",
+      name: "Agustina",
       role: "TUTORA DEL GRUPO",
-      avatarUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop",
-      bio: "Trabajadora Social y especialista en memoria y derechos humanos. Le apasionan los relatos de vida y las charlas circulares.",
+      avatarUrl: "/images/group/quienes_somos/Agustina - tutora.jpg",
+      bio: "Licenciada en Psicología. Acompaña procesos grupales y creativos potenciando la expresión en primera persona.",
       quote: "Nuestra historia no está cerrada, la seguimos escribiendo hoy.",
       formation: [
-        "Lic. en Trabajo Social (UBA)",
-        "Diplomada en Memoria Colectiva y DDHH",
+        "Lic. en Psicología",
+        "Coordinadora de procesos artísticos y recreativos",
         "Facilitadora de círculos de diálogo e historia oral"
       ]
     },
     objective: "Explorar la historia personal y colectiva, reflexionar sobre nuestros sueños y construir un espacio de reconocimiento mutuo.",
     interview: {
       qaList: [
-        { question: "¿Cómo nace esta propuesta?", answer: "Nació de la curiosidad por las historias de vida de las personas que habitan el centro. Cada uno es un mundo." },
-        { question: "¿Cuál es la pregunta más difícil que se hicieron?", answer: "¿Quiénes queremos ser de ahora en adelante? Cuesta responderla, pero abre muchos sueños." },
-        { question: "¿Qué elementos usan para recordar?", answer: "Traemos fotos viejas, música de nuestra adolescencia, o incluso recetas familiares antiguas." },
-        { question: "¿Qué te inspira de este grupo?", answer: "Ver la ternura con la que se escuchan unos a otros cuando recuerdan sus raíces y sus caminos." },
-        { question: "¿Hay lágrimas?", answer: "A veces sí, de emoción al sanar el pasado. Pero siempre terminamos compartiendo un mate y sonriendo." }
+        { question: "¿Qué es lo que más te gusta de trabajar en Intres?", answer: "Acompañar procesos, acompañarlos a ustedes y ver también el fruto de todo lo trabajado a lo largo de estos años, compartir las alegrías y acompañar los momentos más difíciles." },
+        { question: "¿Y de trabajar con ¿Quiénes somos?, en particular con este proyecto?", answer: "Lo que más me gusta es potenciar el proyecto y el proceso creativo. Verlos a ustedes posicionarse como los creadores de este juego y hablar en primera persona de ¿qué les pasa? o ¿qué sienten?. Y apoyo a que este proyecto crezca mucho más." },
+        { question: "¿De qué te recibiste?", answer: "Me recibí de Licenciada en Psicología. Tuve la suerte de que me estén acompañando y disfrutando conmigo." },
+        { question: "¿Qué edad tenés?", answer: "26 años." },
+        { question: "¿Tenés novio?", answer: "Sí." },
+        { question: "¿Te gusta el fútbol?", answer: "No le doy mucha bolilla pero soy de Gimnasia." },
+        { question: "¿Y algún otro deporte?", answer: "Soy más del palo del arte." }
       ],
-      keywords: ["Memoria", "Identidad", "Preguntas"]
+      keywords: ["Proceso", "Creatividad", "Expresión"]
     },
     members: [
-      { name: "Juani", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"], avatarUrl: "https://images.unsplash.com/photo-1542206395-9feb3edaa68d?q=80&w=150&auto=format&fit=crop" },
-      { name: "Estela", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"], avatarUrl: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=150&auto=format&fit=crop" },
-      { name: "Bruno", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"], avatarUrl: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?q=80&w=150&auto=format&fit=crop" },
-      { name: "Marian", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"], avatarUrl: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=150&auto=format&fit=crop" }
+      { name: "Juani", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"] },
+      { name: "Estela", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"] },
+      { name: "Bruno", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"] },
+      { name: "Marian", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"] }
     ],
     messages: [
-      { text: "Laura nos enseñas a valorar nuestra propia voz y recuerdos.", author: "Juani", color: "yellow" },
-      { text: "Tus preguntas nos hacen pensar y reír a la vez.", author: "Estela", color: "green" },
-      { text: "Gracias por armar este círculo tan cálido y seguro.", author: "Bruno", color: "blue" }
+      { text: "Nos gusta mucho viajar con ella, comer juntos, los congresos... ¡Te queremos mucho Agus!", author: "Los Pibes", color: "yellow" },
+      { text: "Gracias por todo lo que aprendemos con vos y por las gorras que hicimos nuevas.", author: "Los Pibes", color: "green" }
     ],
     moments: [
-      { imageUrl: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=400&auto=format&fit=crop", caption: "Círculo de charla", rotation: -2 },
-      { imageUrl: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=400&auto=format&fit=crop", caption: "Fotos antiguas", rotation: 3 },
-      { imageUrl: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=400&auto=format&fit=crop", caption: "Escucha mutua", rotation: -3 }
+      { imageUrl: "/images/group/quienes_somos/todos.jpg", caption: "Todo el equipo reunido", rotation: -2 }
     ],
     momentsCaption: "El valor de recordar de dónde venimos"
-  },
-  {
-    slug: "sin-etiquetas",
-    name: "Sin Etiquetas",
-    description: "Un espacio para encontrarse desde la singularidad y sin definiciones cerradas.",
-    memberCount: 8,
-    establishedYear: 2023,
-    heroCollage: [
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=600&auto=format&fit=crop"
-    ],
-    tutor: {
-      name: "Mateo Ferreyra",
-      role: "TUTOR DEL GRUPO",
-      avatarUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=400&auto=format&fit=crop",
-      bio: "Educador popular e integrador social con enfoque en diversidad e inclusión. Apasionado del teatro foro y el movimiento libre.",
-      quote: "No encajar en ninguna caja es el mejor lugar para encontrarse.",
-      formation: [
-        "Prof. de Educación Popular (UPMPM)",
-        "Especialista en Teatro del Oprimido y expresión",
-        "Coordinador de talleres de expresión corporal y juego libre"
-      ]
-    },
-    objective: "Habitar un espacio libre de juicios y categorías impuestas, donde cada quien pueda explorar su singularidad a su propio ritmo.",
-    interview: {
-      qaList: [
-        { question: "¿Qué significa 'Sin Etiquetas'?", answer: "Poder ser hoy una cosa y mañana otra, sin la presión de tener que encajar en una definición rígida." },
-        { question: "¿Cómo es la dinámica grupal?", answer: "Hacemos dinámicas corporales, teatro espontáneo y, sobre todo, reflexionamos y nos reímos de los prejuicios." },
-        { question: "¿Qué te conmueve de los encuentros?", answer: "Ver la transformación de alguien que entra tímido o tenso y termina soltándose y bailando libre." },
-        { question: "¿Cómo reacciona el grupo a lo diferente?", answer: "Con mucha curiosidad y respeto. Aprendimos que la singularidad de cada uno enriquece el espacio de todos." }
-      ],
-      keywords: ["Diversidad", "Aceptación", "Juego"]
-    },
-    members: [
-      { name: "Alan", icon: "bolt", details: ["Hacer malabares", "Música electrónica", "Salir a rodar en bici"], avatarUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=150&auto=format&fit=crop" },
-      { name: "Clara", icon: "leaf", details: ["Teatro improvisado", "Tocar el ukelele", "Pasear perros"], avatarUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop" },
-      { name: "Fede", icon: "smile", details: ["Dibujar mangas", "Contar chistes", "Comer medialunas calientes"], avatarUrl: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=150&auto=format&fit=crop" },
-      { name: "Vicky", icon: "sun", details: ["Sacar fotografías", "Buscar ropa vintage", "Cuidar plantas de balcón"], avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop" }
-    ],
-    messages: [
-      { text: "Mateo nos diste un espacio para respirar libremente y sin máscaras.", author: "Alan", color: "blue" },
-      { text: "Acá puedo ser yo misma y expresarme como quiero. ¡Gracias!", author: "Clara", color: "pink" },
-      { text: "Gracias por enseñarnos a reírnos de los rótulos y barreras.", author: "Fede", color: "yellow" }
-    ],
-    moments: [
-      { imageUrl: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=400&auto=format&fit=crop", caption: "Expresión libre", rotation: -3 },
-      { imageUrl: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=400&auto=format&fit=crop", caption: "Dinámicas de movimiento", rotation: 4 },
-      { imageUrl: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=400&auto=format&fit=crop", caption: "Teatro espontáneo", rotation: -2 }
-    ],
-    momentsCaption: "La belleza de ser únicos y libres"
   }
 ];

@@ -22,8 +22,8 @@ const GROUP_META_MAP: Record<string, { category: string; metadata: string }> = {
     category: "REFLEXIÓN",
     metadata: "COORDINACIÓN EDITORIAL · 6 MIN LECTURA",
   },
-  "sin-etiquetas": {
-    category: "COMUNIDAD",
+  "corazones-en-equipo": {
+    category: "UNIDAD",
     metadata: "COORDINACIÓN EDITORIAL · 4 MIN LECTURA",
   },
 };
