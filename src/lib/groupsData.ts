@@ -39,7 +39,7 @@ export const GROUPS_DATA: GroupDetail[] = [
       keywords: ["Confianza", "Humor", "Compañerismo"]
     },
     members: [
-      { name: "Adrián", icon: "star", details: ["Escuchar cumbia", "Jugar a la pelota", "Juegos de mesa"], avatarUrl: "/images/group/campeones_del_flow/Adian.jpg" },
+      { name: "Adrián", icon: "star", details: ["Escuchar cumbia", "Jugar a la pelota", "Juegos de mesa"], avatarUrl: "/images/group/campeones_del_flow/Adrian.jpg" },
       { name: "Antonella", icon: "heart", details: ["Pintar mandalas", "Cantar", "Las plantas"], avatarUrl: "/images/group/campeones_del_flow/Antonella.jpg" },
       { name: "Antonio", icon: "smile", details: ["Videojuegos", "Hacer chistes", "Los animales"], avatarUrl: "/images/group/campeones_del_flow/Antonio.jpg" },
       { name: "Clara", icon: "sun", details: ["Hacer pulseras", "Escuchar música", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/Clara.jpg" },
@@ -53,8 +53,9 @@ export const GROUPS_DATA: GroupDetail[] = [
       { text: "Por más mates y charlas como las de siempre :)", author: "Antonio", color: "pink" }
     ],
     moments: [
-      { imageUrl: "/images/group/campeones_del_flow/todosDos.jpg", caption: "Patio acústico", rotation: -3 },
-      { imageUrl: "/images/group/campeones_del_flow/todos.jpg", caption: "Impro general", rotation: 4 }
+      { imageUrl: "/images/group/campeones_del_flow/momento.jpg", caption: "Patio acústico", rotation: -3 },
+      { imageUrl: "/images/group/campeones_del_flow/momento1.jpg", caption: "Impro general", rotation: 4 },
+      { imageUrl: "/images/group/campeones_del_flow/momento2.jpg", caption: "Compartiendo risas", rotation: -2 }
     ],
     momentsCaption: "Seguimos creciendo juntos"
   },
@@ -72,7 +73,7 @@ export const GROUPS_DATA: GroupDetail[] = [
     tutor: {
       name: "Catalina",
       role: "TUTORA DEL GRUPO",
-      avatarUrl: "/images/group/buenas_vibras/Catalina - Tutora.jpg",
+      avatarUrl: "/images/group/buenas_vibras/CatalinaTutor.jpg",
       bio: "Coordinadora de talleres de integración. Cree en el poder de la cotidianidad y el juego para sanar vínculos.",
       quote: "El encuentro verdadero ocurre cuando nos escuchamos despacio.",
       formation: [
@@ -127,7 +128,7 @@ export const GROUPS_DATA: GroupDetail[] = [
     tutor: {
       name: "Sebastián",
       role: "TUTOR DEL GRUPO",
-      avatarUrl: "/images/group/corazones_en_equipo/Sebastian - Tutor.jpg",
+      avatarUrl: "/images/group/corazones_en_equipo/SebastianTutor.jpg",
       bio: "Coordinador de actividades recreativas y artísticas. Apasionado por la música y el trabajo grupal.",
       quote: "La música y el juego nos conectan desde el alma.",
       formation: [
