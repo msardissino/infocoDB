@@ -32,8 +32,8 @@ export const GroupObjective: React.FC<GroupObjectiveProps> = ({ objective }) => 
             <ul className={styles.itemsList}>
               {objective.items.map((item, idx) => (
                 <li key={idx} className={styles.item}>
-                  <strong className={styles.itemSubtitle}>{item.subtitle}:</strong>{" "}
-                  <span className={styles.itemText}>{item.text}</span>
+                  <div className={styles.itemSubtitle}>{item.subtitle}</div>
+                  <div className={styles.itemText}>{item.text}</div>
                 </li>
               ))}
             </ul>

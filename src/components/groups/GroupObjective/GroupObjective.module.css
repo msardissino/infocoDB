@@ -124,17 +124,21 @@
 
 .item {
   font-family: var(--font-text);
-  font-size: 0.8rem;
   line-height: 1.4;
-  color: var(--ink-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
 .itemSubtitle {
   color: var(--ink);
   font-weight: 700;
+  font-size: 0.85rem;
 }
 
 .itemText {
   color: var(--ink-soft);
+  font-size: 0.8rem;
+  padding-left: 1.5rem;
 }
 
