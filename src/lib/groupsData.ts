@@ -81,7 +81,16 @@ export const GROUPS_DATA: GroupDetail[] = [
         "Tallerista de estimulación cognitiva y social"
       ]
     },
-    objective: "🤝 Participar: Animarnos a involucrarnos y ser parte de distintas actividades.🚶 Autonomía: Ganar confianza para movernos cada vez con mayor independencia.❤️ Bienestar: Cuidar nuestras emociones y los vínculos con los demás. 👥 Trabajo en equipo: Aprender a compartir, colaborar y construir juntos. 💬 Comunicación: Encontrar nuevas formas de expresar lo que pensamos y sentimos.",
+    objective: {
+      resume: "",
+      items: [
+        { subtitle: "🤝 Participar", text: "Animarnos a involucrarnos y ser parte de distintas actividades." },
+        { subtitle: "🚶 Autonomía", text: "Ganar confianza para movernos cada vez con mayor independencia." },
+        { subtitle: "❤️ Bienestar", text: "Cuidar nuestras emociones y los vínculos con los demás." },
+        { subtitle: "👥 Trabajo en equipo", text: "Aprender a compartir, colaborar y construir juntos." },
+        { subtitle: "💬 Comunicación", text: "Encontrar nuevas formas de expresar lo que pensamos y sentimos." }
+      ]
+    },
     interview: {
       qaList: [
         { question: "¿Cómo nace 'Buenas Vibras'?", answer: "Nació de la necesidad de tener una pausa, un espacio para charlar tranquilos y distendidos." },
