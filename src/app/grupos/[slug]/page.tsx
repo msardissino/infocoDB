@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useGroup } from "@/hooks/useGroup";
@@ -53,6 +53,11 @@ export default function GroupDetailPage() {
   const slug = params.slug as string;
 
   const { group, loading, error } = useGroup(slug);
+
+  // Scroll to top on navigation/mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   // Accordion state for mobile view
   const [openPanels, setOpenPanels] = useState<Record<string, boolean>>({
