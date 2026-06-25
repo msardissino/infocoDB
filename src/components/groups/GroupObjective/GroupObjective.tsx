@@ -3,11 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBullseye } from "@fortawesome/free-solid-svg-icons";
 import styles from "./GroupObjective.module.css";
 
+import { GroupObjectiveStructure } from "@/types/group";
+
 interface GroupObjectiveProps {
-  objective: string;
+  objective: string | GroupObjectiveStructure;
 }
 
 export const GroupObjective: React.FC<GroupObjectiveProps> = ({ objective }) => {
+  const isString = typeof objective === "string";
+
   return (
     <div className={styles.card}>
       <div className={styles.cardHeader}>
@@ -18,7 +22,23 @@ export const GroupObjective: React.FC<GroupObjectiveProps> = ({ objective }) => 
       </div>
       
       <div className={styles.cardBody}>
-        <p className={styles.objectiveText}>{objective}</p>
+        {isString ? (
+          <p className={styles.objectiveText}>{objective}</p>
+        ) : (
+          <div className={styles.structuredObjective}>
+            {objective.resume && (
+              <p className={styles.resumeText}>{objective.resume}</p>
+            )}
+            <ul className={styles.itemsList}>
+              {objective.items.map((item, idx) => (
+                <li key={idx} className={styles.item}>
+                  <strong className={styles.itemSubtitle}>{item.subtitle}:</strong>{" "}
+                  <span className={styles.itemText}>{item.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         
         {/* Visual decorators: paint splash & custom hand-drawn outline heart */}
         <div className={styles.paintSplash}></div>

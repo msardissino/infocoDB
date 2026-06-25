@@ -19,7 +19,8 @@ export const GROUPS_DATA: GroupDetail[] = [
       quote: "Acá nadie tiene que hacerlo perfecto.",
       formation: [
         "Lic. en Psicología (UNLP)",
-        "Tecnicatura en Psicología del deporte"
+        "Tecnicatura en Psicologìa del deporte",
+        "
       ]
     },
     objective: "Crear un espacio de confianza donde cada integrante pueda expresarse libremente, compartir intereses, desarrollar proyectos y fortalecer los lazos.",
@@ -38,7 +39,7 @@ export const GROUPS_DATA: GroupDetail[] = [
       keywords: ["Confianza", "Humor", "Compañerismo"]
     },
     members: [
-      { name: "Adrián", icon: "star", details: ["Escuchar cumbia", "Jugar a la pelota", "Juegos de mesa"], avatarUrl: "/images/group/campeones_del_flow/Adrian.jpg" },
+      { name: "Adrián", icon: "star", details: ["Escuchar cumbia", "Jugar a la pelota", "Juegos de mesa"], avatarUrl: "/images/group/campeones_del_flow/Adian.jpg" },
       { name: "Antonella", icon: "heart", details: ["Pintar mandalas", "Cantar", "Las plantas"], avatarUrl: "/images/group/campeones_del_flow/Antonella.jpg" },
       { name: "Antonio", icon: "smile", details: ["Videojuegos", "Hacer chistes", "Los animales"], avatarUrl: "/images/group/campeones_del_flow/Antonio.jpg" },
       { name: "Clara", icon: "sun", details: ["Hacer pulseras", "Escuchar música", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/Clara.jpg" },
@@ -52,9 +53,8 @@ export const GROUPS_DATA: GroupDetail[] = [
       { text: "Por más mates y charlas como las de siempre :)", author: "Antonio", color: "pink" }
     ],
     moments: [
-      { imageUrl: "/images/group/campeones_del_flow/momento.jpg", caption: "❤️", rotation: -3 },
-      { imageUrl: "/images/group/campeones_del_flow/momento1.jpg", caption: "Impro general", rotation: 4 },
-      { imageUrl: "/images/group/campeones_del_flow/momento2.jpg", caption: "Compartiendo risas", rotation: -2 }
+      { imageUrl: "/images/group/campeones_del_flow/todosDos.jpg", caption: "❤️", rotation: -3 },
+      { imageUrl: "/images/group/campeones_del_flow/todos.jpg", caption: "Impro general", rotation: 4 }
     ],
     momentsCaption: "Seguimos creciendo juntos"
   },
@@ -72,7 +72,7 @@ export const GROUPS_DATA: GroupDetail[] = [
     tutor: {
       name: "Catalina",
       role: "TUTORA DEL GRUPO",
-      avatarUrl: "/images/group/buenas_vibras/CatalinaTutor.jpg",
+      avatarUrl: "/images/group/buenas_vibras/Catalina - Tutora.jpg",
       bio: "Coordinadora de talleres de integración. Cree en el poder de la cotidianidad y el juego para sanar vínculos.",
       quote: "El encuentro verdadero ocurre cuando nos escuchamos despacio.",
       formation: [
@@ -127,7 +127,7 @@ export const GROUPS_DATA: GroupDetail[] = [
     tutor: {
       name: "Sebastián",
       role: "TUTOR DEL GRUPO",
-      avatarUrl: "/images/group/corazones_en_equipo/SebastianTutor.jpg",
+      avatarUrl: "/images/group/corazones_en_equipo/Sebastian - Tutor.jpg",
       bio: "Coordinador de actividades recreativas y artísticas. Apasionado por la música y el trabajo grupal.",
       quote: "La música y el juego nos conectan desde el alma.",
       formation: [
@@ -139,13 +139,14 @@ export const GROUPS_DATA: GroupDetail[] = [
     objective: {
       resume: "Promover la autonomía, la comunicación y el compromiso con el grupo, desarrollando habilidades para la vida cotidiana, la convivencia y la participación social.", 
       items: [
-        { subtitle: "🤝 Trabajar en equipo", text: "Aprender a compartir, colaborar y construir junto a otros." }, 
-        { subtitle: "💬 Comunicarnos mejor", text: "Encontrar nuevas formas de expresar lo que pensamos, sentimos y necesitamos." },
-        { subtitle: "🌱 Ser más autónomos", text: "Desarrollar habilidades para participar cada vez con mayor independencia en la vida cotidiana." },
-        { subtitle: "❤️ Fortalecer los vínculos", text: "Crear un espacio donde todos se sientan parte, respetados y acompañados." },
-        { subtitle: "⭐ Participar activamente", text: "Asumir pequeños desafíos, responsabilidades y roles dentro del grupo. Consolidar vínculos de confianza y compañerismo, promoviendo la participación activa en proyectos artísticos y expresivos." }
-      ]
-    },
+        {subtitle: "🤝 Trabajar en equipo", text: "Aprender a compartir, colaborar y construir junto a otros."}, 
+        {subtitle: "💬 Comunicarnos mejor", text: "Encontrar nuevas formas de expresar lo que pensamos, sentimos y necesitamos."},
+        {subtitle: "🌱 Ser más autónomos", text: "Desarrollar habilidades para participar cada vez con mayor independencia en la vida cotidiana."},
+        {subtitle: "❤️ Fortalecer los vínculos", text: "Crear un espacio donde todos se sientan parte, respetados y acompañados."},
+        {subtitle: "⭐ Participar activamente", text: "Asumir pequeños desafíos, responsabilidades y roles dentro del grupo.Consolidar vínculos de confianza y compañerismo, promoviendo la participación activa en proyectos artísticos y expresivos."},
+        ]} 
+
+,
     interview: {
       qaList: [
         { question: "¿Cómo surge Corazones en Equipo?", answer: "Nace del deseo de unir nuestras pasiones por el arte, la música y el juego en un solo gran latido." },
@@ -190,11 +191,13 @@ export const GROUPS_DATA: GroupDetail[] = [
       bio: "Artista visual y docente de educación artística. Impulsora del muralismo comunitario como herramienta social.",
       quote: "El arte no es para hacerlo bien, es para liberarse.",
       formation: [
-        "Acompañante terapéutica",
-        "Profesora de educación especial"
+        "Acompañante terapèutica -",
+        "Profesora de educación especial",
+    
       ]
     },
-    objective: {
+    objective: 
+    {
       resume: "",
       items: [
         {
@@ -203,7 +206,7 @@ export const GROUPS_DATA: GroupDetail[] = [
         }, 
         {
           subtitle: "💬 Encontrar nuevas formas de comunicarnos",
-          text: "Favorecer la expresión, el intercambio y la participación respetando el modo de comunicarse de cada persona."
+          text: "Favorecer la expresión, el intercambio y la participación respetando el modo de comunicarse de cada persona"
         }, 
         {
           subtitle: "🤝 Crear vínculos",
@@ -215,8 +218,8 @@ export const GROUPS_DATA: GroupDetail[] = [
         }, 
         {
           subtitle: "🌱 Participar a nuestro ritmo",
-          text: "Acompañar a cada persona desde sus posibilidades, respetando sus tiempos, intereses y necesidades."
-        }
+          text: "GAcompañar a cada persona desde sus posibilidades, respetando sus tiempos, intereses y necesidades."
+        }, 
       ]
     }, 
     interview: {
@@ -259,10 +262,11 @@ export const GROUPS_DATA: GroupDetail[] = [
       quote: "Nuestra historia no está cerrada, la seguimos escribiendo hoy.",
       formation: [
         "Lic. en Psicología",
-        "Actriz"
+        "Actriz",
+        
       ]
     },
-    objective: "Construir un proyecto laboral que favorezca el reconocimiento de las capacidades e intereses de cada joven, promoviendo la autonomía, el compromiso, la cooperación y la participación activa en la comunidad.",
+    objective: "Construir un proyecto laboral  que favorezca el reconocimiento de las capacidades e intereses de cada joven, promoviendo la autonomía, el compromiso, la cooperación y la participación activa en la comunidad.,",
     interview: {
       qaList: [
         { question: "¿Qué es lo que más te gusta de trabajar en Intres?", answer: "Acompañar procesos, acompañarlos a ustedes y ver también el fruto de todo lo trabajado a lo largo de estos años, compartir las alegrías y acompañar los momentos más difíciles." },
@@ -279,13 +283,14 @@ export const GROUPS_DATA: GroupDetail[] = [
       { name: "Coti", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"] },
       { name: "Martin", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"] },
       { name: "Mica", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"] },
-      { name: "Pancho", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"] },
-      { name: "Sofi", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"] },
+      { name: "Pancho", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"] }
+      { name: "Sofi, icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"] },
       { name: "Mauro", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"] },
       { name: "Andres", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"] },
-      { name: "Mati", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"] },
-      { name: "Tomi", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"] },
-      { name: "Lucas", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"] }
+      { name: "Mati", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"] }
+      { name: "Tomi, icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"] },
+      { name: "Lucas", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"] },
+     
     ],
     messages: [
       { text: "Nos gusta mucho viajar con ella, comer juntos, los congresos... ¡Te queremos mucho Agus!", author: "Los Pibes", color: "yellow" },

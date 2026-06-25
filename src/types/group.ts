@@ -36,6 +36,16 @@ export interface PolaroidMoment {
   rotation?: number; // deg of rotation for layout variety
 }
 
+export interface GroupObjectiveItem {
+  subtitle: string;
+  text: string;
+}
+
+export interface GroupObjectiveStructure {
+  resume?: string;
+  items: GroupObjectiveItem[];
+}
+
 export interface GroupDetail {
   slug: string;
   name: string;
@@ -44,7 +54,7 @@ export interface GroupDetail {
   establishedYear: number;
   heroCollage: string[]; // array of images for the top-left collage
   tutor: GroupTutor;
-  objective: string;
+  objective: string | GroupObjectiveStructure;
   interview: GroupInterview;
   members: GroupMember[];
   messages: StudentMessage[];
