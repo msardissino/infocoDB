@@ -35,7 +35,6 @@ export const SectionHero: React.FC<SectionHeroProps> = ({
         {backgroundImage && (
           <div className={styles.bgLayer}>
             <Image src={backgroundImage} alt="" className={styles.bgImage} fill priority unoptimized />
-            <div className={styles.bgOverlay}></div>
           </div>
         )}
         
