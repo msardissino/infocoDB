@@ -43,7 +43,11 @@ export const GROUPS_DATA: GroupDetail[] = [
       { name: "Antonio", icon: "smile", details: ["Videojuegos", "Hacer chistes", "Los animales"], avatarUrl: "/images/group/campeones_del_flow/Antonio.jpg" },
       { name: "Clara", icon: "sun", details: ["Hacer pulseras", "Escuchar música", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/Clara.jpg" },
       { name: "Erwin", icon: "music", details: ["Jugar al ajedrez", "Cocinar para amigos", "Tocar la guitarra"], avatarUrl: "/images/group/campeones_del_flow/Erwin.jpg" },
-      { name: "Miguel", icon: "coffee", details: ["Fútbol", "Compartir mates", "Ver películas"], avatarUrl: "/images/group/campeones_del_flow/Miguel.jpg" }
+      { name: "Miguel", icon: "coffee", details: ["Fútbol", "Compartir mates", "Ver películas"], avatarUrl: "/images/group/campeones_del_flow/Miguel.jpg" },
+      { name: "Armando", icon: "smile", details: ["Compartir en grupo", "Actividades recreativas"], avatarUrl: "/images/group/campeones_del_flow/Armando.jpg" },
+      { name: "Juan Pedro", icon: "smile", details: ["Compartir en grupo", "Actividades recreativas"], avatarUrl: "/images/group/campeones_del_flow/JuanPedro.jpg" },
+      { name: "Matías", icon: "smile", details: ["Compartir en grupo", "Actividades recreativas"], avatarUrl: "/images/group/campeones_del_flow/Matias.jpg" },
+      { name: "Paula", icon: "smile", details: ["Compartir en grupo", "Actividades recreativas"], avatarUrl: "/images/group/campeones_del_flow/Paula.jpg" }
     ],
     messages: [
       { text: "Gracias por bancarnos siempre y por escucharnos.", author: "Miguel", color: "yellow" },
@@ -61,7 +65,7 @@ export const GROUPS_DATA: GroupDetail[] = [
   {
     slug: "buenas-vibras",
     name: "Buenas Vibras",
-    description: "Conversaciones, juegos y momentos cotidianos compartidos desde el cuidado.",
+    description: "Un espacio para aprender a encontrarnos con otros, trabajar en equipo y comenzar a construir nuestro proyecto de vida adulta con los apoyos necesarios.",
     memberCount: 10,
     establishedYear: 2026,
     heroCollage: [
@@ -76,44 +80,47 @@ export const GROUPS_DATA: GroupDetail[] = [
       bio: "Coordinadora de talleres de integración. Cree en el poder de la cotidianidad y el juego para sanar vínculos.",
       quote: "El encuentro verdadero ocurre cuando nos escuchamos despacio.",
       formation: [
-        "Terapista Ocupacional",
-        "Especialista en dinámicas lúdicas comunitarias",
-        "Tallerista de estimulación cognitiva y social"
+        "Terapista Ocupacional"
       ]
     },
     objective: {
       resume: "",
       items: [
         { subtitle: "🤝 Participar", text: "Animarnos a involucrarnos y ser parte de distintas actividades." },
-        { subtitle: "🚶 Autonomía", text: "Ganar confianza para movernos cada vez con mayor independencia." },
+        { subtitle: "🚶 Autonomía", text: "Ganar confianza para movernos en la comunidad" },
         { subtitle: "❤️ Bienestar", text: "Cuidar nuestras emociones y los vínculos con los demás." },
         { subtitle: "👥 Trabajo en equipo", text: "Aprender a compartir, colaborar y construir juntos." },
-        { subtitle: "💬 Comunicación", text: "Encontrar nuevas formas de expresar lo que pensamos y sentimos." }
+        { subtitle: "💬 Comunicación", text: "Escucharnos y encontrar nuevas formas de expresar lo que pensamos y sentimos." }
       ]
     },
     interview: {
       qaList: [
-        { question: "¿Cómo nace 'Buenas Vibras'?", answer: "Nació de la necesidad de tener una pausa, un espacio para charlar tranquilos y distendidos." },
-        { question: "¿Qué valor tiene el mate en tu grupo?", answer: "Es central. El mate circula como una palabra compartida, nos da el ritmo para escucharnos." },
-        { question: "¿Qué juego es el que más disfrutan?", answer: "El Ludo y las cartas. Se arman campeonatos muy divertidos que duran semanas." },
-        { question: "¿Cómo definís tu rol?", answer: "Como una facilitadora. Yo preparo el espacio, pero el calor y la vibra la traen ellos." },
+        { question: "¿Cómo surgió el nombre 'Buenas Vibras'?", answer: "" },
+        { question: "¿De qué te vas a recibir?", answer: "Este año me recibo de terapista ocupacional si todo sale bien el 13 de Julio, ya falta poco, solo un mes." },
+        { question: "¿Qué deporte te gusta?", answer: "Mi deporte favorito es el Hockey, desde los 7 años que juego al Hockey. También me gusta mucho el Fútbol, ahora con el mundial intento mirar todos los partidos, me gusta el deporte." },
+        { question: "¿Qué te gusta comer?", answer: "Me gusta comer de todo, las hamburguesas me gustan mucho, lo confieso (ríe). También la comida que no puede faltar es la milanesa napolitana con papas fritas, me encanta" },
         { question: "¿Qué cosas te hacen reír?", answer: "Las ocurrencias espontáneas. A veces nos quedamos tentados de la risa por cosas muy simples." },
-        { question: "¿Hay espacio para momentos difíciles?", answer: "Sí, claro. Cuando alguien viene cansado o triste, el grupo sabe arroparlo y escuchar." },
-        { question: "¿Qué aprendiste de este grupo?", answer: "Que las cosas más profundas ocurren en las charlas más cotidianas." }
+        { question: "¿Qué es lo que más te gusta de trabajar con nosotros?", answer: "Lo que más me gusta de trabajar con ustedes es acompañarlos en sus procesos; me gusta que crezcan, que sean autónomos, que puedan elegir y decidir. Lo que más me gusta es acompañarlos en ese proceso" },
+        { question: "¿Qué aprendiste de este grupo?", answer: "." }
       ],
       keywords: ["Escucha", "Mateada", "Cuidado"]
     },
     members: [
       { name: "Brian", icon: "bolt", details: ["Música y ritmo", "Fútbol con amigos", "Compartir mates"], avatarUrl: "/images/group/buenas_vibras/Brian.jpg" },
+      { name: "Verónica", icon: "bolt", details: ["Música y ritmo", "Fútbol con amigos", "Compartir mates"], avatarUrl: "/images/group/buenas_vibras/Brian.jpg" },
       { name: "Gianni", icon: "star", details: ["Juegos de estrategia", "Dibujar cómics", "Escuchar rock"], avatarUrl: "/images/group/buenas_vibras/Gianni.jpg" },
       { name: "Martina", icon: "heart", details: ["Pintar mandalas", "Hacer pulseras", "Cuidar plantas"], avatarUrl: "/images/group/buenas_vibras/Martina.jpg" },
       { name: "Valentina", icon: "sun", details: ["Bailar coreografías", "Ver series y pelis", "Salir al parque"], avatarUrl: "/images/group/buenas_vibras/Valentina.jpg" },
+      { name: "Camilo", icon: "sun", details: ["Bailar coreografías", "Ver series y pelis", "Salir al parque"], avatarUrl: "/images/group/buenas_vibras/Camilo.jpg" },
+      { name: "Marcos", icon: "music", details: ["Escribir poesía", "Tocar el piano", "Mates dulces"], avatarUrl: "/images/group/buenas_vibras/Marcos.jpg" },
+      { name: "Juan", icon: "music", details: ["Escribir poesía", "Tocar el piano", "Mates dulces"], avatarUrl: "/images/group/buenas_vibras/Juan.jpg" },
       { name: "Yazmin", icon: "music", details: ["Escribir poesía", "Tocar el piano", "Mates dulces"], avatarUrl: "/images/group/buenas_vibras/Yazmin.jpg" }
     ],
     messages: [
-      { text: "Gracias Catalina por tu paciencia infinita y tu dulzura.", author: "Martina", color: "blue" },
-      { text: "Los mates de los viernes son lo mejor de toda la semana.", author: "Gianni", color: "yellow" },
-      { text: "Gracias por hacernos reír tanto y escucharnos siempre.", author: "Brian", color: "green" }
+      { text: "Nos encanta trabajar con vos y buscar cosas en la compu.", author: "#Buenas vibras", color: "blue" },
+      { text: "Nos gustaría irnos de viaje con vos", author: "#Buenas vibras", color: "blue" },
+      { text: "Gracias por ser buena con nosotros y ayudarnos siempre.", author: "#Buenas vibras", color: "yellow" },
+      { text: "No te vayas . Te queremos.", author: "#Buenas vibras", color: "green" }
     ],
     moments: [
       { imageUrl: "/images/group/buenas_vibras/Brian.jpg", caption: "Compartiendo momentos", rotation: -2 },
@@ -140,9 +147,8 @@ export const GROUPS_DATA: GroupDetail[] = [
       bio: "Coordinador de actividades recreativas y artísticas. Apasionado por la música y el trabajo grupal.",
       quote: "La música y el juego nos conectan desde el alma.",
       formation: [
-        "Profesor de Educación Musical",
-        "Tallerista de Expresión Corporal",
-        "Especialista en abordajes integrales comunitarios"
+        "Acompañante terapéutico",
+        "Terapista Ocupacional"
       ]
     },
     objective: {
@@ -165,11 +171,13 @@ export const GROUPS_DATA: GroupDetail[] = [
     },
     members: [
       { name: "Dalila", icon: "heart", details: ["Pintar y dibujar", "Escuchar música pop", "Juegos de mesa"], avatarUrl: "/images/group/corazones_en_equipo/Dalila.jpg" },
+      { name: "Rodrigo", icon: "heart", details: ["Pintar y dibujar", "Escuchar música pop", "Juegos de mesa"], avatarUrl: "/images/group/corazones_en_equipo/Dalila.jpg" },
       { name: "Lucia", icon: "sun", details: ["Hacer manualidades", "Tomar mates charlando", "Pasear"], avatarUrl: "/images/group/corazones_en_equipo/Lucia.jpg" },
       { name: "Lujan", icon: "star", details: ["Cocinar cosas ricas", "Cuidar las plantas", "Escuchar radio"], avatarUrl: "/images/group/corazones_en_equipo/Lujan.jpg" },
       { name: "Miguel", icon: "smile", details: ["Fútbol", "Jugar a las cartas", "Compartir risas"], avatarUrl: "/images/group/corazones_en_equipo/Miguel.jpg" },
       { name: "Milagros", icon: "music", details: ["Bailar y cantar", "Hacer pulseras", "Ver películas"], avatarUrl: "/images/group/corazones_en_equipo/Milagros.jpg" },
-      { name: "Valentin", icon: "bolt", details: ["Videojuegos", "Hacer chistes", "Salir a caminar"], avatarUrl: "/images/group/corazones_en_equipo/Valentin.jpg" }
+      { name: "Valentin", icon: "bolt", details: ["Videojuegos", "Hacer chistes", "Salir a caminar"], avatarUrl: "/images/group/corazones_en_equipo/Valentin.jpg" },
+      { name: "Micaela", icon: "heart", details: ["Expresión artística", "Compartir con el grupo"], avatarUrl: "/images/group/corazones_en_equipo/Micaela.jpg" }
     ],
     messages: [
       { text: "Gracias Sebas por traer siempre tanta buena energía y música.", author: "Dalila", color: "pink" },
@@ -224,7 +232,7 @@ export const GROUPS_DATA: GroupDetail[] = [
         }, 
         {
           subtitle: "🌱 Participar a nuestro ritmo",
-          text: "Acompañar a cada persona desde sus posibilidades, respetando sus tiempos, intereses y necesidades."
+          text: "Acompañar a cada persona desde sus posibilidades, respetando sus tiempos, intereses and necesidades."
         }
       ]
     }, 
@@ -287,14 +295,14 @@ export const GROUPS_DATA: GroupDetail[] = [
     members: [
       { name: "Coti", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"] },
       { name: "Martin", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"] },
-      { name: "Mica", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"] },
+      { name: "Mica", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"], avatarUrl: "/images/group/quienes_somos/Micaela.jpg" },
       { name: "Pancho", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"] },
       { name: "Sofi", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"] },
-      { name: "Mauro", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"] },
-      { name: "Andres", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"] },
-      { name: "Mati", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"] },
-      { name: "Tomi", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"] },
-      { name: "Lucas", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"] }
+      { name: "Mauro", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"], avatarUrl: "/images/group/quienes_somos/Mauro.jpg" },
+      { name: "Andres", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"], avatarUrl: "/images/group/quienes_somos/Andrés.jpg" },
+      { name: "Mati", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"], avatarUrl: "/images/group/quienes_somos/Matias.jpg" },
+      { name: "Tomi", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"], avatarUrl: "/images/group/quienes_somos/Tomas.jpg" },
+      { name: "Lucas", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"], avatarUrl: "/images/group/quienes_somos/Lucas.jpg" }
     ],
     messages: [
       { text: "Nos gusta mucho viajar con ella, comer juntos, los congresos... ¡Te queremos mucho Agus!", author: "Los Pibes", color: "yellow" },
