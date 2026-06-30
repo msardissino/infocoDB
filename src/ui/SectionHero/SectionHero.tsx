@@ -13,6 +13,7 @@ interface SectionHeroProps {
   variant?: "orange" | "dark" | "light";
   icon?: IconDefinition;
   backgroundImage?: string;
+  showOverlay?: boolean;
   children?: React.ReactNode;
 }
 
@@ -25,6 +26,7 @@ export const SectionHero: React.FC<SectionHeroProps> = ({
   variant = "orange",
   icon,
   backgroundImage,
+  showOverlay = false,
   children,
 }) => {
   const containerClass = `${styles.heroContainer} ${styles[variant]}`;
@@ -35,6 +37,7 @@ export const SectionHero: React.FC<SectionHeroProps> = ({
         {backgroundImage && (
           <div className={styles.bgLayer}>
             <Image src={backgroundImage} alt="" className={styles.bgImage} fill priority unoptimized />
+            {showOverlay && <div className={styles.bgOverlay}></div>}
           </div>
         )}
         

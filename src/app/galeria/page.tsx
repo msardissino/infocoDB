@@ -16,6 +16,7 @@ export default function GaleriaPage() {
         metadata="CENTRO DE DIA · INTRES"
         icon={faCamera}
         backgroundImage="/images/covers/cover_galeria.jpeg"
+        showOverlay={true}
       >
         <div className={styles.container}>
           <Breadcrumb items={[{ label: "GALERÍA" }]} />
