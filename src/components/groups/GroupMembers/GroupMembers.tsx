@@ -49,33 +49,33 @@ export const GroupMembers: React.FC<GroupMembersProps> = ({ members }) => {
     <div className={styles.container}>
       <h3 className={styles.sectionTitle}>INTEGRANTES DEL GRUPO</h3>
 
-      {/* Desktop Grid (standard display) */}
       <div className={styles.desktopGrid}>
         {members.map((member, idx) => (
           <div key={idx} className={styles.memberCard}>
-            <div className={styles.avatarRow}>
-              <div className={styles.avatarWrapper}>
-                <img 
-                  src={member.avatarUrl || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=150"} 
-                  alt={member.name} 
-                  className={styles.avatar} 
-                />
-              </div>
+            <div className={styles.avatarWrapper}>
+              <img 
+                src={member.avatarUrl || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=150"} 
+                alt={member.name} 
+                className={styles.avatar} 
+              />
+            </div>
+            <div className={styles.cardContent}>
               <div className={styles.nameBadge}>
                 <span className={styles.memberName}>{member.name}</span>
                 {member.icon && (
                   <FontAwesomeIcon icon={getIcon(member.icon)} className={styles.memberIcon} />
                 )}
               </div>
+              <ul className={styles.detailsList}>
+                {member.details.map((detail, dIdx) => (
+                  <li key={dIdx} className={styles.detailItem}>{detail}</li>
+                ))}
+              </ul>
             </div>
-            <ul className={styles.detailsList}>
-              {member.details.map((detail, dIdx) => (
-                <li key={dIdx} className={styles.detailItem}>{detail}</li>
-              ))}
-            </ul>
           </div>
         ))}
       </div>
+
 
       {/* Mobile Stack with accordion behavior */}
       <div className={styles.mobileStack}>
