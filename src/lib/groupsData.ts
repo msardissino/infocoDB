@@ -171,7 +171,7 @@ export const GROUPS_DATA: GroupDetail[] = [
     },
     members: [
       { name: "Dalila", icon: "heart", details: ["Pintar y dibujar", "Escuchar música pop", "Juegos de mesa"], avatarUrl: "/images/group/corazones_en_equipo/Dalila.jpg" },
-      { name: "Rodrigo", icon: "heart", details: ["Pintar y dibujar", "Escuchar música pop", "Juegos de mesa"], avatarUrl: "/images/group/corazones_en_equipo/Dalila.jpg" },
+      { name: "Rodrigo", icon: "heart", details: ["Pintar y dibujar", "Escuchar música pop", "Juegos de mesa"], avatarUrl: "/images/group/corazones_en_equipo/Rodrigo.jpg" },
       { name: "Lucia", icon: "sun", details: ["Hacer manualidades", "Tomar mates charlando", "Pasear"], avatarUrl: "/images/group/corazones_en_equipo/Lucia.jpg" },
       { name: "Lujan", icon: "star", details: ["Cocinar cosas ricas", "Cuidar las plantas", "Escuchar radio"], avatarUrl: "/images/group/corazones_en_equipo/Lujan.jpg" },
       { name: "Miguel", icon: "smile", details: ["Fútbol", "Jugar a las cartas", "Compartir risas"], avatarUrl: "/images/group/corazones_en_equipo/Miguel.jpg" },
@@ -266,7 +266,8 @@ export const GROUPS_DATA: GroupDetail[] = [
     memberCount: 10,
     establishedYear: 2025,
     heroCollage: [
-      "/images/group/quienes_somos/todos.jpg"
+      "/images/group/quienes_somos/todos.jpg",
+      "/images/group/quienes_somos/Grupal.jpg"
     ],
     tutor: {
       name: "Agustina",
@@ -293,8 +294,8 @@ export const GROUPS_DATA: GroupDetail[] = [
       keywords: ["Proceso", "Creatividad", "Expresión"]
     },
     members: [
-      { name: "Coti", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"] },
-      { name: "Martin", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"] },
+      { name: "Coti", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"], avatarUrl: "/images/group/quienes_somos/Constanza.jpg" },
+      { name: "Martin", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"], avatarUrl: "/images/group/quienes_somos/Martin.jpg" },
       { name: "Mica", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"], avatarUrl: "/images/group/quienes_somos/Micaela.jpg" },
       { name: "Pancho", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"] },
       { name: "Sofi", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"] },
