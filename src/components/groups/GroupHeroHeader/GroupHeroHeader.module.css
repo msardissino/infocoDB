@@ -43,6 +43,13 @@
   align-items: stretch;
 }
 
+.objectiveWrapper {
+  grid-column: 1 / span 2;
+  grid-row: 2;
+  margin-top: 0px;
+  width: 100%;
+}
+
 /* Column 1: Polaroid Outer */
 .polaroidContainerOuter {
   position: relative;
@@ -121,6 +128,8 @@
   color: var(--ink);
   margin: 0;
   text-transform: uppercase;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 /* 3 handdrawn orange lines on the right of the title */
@@ -450,6 +459,10 @@
     justify-content: center;
   }
 
+  .decorTitleLines {
+    display: none;
+  }
+
   .title {
     font-size: clamp(2.2rem, 8vw, 3rem); /* Smaller clamp to fit long group names on mobile */
   }
@@ -486,11 +499,4 @@
   .quoteText {
     font-size: 1rem;
   }
-}
-
-.objectiveWrapper {
-  grid-column: 1 / span 2;
-  grid-row: 2;
-  margin-top: 0px;
-  width: 100%;
 }
