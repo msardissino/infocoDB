@@ -6,7 +6,7 @@ const indexItems = [
   { id: "01", category: "Grupos", title: "Los Campeones del Flow", href: "/grupos" },
   { id: "02", category: "Carta del equipo", title: "Empezamos a construir", href: "/voces" },
   { id: "03", category: "Voces", title: "Una entrevista con Julia", href: "/voces" },
-  { id: "04", category: "Talleres", title: "Crónica del mural del patio", href: "/actividades" },
+  { id: "04", category: "Talleres", title: "Crónica del mural del patio", href: "/noticias" },
   { id: "05", category: "Familias", title: "Un café con las familias", href: "/voces" },
   { id: "06", category: "Agenda", title: "Lo que viene en mayo", href: "/agenda" },
   { id: "07", category: "Galería", title: "Abril en fotos", href: "/galeria" },

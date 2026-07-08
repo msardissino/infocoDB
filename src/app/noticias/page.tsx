@@ -16,9 +16,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { supabase } from "@/lib/supabase/client";
-import styles from "./actividades.module.css";
+import styles from "./noticias.module.css";
 
-interface Activity {
+interface NewsItem {
   slug: string;
   category: string;
   title: string;
@@ -43,37 +43,37 @@ const getIcon = (iconName: string): IconDefinition => {
   return iconMap[iconName] || faUsers;
 };
 
-export default function ActividadesPage() {
-  const [activities, setActivities] = useState<Activity[]>([]);
+export default function NoticiasPage() {
+  const [newsList, setNewsList] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchActivities() {
+    async function fetchNews() {
       try {
         const { data, error } = await supabase
-          .from("actividades")
+          .from("noticias")
           .select("*")
           .order("created_at", { ascending: false });
 
         if (error) throw error;
-        setActivities(data || []);
+        setNewsList(data || []);
       } catch (err) {
-        console.error("Error al obtener actividades:", err);
+        console.error("Error al obtener noticias:", err);
       } finally {
         setLoading(false);
       }
     }
-    fetchActivities();
+    fetchNews();
   }, []);
 
   return (
     <main>
       <SectionHero
         variant="dark"
-        category="ACTIVIDADES"
+        category="NOTICIAS"
         subCategory="SECCIÓN"
-        title="Próximas actividades"
-        subtitle="Propuestas abiertas y especiales que realizamos dentro y fuera del centro. Espacios para encontrarnos, aprender, expresarnos y disfrutar."
+        title="Noticias y Novedades"
+        subtitle="Crónicas, relatos y toda la información de las actividades y momentos que compartimos dentro y fuera del centro."
         backgroundImage="/bg-actividades.jpg"
       >
         <div className={styles.timelineContainer}>
@@ -100,7 +100,7 @@ export default function ActividadesPage() {
                 }
               `}</style>
             </div>
-          ) : activities.length === 0 ? (
+          ) : newsList.length === 0 ? (
             <div style={{
               textAlign: "center",
               padding: "4rem 2rem",
@@ -109,45 +109,45 @@ export default function ActividadesPage() {
               borderRadius: "var(--r-xl)",
               color: "var(--ink-mute)"
             }}>
-              No hay próximas actividades programadas en este momento.
+              No hay noticias publicadas en este momento.
             </div>
           ) : (
             <div className={styles.timeline}>
-              {activities.map((act) => (
+              {newsList.map((item) => (
                 <Link 
-                  key={act.slug} 
-                  href={`/actividades/${act.slug}`}
+                  key={item.slug} 
+                  href={`/noticias/${item.slug}`}
                   className={styles.activityItem}
                 >
                   <div className={styles.timelineMarker}>
                     <div className={styles.iconCircle}>
-                      <FontAwesomeIcon icon={getIcon(act.icon)} />
+                      <FontAwesomeIcon icon={getIcon(item.icon)} />
                     </div>
                   </div>
                   
                   <div className={styles.card}>
                     <div className={styles.imageContainer}>
-                      <img src={act.image_url} alt={act.title} className={styles.image} />
+                      <img src={item.image_url} alt={item.title} className={styles.image} />
                       <div className={styles.imageOverlay}></div>
                     </div>
                     
                     <div className={styles.content}>
-                      <span className={styles.itemCategory}>{act.category}</span>
-                      <h2 className={styles.itemTitle}>{act.title}</h2>
-                      <p className={styles.itemDescription}>{act.description}</p>
+                      <span className={styles.itemCategory}>{item.category}</span>
+                      <h2 className={styles.itemTitle}>{item.title}</h2>
+                      <p className={styles.itemDescription}>{item.description}</p>
                       
                       <div className={styles.meta}>
                         <div className={styles.metaItem}>
                           <FontAwesomeIcon icon={faCalendarAlt} />
-                          <span>{act.date}</span>
+                          <span>{item.date}</span>
                         </div>
                         <div className={styles.metaItem}>
                           <FontAwesomeIcon icon={faClock} />
-                          <span>{act.time}</span>
+                          <span>{item.time}</span>
                         </div>
                         <div className={styles.metaItem}>
                           <FontAwesomeIcon icon={faMapMarkerAlt} />
-                          <span>{act.location}</span>
+                          <span>{item.location}</span>
                         </div>
                       </div>
                     </div>

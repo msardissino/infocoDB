@@ -51,7 +51,7 @@ export default function LoginPage() {
     <div className={styles.loginPage}>
       <div className={styles.loginCard}>
         <h1 className={styles.title}>ACCESO ADMIN</h1>
-        <p className={styles.subtitle}>Iniciá sesión para administrar la agenda y actividades</p>
+        <p className={styles.subtitle}>Iniciá sesión para administrar la agenda y noticias</p>
 
         {errorMsg && <div className={styles.errorAlert}>{errorMsg}</div>}
 

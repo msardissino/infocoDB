@@ -13,9 +13,9 @@ import {
   faTags 
 } from "@fortawesome/free-solid-svg-icons";
 import { supabase } from "@/lib/supabase/client";
-import styles from "./ActivityDetail.module.css";
+import styles from "./NewsDetail.module.css";
 
-interface Activity {
+interface NewsItem {
   id: string;
   slug: string;
   category: string;
@@ -29,29 +29,29 @@ interface Activity {
   content_markdown: string | null;
 }
 
-export default function ActivityDetailPage() {
+export default function NewsDetailPage() {
   const params = useParams();
   const router = useRouter();
   const slug = params.slug as string;
 
-  const [activity, setActivity] = useState<Activity | null>(null);
+  const [news, setNews] = useState<NewsItem | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchActivity() {
+    async function fetchNews() {
       if (!slug) return;
       try {
         const { data, error } = await supabase
-          .from("actividades")
+          .from("noticias")
           .select("*")
           .eq("slug", slug)
           .single();
 
         if (error) {
-          console.error("Error al obtener la actividad:", error);
-          setActivity(null);
+          console.error("Error al obtener la noticia:", error);
+          setNews(null);
         } else {
-          setActivity(data);
+          setNews(data);
         }
       } catch (err) {
         console.error("Error inesperado:", err);
@@ -59,7 +59,7 @@ export default function ActivityDetailPage() {
         setLoading(false);
       }
     }
-    fetchActivity();
+    fetchNews();
   }, [slug]);
 
   if (loading) {
@@ -68,24 +68,24 @@ export default function ActivityDetailPage() {
         <div className={styles.loadingContainer}>
           <div className={styles.spinner}></div>
           <p style={{ fontFamily: "var(--font-display)", color: "var(--ink-mute)", letterSpacing: "0.05em" }}>
-            CARGANDO DETALLES DE LA ACTIVIDAD...
+            CARGANDO DETALLES DE LA NOTICIA...
           </p>
         </div>
       </div>
     );
   }
 
-  if (!activity) {
+  if (!news) {
     return (
       <div className={styles.detailPage}>
         <div className={styles.container}>
           <div className={styles.errorView}>
-            <h1 className={styles.errorTitle}>ACTIVIDAD NO ENCONTRADA</h1>
+            <h1 className={styles.errorTitle}>NOTICIA NO ENCONTRADA</h1>
             <p style={{ fontFamily: "var(--font-text)", color: "var(--ink-soft)" }}>
-              No pudimos encontrar la actividad con la dirección &quot;/{slug}&quot;. Tal vez fue eliminada o la dirección es incorrecta.
+              No pudimos encontrar la noticia con la dirección &quot;/{slug}&quot;. Tal vez fue eliminada o la dirección es incorrecta.
             </p>
-            <Link href="/actividades" className={styles.returnLink}>
-              VOLVER A ACTIVIDADES
+            <Link href="/noticias" className={styles.returnLink}>
+              VOLVER A NOTICIAS
             </Link>
           </div>
         </div>
@@ -103,8 +103,8 @@ export default function ActivityDetailPage() {
           </button>
           <Breadcrumb 
             items={[
-              { label: "ACTIVIDADES", path: "/actividades" },
-              { label: activity.title.toUpperCase() }
+              { label: "NOTICIAS", path: "/noticias" },
+              { label: news.title.toUpperCase() }
             ]} 
           />
         </div>
@@ -112,27 +112,27 @@ export default function ActivityDetailPage() {
         <div className={styles.layoutGrid}>
           {/* Main Content Column */}
           <div className={styles.mainContent}>
-            {activity.image_url && (
+            {news.image_url && (
               <div className={styles.imageContainer}>
-                <img src={activity.image_url} alt={activity.title} className={styles.image} />
+                <img src={news.image_url} alt={news.title} className={styles.image} />
               </div>
             )}
 
-            <span className={styles.categoryTag}>{activity.category}</span>
+            <span className={styles.categoryTag}>{news.category}</span>
             
-            <h1 className={styles.title}>{activity.title}</h1>
+            <h1 className={styles.title}>{news.title}</h1>
             
-            <p className={styles.description}>{activity.description}</p>
+            <p className={styles.description}>{news.description}</p>
             
             <div className={styles.detailBody}>
-              {activity.content_markdown ? (
-                activity.content_markdown.split("\n").map((paragraph, index) => {
+              {news.content_markdown ? (
+                news.content_markdown.split("\n").map((paragraph, index) => {
                   if (!paragraph.trim()) return null;
                   return <p key={index}>{paragraph}</p>;
                 })
               ) : (
                 <p>
-                  Te invitamos a participar de este encuentro grupal. Recordá consultar la fecha, horario y punto de encuentro en la tarjeta de detalles a la derecha. ¡Te esperamos!
+                  Te invitamos a conocer esta noticia y novedad de nuestra comunidad. Recordá consultar la fecha, horario y punto de encuentro/referencia en la tarjeta de detalles a la derecha. ¡Gracias por informarte con nosotros!
                 </p>
               )}
             </div>
@@ -149,7 +149,7 @@ export default function ActivityDetailPage() {
                 </div>
                 <div>
                   <div className={styles.metaLabel}>FECHA</div>
-                  <div className={styles.metaValue}>{activity.date}</div>
+                  <div className={styles.metaValue}>{news.date}</div>
                 </div>
               </div>
 
@@ -159,7 +159,7 @@ export default function ActivityDetailPage() {
                 </div>
                 <div>
                   <div className={styles.metaLabel}>HORA</div>
-                  <div className={styles.metaValue}>{activity.time}</div>
+                  <div className={styles.metaValue}>{news.time}</div>
                 </div>
               </div>
 
@@ -169,7 +169,7 @@ export default function ActivityDetailPage() {
                 </div>
                 <div>
                   <div className={styles.metaLabel}>UBICACIÓN</div>
-                  <div className={styles.metaValue}>{activity.location}</div>
+                  <div className={styles.metaValue}>{news.location}</div>
                 </div>
               </div>
 
@@ -178,8 +178,8 @@ export default function ActivityDetailPage() {
                   <FontAwesomeIcon icon={faTags} />
                 </div>
                 <div>
-                  <div className={styles.metaLabel}>TIPO DE ACTIVIDAD</div>
-                  <div className={styles.metaValue}>{activity.category}</div>
+                  <div className={styles.metaLabel}>CATEGORÍA</div>
+                  <div className={styles.metaValue}>{news.category}</div>
                 </div>
               </div>
             </div>

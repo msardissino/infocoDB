@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabase/client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faCalendarAlt, 
-  faRunning, 
+  faNewspaper, 
   faSignOutAlt, 
   faEdit, 
   faTrash 
@@ -26,7 +26,7 @@ interface AgendaEvent {
   group_slug: string | null;
 }
 
-interface Activity {
+interface NewsItem {
   id: string;
   slug: string;
   category: string;
@@ -55,7 +55,8 @@ const GROUPS = [
   { value: "quienes-somos", label: "¿Quiénes somos?" }
 ];
 
-const ACTIVITY_ICONS = [
+const NEWS_ICONS = [
+  { value: "newspaper", label: "Noticia / Diario (newspaper)" },
   { value: "users", label: "Gente / Grupo (users)" },
   { value: "leaf", label: "Naturaleza / Aire Libre (leaf)" },
   { value: "pencil", label: "Creatividad / Taller (pencil)" },
@@ -68,8 +69,8 @@ export default function AdminDashboard() {
   const [authLoading, setAuthLoading] = useState(true);
   const [user, setUser] = useState<User | null>(null);
   
-  // Navigation State: 'agenda' or 'actividades'
-  const [activeTab, setActiveTab] = useState<"agenda" | "actividades">("agenda");
+  // Navigation State: 'agenda' or 'noticias'
+  const [activeTab, setActiveTab] = useState<"agenda" | "noticias">("agenda");
 
   // General Notification messages
   const [errorMsg, setErrorMsg] = useState("");
@@ -95,25 +96,25 @@ export default function AdminDashboard() {
   const [agEditingId, setAgEditingId] = useState<string | null>(null);
 
   // --------------------------------------------------
-  // 🚀 TAB 2: ACTIVIDADES STATE & HANDLERS
+  // 📰 TAB 2: NOTICIAS STATE & HANDLERS
   // --------------------------------------------------
-  const [activities, setActivities] = useState<Activity[]>([]);
-  const [activitiesLoading, setActivitiesLoading] = useState(true);
-  const [activitySearch, setActivitySearch] = useState("");
-  const [activityCategoryFilter, setActivityCategoryFilter] = useState("all");
+  const [newsList, setNewsList] = useState<NewsItem[]>([]);
+  const [newsLoading, setNewsLoading] = useState(true);
+  const [newsSearch, setNewsSearch] = useState("");
+  const [newsCategoryFilter, setNewsCategoryFilter] = useState("all");
 
-  // Activities Form States
-  const [acTitle, setAcTitle] = useState("");
-  const [acSlug, setAcSlug] = useState("");
-  const [acCategory, setAcCategory] = useState("DENTRO DEL CENTRO");
-  const [acDescription, setAcDescription] = useState("");
-  const [acDate, setAcDate] = useState("");
-  const [acTime, setAcTime] = useState("");
-  const [acLocation, setAcLocation] = useState("");
-  const [acIcon, setAcIcon] = useState("users");
-  const [acImageUrl, setAcImageUrl] = useState("");
-  const [acContentMarkdown, setAcContentMarkdown] = useState("");
-  const [acEditingId, setAcEditingId] = useState<string | null>(null);
+  // News Form States
+  const [noTitle, setNoTitle] = useState("");
+  const [noSlug, setNoSlug] = useState("");
+  const [noCategory, setNoCategory] = useState("DENTRO DEL CENTRO");
+  const [noDescription, setNoDescription] = useState("");
+  const [noDate, setNoDate] = useState("");
+  const [noTime, setNoTime] = useState("");
+  const [noLocation, setNoLocation] = useState("");
+  const [noIcon, setNoIcon] = useState("newspaper");
+  const [noImageUrl, setNoImageUrl] = useState("");
+  const [noContentMarkdown, setNoContentMarkdown] = useState("");
+  const [noEditingId, setNoEditingId] = useState<string | null>(null);
 
   // --------------------------------------------------
   // 🔒 AUTH CHECK & DATA LOADING
@@ -127,7 +128,7 @@ export default function AdminDashboard() {
         setUser(session.user);
         setAuthLoading(false);
         fetchEvents();
-        fetchActivities();
+        fetchNews();
       }
     }
     checkAuth();
@@ -156,21 +157,21 @@ export default function AdminDashboard() {
     }
   };
 
-  // Fetch Activities
-  const fetchActivities = async () => {
-    setActivitiesLoading(true);
+  // Fetch News
+  const fetchNews = async () => {
+    setNewsLoading(true);
     try {
       const { data, error } = await supabase
-        .from("actividades")
+        .from("noticias")
         .select("*")
         .order("created_at", { ascending: false });
 
       if (error) throw error;
-      setActivities(data || []);
+      setNewsList(data || []);
     } catch (err) {
-      console.error("Error al obtener actividades:", err);
+      console.error("Error al obtener noticias:", err);
     } finally {
-      setActivitiesLoading(false);
+      setNewsLoading(false);
     }
   };
 
@@ -298,100 +299,100 @@ export default function AdminDashboard() {
   }, [agDate]);
 
   // --------------------------------------------------
-  // 🚀 TAB 2: ACTIVIDADES LOGIC
+  // 📰 TAB 2: NOTICIAS LOGIC
   // --------------------------------------------------
-  const handleActivityTitleChange = (val: string) => {
-    setAcTitle(val);
-    if (!acEditingId) {
+  const handleNewsTitleChange = (val: string) => {
+    setNoTitle(val);
+    if (!noEditingId) {
       const generatedSlug = val
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "") // remove accents
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/(^-|-$)/g, "");
-      setAcSlug(generatedSlug);
+      setNoSlug(generatedSlug);
     }
   };
 
-  const clearActivityForm = () => {
-    setAcTitle("");
-    setAcSlug("");
-    setAcCategory("DENTRO DEL CENTRO");
-    setAcDescription("");
-    setAcDate("");
-    setAcTime("");
-    setAcLocation("");
-    setAcIcon("users");
-    setAcImageUrl("");
-    setAcContentMarkdown("");
-    setAcEditingId(null);
+  const clearNewsForm = () => {
+    setNoTitle("");
+    setNoSlug("");
+    setNoCategory("DENTRO DEL CENTRO");
+    setNoDescription("");
+    setNoDate("");
+    setNoTime("");
+    setNoLocation("");
+    setNoIcon("newspaper");
+    setNoImageUrl("");
+    setNoContentMarkdown("");
+    setNoEditingId(null);
   };
 
-  const handleActivitySubmit = async (e: React.FormEvent) => {
+  const handleNewsSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg("");
     setSuccessMsg("");
     setSubmitting(true);
 
     const payload = {
-      title: acTitle,
-      slug: acSlug,
-      category: acCategory,
-      description: acDescription,
-      date: acDate,
-      time: acTime,
-      location: acLocation,
-      icon: acIcon,
-      image_url: acImageUrl,
-      content_markdown: acContentMarkdown || null
+      title: noTitle,
+      slug: noSlug,
+      category: noCategory,
+      description: noDescription,
+      date: noDate,
+      time: noTime,
+      location: noLocation,
+      icon: noIcon,
+      image_url: noImageUrl,
+      content_markdown: noContentMarkdown || null
     };
 
     try {
-      if (acEditingId) {
+      if (noEditingId) {
         const { error } = await supabase
-          .from("actividades")
+          .from("noticias")
           .update(payload)
-          .eq("id", acEditingId);
+          .eq("id", noEditingId);
 
         if (error) throw error;
-        setSuccessMsg("¡Actividad actualizada correctamente!");
+        setSuccessMsg("¡Noticia actualizada correctamente!");
       } else {
         const { error } = await supabase
-          .from("actividades")
+          .from("noticias")
           .insert([payload]);
 
         if (error) throw error;
-        setSuccessMsg("¡Actividad creada correctamente!");
+        setSuccessMsg("¡Noticia creada correctamente!");
       }
-      clearActivityForm();
-      fetchActivities();
+      clearNewsForm();
+      fetchNews();
     } catch (err: unknown) {
-      console.error("Error al guardar actividad:", err);
-      const message = err instanceof Error ? err.message : "Error al guardar la actividad.";
+      console.error("Error al guardar noticia:", err);
+      const message = err instanceof Error ? err.message : "Error al guardar la noticia.";
       setErrorMsg(message);
     } finally {
       setSubmitting(false);
     }
   };
 
-  const handleActivityEditClick = (act: Activity) => {
-    setAcEditingId(act.id);
-    setAcTitle(act.title);
-    setAcSlug(act.slug);
-    setAcCategory(act.category);
-    setAcDescription(act.description);
-    setAcDate(act.date);
-    setAcTime(act.time);
-    setAcLocation(act.location);
-    setAcIcon(act.icon);
-    setAcImageUrl(act.image_url);
-    setAcContentMarkdown(act.content_markdown || "");
+  const handleNewsEditClick = (item: NewsItem) => {
+    setNoEditingId(item.id);
+    setNoTitle(item.title);
+    setNoSlug(item.slug);
+    setNoCategory(item.category);
+    setNoDescription(item.description);
+    setNoDate(item.date);
+    setNoTime(item.time);
+    setNoLocation(item.location);
+    setNoIcon(item.icon);
+    setNoImageUrl(item.image_url);
+    setNoContentMarkdown(item.content_markdown || "");
     setErrorMsg("");
     setSuccessMsg("");
   };
 
-  const handleActivityDeleteClick = async (id: string, name: string) => {
-    if (!confirm(`¿Estás seguro de que deseas eliminar la actividad "${name}"?`)) {
+  const handleNewsDeleteClick = async (id: string, name: string) => {
+    if (!confirm(`¿Estás seguro de que deseas eliminar la noticia "${name}"?`)) {
       return;
     }
     setErrorMsg("");
@@ -399,32 +400,32 @@ export default function AdminDashboard() {
 
     try {
       const { error } = await supabase
-        .from("actividades")
+        .from("noticias")
         .delete()
         .eq("id", id);
 
       if (error) throw error;
-      setSuccessMsg("¡Actividad eliminada correctamente!");
-      fetchActivities();
-      if (acEditingId === id) {
-        clearActivityForm();
+      setSuccessMsg("¡Noticia eliminada correctamente!");
+      fetchNews();
+      if (noEditingId === id) {
+        clearNewsForm();
       }
     } catch (err: unknown) {
-      console.error("Error al eliminar actividad:", err);
-      const message = err instanceof Error ? err.message : "Error al eliminar la actividad.";
+      console.error("Error al eliminar noticia:", err);
+      const message = err instanceof Error ? err.message : "Error al eliminar la noticia.";
       setErrorMsg(message);
     }
   };
 
-  // Filtered Activities based on Search and Dropdown
-  const filteredActivities = useMemo(() => {
-    return activities.filter(act => {
-      const matchesSearch = act.title.toLowerCase().includes(activitySearch.toLowerCase()) ||
-                            act.description.toLowerCase().includes(activitySearch.toLowerCase());
-      const matchesCategory = activityCategoryFilter === "all" || act.category === activityCategoryFilter;
+  // Filtered News based on Search and Dropdown
+  const filteredNews = useMemo(() => {
+    return newsList.filter(item => {
+      const matchesSearch = item.title.toLowerCase().includes(newsSearch.toLowerCase()) ||
+                            item.description.toLowerCase().includes(newsSearch.toLowerCase());
+      const matchesCategory = newsCategoryFilter === "all" || item.category === newsCategoryFilter;
       return matchesSearch && matchesCategory;
     });
-  }, [activities, activitySearch, activityCategoryFilter]);
+  }, [newsList, newsSearch, newsCategoryFilter]);
 
   if (authLoading) {
     return (
@@ -462,11 +463,11 @@ export default function AdminDashboard() {
             GESTIONAR AGENDA
           </button>
           <button 
-            className={`${styles.tabBtn} ${activeTab === "actividades" ? styles.active : ""}`}
-            onClick={() => { setActiveTab("actividades"); setErrorMsg(""); setSuccessMsg(""); }}
+            className={`${styles.tabBtn} ${activeTab === "noticias" ? styles.active : ""}`}
+            onClick={() => { setActiveTab("noticias"); setErrorMsg(""); setSuccessMsg(""); }}
           >
-            <FontAwesomeIcon icon={faRunning} />
-            GESTIONAR ACTIVIDADES
+            <FontAwesomeIcon icon={faNewspaper} />
+            GESTIONAR NOTICIAS
           </button>
         </div>
 
@@ -731,26 +732,26 @@ export default function AdminDashboard() {
         )}
 
         {/* -------------------------------------------------- */}
-        {/* 🚀 TAB 2: WORKSPACE ACTIVIDADES */}
+        {/* 📰 TAB 2: WORKSPACE NOTICIAS */}
         {/* -------------------------------------------------- */}
-        {activeTab === "actividades" && (
+        {activeTab === "noticias" && (
           <div className={styles.workspace}>
             {/* Form & Preview Column */}
             <div>
               <div className={styles.formCard}>
                 <h2 className={styles.sectionTitle}>
-                  {acEditingId ? "EDITAR ACTIVIDAD" : "NUEVA ACTIVIDAD"}
+                  {noEditingId ? "EDITAR NOTICIA" : "NUEVA NOTICIA"}
                 </h2>
 
-                <form onSubmit={handleActivitySubmit} className={styles.form}>
+                <form onSubmit={handleNewsSubmit} className={styles.form}>
                   <div className={styles.formGroup}>
                     <label className={styles.label}>TÍTULO *</label>
                     <input
                       type="text"
                       className={styles.input}
-                      value={acTitle}
-                      onChange={(e) => handleActivityTitleChange(e.target.value)}
-                      placeholder="Ej: Cine + Charla"
+                      value={noTitle}
+                      onChange={(e) => handleNewsTitleChange(e.target.value)}
+                      placeholder="Ej: Gran torneo de fútbol"
                       required
                     />
                   </div>
@@ -760,9 +761,9 @@ export default function AdminDashboard() {
                     <input
                       type="text"
                       className={styles.input}
-                      value={acSlug}
-                      onChange={(e) => setAcSlug(e.target.value)}
-                      placeholder="Ej: cine-charla"
+                      value={noSlug}
+                      onChange={(e) => setNoSlug(e.target.value)}
+                      placeholder="Ej: gran-torneo-futbol"
                       required
                     />
                   </div>
@@ -771,8 +772,8 @@ export default function AdminDashboard() {
                     <label className={styles.label}>CATEGORÍA *</label>
                     <select
                       className={styles.select}
-                      value={acCategory}
-                      onChange={(e) => setAcCategory(e.target.value)}
+                      value={noCategory}
+                      onChange={(e) => setNoCategory(e.target.value)}
                       required
                     >
                       <option value="DENTRO DEL CENTRO">DENTRO DEL CENTRO</option>
@@ -785,8 +786,8 @@ export default function AdminDashboard() {
                     <input
                       type="text"
                       className={styles.input}
-                      value={acDate}
-                      onChange={(e) => setAcDate(e.target.value)}
+                      value={noDate}
+                      onChange={(e) => setNoDate(e.target.value)}
                       placeholder="Ej: SÁB 24 DE MAYO"
                       required
                     />
@@ -797,8 +798,8 @@ export default function AdminDashboard() {
                     <input
                       type="text"
                       className={styles.input}
-                      value={acTime}
-                      onChange={(e) => setAcTime(e.target.value)}
+                      value={noTime}
+                      onChange={(e) => setNoTime(e.target.value)}
                       placeholder="Ej: 15:00 HS"
                       required
                     />
@@ -809,8 +810,8 @@ export default function AdminDashboard() {
                     <input
                       type="text"
                       className={styles.input}
-                      value={acLocation}
-                      onChange={(e) => setAcLocation(e.target.value)}
+                      value={noLocation}
+                      onChange={(e) => setNoLocation(e.target.value)}
                       placeholder="Ej: SALÓN PRINCIPAL"
                       required
                     />
@@ -820,11 +821,11 @@ export default function AdminDashboard() {
                     <label className={styles.label}>ÍCONO *</label>
                     <select
                       className={styles.select}
-                      value={acIcon}
-                      onChange={(e) => setAcIcon(e.target.value)}
+                      value={noIcon}
+                      onChange={(e) => setNoIcon(e.target.value)}
                       required
                     >
-                      {ACTIVITY_ICONS.map((ic) => (
+                      {NEWS_ICONS.map((ic) => (
                         <option key={ic.value} value={ic.value}>
                           {ic.label}
                         </option>
@@ -837,8 +838,8 @@ export default function AdminDashboard() {
                     <input
                       type="url"
                       className={styles.input}
-                      value={acImageUrl}
-                      onChange={(e) => setAcImageUrl(e.target.value)}
+                      value={noImageUrl}
+                      onChange={(e) => setNoImageUrl(e.target.value)}
                       placeholder="https://images.unsplash.com/photo-..."
                       required
                     />
@@ -848,9 +849,9 @@ export default function AdminDashboard() {
                     <label className={styles.label}>DESCRIPCIÓN BREVE *</label>
                     <textarea
                       className={styles.textarea}
-                      value={acDescription}
-                      onChange={(e) => setAcDescription(e.target.value)}
-                      placeholder="Breve resumen de la actividad..."
+                      value={noDescription}
+                      onChange={(e) => setNoDescription(e.target.value)}
+                      placeholder="Breve resumen de la noticia..."
                       required
                     />
                   </div>
@@ -860,18 +861,18 @@ export default function AdminDashboard() {
                     <textarea
                       className={styles.textarea}
                       style={{ minHeight: "100px" }}
-                      value={acContentMarkdown}
-                      onChange={(e) => setAcContentMarkdown(e.target.value)}
-                      placeholder="Texto completo que aparecerá en la página de detalle..."
+                      value={noContentMarkdown}
+                      onChange={(e) => setNoContentMarkdown(e.target.value)}
+                      placeholder="Texto completo de la noticia (Markdown)..."
                     />
                   </div>
 
                   <div className={styles.buttonGroup}>
                     <button type="submit" className={styles.submitBtn} disabled={submitting}>
-                      {submitting ? "GUARDANDO..." : acEditingId ? "ACTUALIZAR" : "CREAR"}
+                      {submitting ? "GUARDANDO..." : noEditingId ? "ACTUALIZAR" : "CREAR"}
                     </button>
-                    {acEditingId && (
-                      <button type="button" className={styles.cancelBtn} onClick={clearActivityForm}>
+                    {noEditingId && (
+                      <button type="button" className={styles.cancelBtn} onClick={clearNewsForm}>
                         CANCELAR
                       </button>
                     )}
@@ -889,25 +890,25 @@ export default function AdminDashboard() {
                   background: "var(--paper)",
                   boxShadow: "var(--elevation-1)"
                 }}>
-                  {acImageUrl && (
+                  {noImageUrl && (
                     <div style={{ height: "160px", width: "100%", position: "relative" }}>
-                      <img src={acImageUrl} alt="Preview" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                      <img src={noImageUrl} alt="Preview" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
                   )}
                   <div style={{ padding: "1.25rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                    <span className={`${styles.categoryTag} ${acCategory.includes("DENTRO") ? styles.dentro : styles.fuera}`} style={{ fontSize: "0.7rem" }}>
-                      {acCategory}
+                    <span className={`${styles.categoryTag} ${noCategory.includes("DENTRO") ? styles.dentro : styles.fuera}`} style={{ fontSize: "0.7rem" }}>
+                      {noCategory}
                     </span>
                     <h3 style={{ fontFamily: "var(--font-display)", fontSize: "1.6rem", color: "var(--ink)", margin: 0 }}>
-                      {acTitle || "Título de la Actividad"}
+                      {noTitle || "Título de la Noticia"}
                     </h3>
                     <p style={{ margin: 0, fontSize: "0.9rem", color: "var(--ink-soft)", lineHeight: 1.4 }}>
-                      {acDescription || "Descripción corta de la propuesta."}
+                      {noDescription || "Descripción corta de la novedad."}
                     </p>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "0.8rem", fontSize: "0.75rem", color: "var(--ink-mute)", borderTop: "1px solid var(--line)", paddingTop: "0.6rem", marginTop: "0.4rem" }}>
-                      {acDate && <div>📅 {acDate}</div>}
-                      {acTime && <div>🕒 {acTime}</div>}
-                      {acLocation && <div>📍 {acLocation}</div>}
+                      {noDate && <div>📅 {noDate}</div>}
+                      {noTime && <div>🕒 {noTime}</div>}
+                      {noLocation && <div>📍 {noLocation}</div>}
                     </div>
                   </div>
                 </div>
@@ -920,14 +921,14 @@ export default function AdminDashboard() {
                 <input
                   type="text"
                   className={styles.searchInput}
-                  value={activitySearch}
-                  onChange={(e) => setActivitySearch(e.target.value)}
-                  placeholder="Buscar actividad por título o descripción..."
+                  value={newsSearch}
+                  onChange={(e) => setNewsSearch(e.target.value)}
+                  placeholder="Buscar noticia por título o descripción..."
                 />
                 <select
                   className={styles.filterSelect}
-                  value={activityCategoryFilter}
-                  onChange={(e) => setActivityCategoryFilter(e.target.value)}
+                  value={newsCategoryFilter}
+                  onChange={(e) => setNewsCategoryFilter(e.target.value)}
                 >
                   <option value="all">Todas las categorías</option>
                   <option value="DENTRO DEL CENTRO">DENTRO DEL CENTRO</option>
@@ -935,59 +936,59 @@ export default function AdminDashboard() {
                 </select>
               </div>
 
-              {activitiesLoading ? (
+              {newsLoading ? (
                 <div className={styles.loadingContainer} style={{ minHeight: "200px" }}>
                   <div className={styles.spinner}></div>
-                  <p style={{ fontFamily: "var(--font-text)", color: "var(--ink-mute)" }}>Cargando actividades...</p>
+                  <p style={{ fontFamily: "var(--font-text)", color: "var(--ink-mute)" }}>Cargando noticias...</p>
                 </div>
-              ) : filteredActivities.length === 0 ? (
-                <div className={styles.emptyState}>No se encontraron actividades cargadas.</div>
+              ) : filteredNews.length === 0 ? (
+                <div className={styles.emptyState}>No se encontraron noticias cargadas.</div>
               ) : (
                 <div className={styles.tableWrapper}>
                   <table className={styles.table}>
                     <thead>
                       <tr>
-                        <th>Actividad</th>
+                        <th>Noticia</th>
                         <th>Categoría</th>
                         <th>Fecha/Hora</th>
                         <th>Acciones</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {filteredActivities.map((act) => (
-                        <tr key={act.id}>
+                      {filteredNews.map((item) => (
+                        <tr key={item.id}>
                           <td>
                             <div className={styles.activityRow}>
-                              {act.image_url && (
-                                <img src={act.image_url} alt={act.title} className={styles.thumbnail} />
+                              {item.image_url && (
+                                <img src={item.image_url} alt={item.title} className={styles.thumbnail} />
                               )}
                               <div>
-                                <strong>{act.title}</strong>
+                                <strong>{item.title}</strong>
                                 <div style={{ fontSize: "0.8rem", color: "var(--ink-mute)" }}>
-                                  /{act.slug}
+                                  /{item.slug}
                                 </div>
                               </div>
                             </div>
                           </td>
                           <td>
-                            <span className={`${styles.categoryTag} ${act.category.includes("DENTRO") ? styles.dentro : styles.fuera}`}>
-                              {act.category}
+                            <span className={`${styles.categoryTag} ${item.category.includes("DENTRO") ? styles.dentro : styles.fuera}`}>
+                              {item.category}
                             </span>
                           </td>
                           <td>
-                            <div>{act.date}</div>
-                            <div style={{ fontSize: "0.85rem", color: "var(--ink-mute)" }}>{act.time}</div>
+                            <div>{item.date}</div>
+                            <div style={{ fontSize: "0.85rem", color: "var(--ink-mute)" }}>{item.time}</div>
                           </td>
                           <td>
                             <div className={styles.actions}>
                               <button
-                                onClick={() => handleActivityEditClick(act)}
+                                onClick={() => handleNewsEditClick(item)}
                                 className={styles.editBtn}
                               >
                                 <FontAwesomeIcon icon={faEdit} />
                               </button>
                               <button
-                                onClick={() => handleActivityDeleteClick(act.id, act.title)}
+                                onClick={() => handleNewsDeleteClick(item.id, item.title)}
                                 className={styles.deleteBtn}
                               >
                                 <FontAwesomeIcon icon={faTrash} />

@@ -144,7 +144,7 @@ export default function AgendaPage() {
         variant="dark"
         category="AGENDA"
         subCategory="REVISTA INFORMATIVA"
-        title="LO QUE VIENE: ACTIVIDADES Y EVENTOS"
+        title="LO QUE VIENE: EVENTOS Y AGENDA"
         subtitle="Mantenete al tanto de los próximos talleres, salidas y fechas especiales."
         metadata={`EDICIÓN ${MONTHS[today.getMonth()]} ${today.getFullYear()}`}
         icon={faCalendarDay}
@@ -196,7 +196,7 @@ export default function AgendaPage() {
             </div>
           ) : filteredEvents.length === 0 ? (
             <div className={styles.emptyState}>
-              No hay actividades programadas para este mes en la categoría seleccionada.
+              No hay eventos programados para este mes en la categoría seleccionada.
             </div>
           ) : (
             <div className={styles.eventsList}>

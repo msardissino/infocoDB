@@ -4,7 +4,7 @@ import styles from "./CategoryNav.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faUsers, 
-  faPaintBrush, 
+  faNewspaper, 
   faMicrophone, 
   faCamera, 
   faCalendarAlt 
@@ -12,7 +12,7 @@ import {
 
 const categories = [
   { name: "Grupos", path: "/grupos", icon: faUsers },
-  { name: "Actividades", path: "/actividades", icon: faPaintBrush },
+  { name: "Noticias", path: "/noticias", icon: faNewspaper },
   { name: "Voces", path: "/voces", icon: faMicrophone },
   { name: "Galería", path: "/galeria", icon: faCamera },
   { name: "Agenda", path: "/agenda", icon: faCalendarAlt },

@@ -10,7 +10,7 @@ import styles from "./Menu.module.css";
 const navLinks = [
   { name: "Inicio", path: "/" },
   { name: "Grupos", path: "/grupos" },
-  { name: "Actividades", path: "/actividades" },
+  { name: "Noticias", path: "/noticias" },
   { name: "Voces", path: "/voces" },
   { name: "Galería", path: "/galeria" },
   { name: "Agenda", path: "/agenda" },
