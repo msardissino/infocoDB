@@ -19,35 +19,46 @@ export const GROUPS_DATA: GroupDetail[] = [
       quote: "Acá nadie tiene que hacerlo perfecto.",
       formation: [
         "Lic. en Psicología (UNLP)",
-        "Tecnicatura en Psicología del deporte"
+        "Formándose en: Psicología del deporte"
       ]
     },
-    objective: "Crear un espacio de confianza donde cada integrante pueda expresarse libremente, compartir intereses, desarrollar proyectos y fortalecer los lazos.",
+    objective: {
+      resume: "Acompañar a los jóvenes en la construcción de una vida adulta con mayor autonomía, brindando herramientas para participar, tomar decisiones y desenvolverse con confianza en distintos espacios de la comunidad.",
+      items: [
+        { subtitle: "💼 Prepararnos para la vida adulta", text: "Aprender herramientas que nos ayuden a asumir responsabilidades y tomar decisiones en la vida cotidiana." }, 
+        { subtitle: "🤝 Trabajar en equipo", text: "Compartir, colaborar y aprender junto a otros, respetando las ideas y los tiempos de cada uno." },
+        { subtitle: "💬 Comunicarnos mejor", text: "Encontrar nuevas formas de expresar lo que pensamos, sentimos y necesitamos." },
+        { subtitle: "📱 Usar la tecnología de forma responsable", text: "Aprender a utilizar el celular, las redes y otras herramientas digitales de manera segura y consciente." },
+        { subtitle: "⭐ Participar en la comunidad", text: "Animarnos a conocer nuevos espacios, ganar autonomía y construir nuestro propio proyecto de vida." }
+      ]
+    },
     interview: {
       qaList: [
         { question: "¿Cómo es tu nombre completo?", answer: "Agustín Pis Perez." },
         { question: "¿Qué edad tenés?", answer: "29 años." },
-        { question: "¿De qué equipo sos?", answer: "De Estudiantes de La Plata, de corazón." },
-        { question: "¿Tenés novia?", answer: "Sí, hace 4 años." },
-        { question: "¿Qué estás estudiando?", answer: "Estoy terminando la Licenciatura en Psicología." },
-        { question: "¿Qué es lo que más te gusta de ser nuestro tutor?", answer: "Acompañarlos en su crecimiento, escuchar sus ideas y ver cómo se apoyan entre ellos." },
-        { question: "¿Hay algo que te gusta hacer en tu tiempo libre?", answer: "Tocar la guitarra, jugar al fútbol y salir a caminar." },
-        { question: "¿Algún momento del grupo que recuerdes mucho?", answer: "La vez que hicimos la noche de talentos. Fue increíble." },
-        { question: "¿Qué aprendiste de los chicos?", answer: "Que cada uno tiene algo único para aportar." }
+        { question: "¿Tenés novia?", answer: "No, no tengo" },
+        { question: "¿Cual es tu profesion?/¿Qué estás estudiando?", answer: "Estoy estudiando la Licenciatura en Psicología en la UNLP" },
+        { question: "¿Qué comida te gusta?", answer: " La carne en general y por supuesto que mi comida favorita es el asado 🥩" },
+        { question: "¿te gusta algún deporte?", answer: "¡Si!" },
+        { question: "¿Cuál?", answer: "Me gusta el deporte  y la actividad física en general. Lo que mas miro y a veces juego es al fútbol" },
+        { question: "¿De qué equipo sos?", answer: "Soy hincha de River Plate." },
+        { question: "¿Hay algo que te gusta hacer en tu tiempo libre?", answer: "T- Me gusta leer en mis tiempos libres; Siempre me interesó la historia y la geografía asique me gusta viajar ver cosas históricas y aprender/ver cosas y lugares nuevos. También me gusta mucho ir a la montaña y hacer senderismo" },
+        { question: "¿Cómo surge \"Campeones del Flow\"?", answer: "Surge con el fin de dejar de llamar a nuestro grupo como \"el grupo de Agustin\"  porque el grupo no es mio sino que somos 10 integrantes!!! Asique les propuse elegir un nombre que nos identifique a todos, y luego de unos dias de pensar, proponer y debatir, llegamos a Los Campeones del Flow ⚽🎵" },
+        { question: "¿Qué es lo que más te gusta de ser el tutor de este grupo?", answer: "Me gusta compartir mucho tiempo con ellos, conocerlos y que me conozcan. También me gusta poder acompañarlos en sus proyectos de vida y en su dia a dia" }
       ],
       keywords: ["Confianza", "Humor", "Compañerismo"]
     },
     members: [
       { name: "Adrián", icon: "star", details: ["Escuchar cumbia", "Jugar a la pelota", "Juegos de mesa"], avatarUrl: "/images/group/campeones_del_flow/Adrian.jpg" },
       { name: "Antonella", icon: "heart", details: ["Pintar mandalas", "Cantar", "Las plantas"], avatarUrl: "/images/group/campeones_del_flow/Antonella.jpg" },
-      { name: "Antonio", icon: "smile", details: ["Videojuegos", "Hacer chistes", "Los animales"], avatarUrl: "/images/group/campeones_del_flow/Antonio.jpg" },
       { name: "Clara", icon: "sun", details: ["Hacer pulseras", "Escuchar música", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/Clara.jpg" },
+      { name: "Paula", icon: "sun", details: ["Hacer pulseras", "Escuchar música", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/Clara.jpg" },
+      { name: "Magalí", icon: "sun", details: ["Hacer pulseras", "Escuchar música", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/Clara.jpg" },
+      { name: "Armando", icon: "sun", details: ["Hacer pulseras", "Escuchar música", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/Clara.jpg" },
+      { name: "Juan Pedro", icon: "sun", details: ["Hacer pulseras", "Escuchar música", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/Clara.jpg" },
+      { name: "Matías", icon: "sun", details: ["Hacer pulseras", "Escuchar música", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/Clara.jpg" },
       { name: "Erwin", icon: "music", details: ["Jugar al ajedrez", "Cocinar para amigos", "Tocar la guitarra"], avatarUrl: "/images/group/campeones_del_flow/Erwin.jpg" },
-      { name: "Miguel", icon: "coffee", details: ["Fútbol", "Compartir mates", "Ver películas"], avatarUrl: "/images/group/campeones_del_flow/Miguel.jpg" },
-      { name: "Armando", icon: "smile", details: ["Compartir en grupo", "Actividades recreativas"], avatarUrl: "/images/group/campeones_del_flow/Armando.jpg" },
-      { name: "Juan Pedro", icon: "smile", details: ["Compartir en grupo", "Actividades recreativas"], avatarUrl: "/images/group/campeones_del_flow/JuanPedro.jpg" },
-      { name: "Matías", icon: "smile", details: ["Compartir en grupo", "Actividades recreativas"], avatarUrl: "/images/group/campeones_del_flow/Matias.jpg" },
-      { name: "Paula", icon: "smile", details: ["Compartir en grupo", "Actividades recreativas"], avatarUrl: "/images/group/campeones_del_flow/Paula.jpg" }
+      { name: "Miguel", icon: "coffee", details: ["Fútbol", "Compartir mates", "Ver películas"], avatarUrl: "/images/group/campeones_del_flow/Miguel.jpg" }
     ],
     messages: [
       { text: "Gracias por bancarnos siempre y por escucharnos.", author: "Miguel", color: "yellow" },
@@ -65,7 +76,7 @@ export const GROUPS_DATA: GroupDetail[] = [
   {
     slug: "buenas-vibras",
     name: "Buenas Vibras",
-    description: "Un espacio para aprender a encontrarnos con otros, trabajar en equipo y comenzar a construir nuestro proyecto de vida adulta con los apoyos necesarios.",
+    description: "Un espacio para apender a encontrarnos con otros, trabajar en equipo y comenzar a construir nuestro proyecto de vida adulta con los apoyos necesarios.",
     memberCount: 10,
     establishedYear: 2026,
     heroCollage: [
@@ -88,33 +99,33 @@ export const GROUPS_DATA: GroupDetail[] = [
       items: [
         { subtitle: "🤝 Participar", text: "Animarnos a involucrarnos y ser parte de distintas actividades." },
         { subtitle: "🚶 Autonomía", text: "Ganar confianza para movernos en la comunidad" },
-        { subtitle: "❤️ Bienestar", text: "Cuidar nuestras emociones y los vínculos con los demás." },
+        { subtitle: "❤️ Bienestar", text: "Cuidar nuestras emociones and los vínculos con los demás." },
         { subtitle: "👥 Trabajo en equipo", text: "Aprender a compartir, colaborar y construir juntos." },
-        { subtitle: "💬 Comunicación", text: "Escucharnos y encontrar nuevas formas de expresar lo que pensamos y sentimos." }
+        { subtitle: "💬 Comunicación", text: "Esucharnos and encontrar nuevas formas de expresar lo que pensamos y sentimos." }
       ]
     },
     interview: {
       qaList: [
         { question: "¿Cómo surgió el nombre 'Buenas Vibras'?", answer: "" },
         { question: "¿De qué te vas a recibir?", answer: "Este año me recibo de terapista ocupacional si todo sale bien el 13 de Julio, ya falta poco, solo un mes." },
-        { question: "¿Qué deporte te gusta?", answer: "Mi deporte favorito es el Hockey, desde los 7 años que juego al Hockey. También me gusta mucho el Fútbol, ahora con el mundial intento mirar todos los partidos, me gusta el deporte." },
+        { question: "¿Qué deporte te gusta?", answer: "Mi deporte favorito es el Hockey, desde los 7 años que juego al Hockey. También me gusta mucho el Futbol, ahora con el mundial intento mirar todos los partidos, me gusta el deporte." },
         { question: "¿Qué te gusta comer?", answer: "Me gusta comer de todo, las hamburguesas me gustan mucho, lo confieso (ríe). También la comida que no puede faltar es la milanesa napolitana con papas fritas, me encanta" },
         { question: "¿Qué cosas te hacen reír?", answer: "Las ocurrencias espontáneas. A veces nos quedamos tentados de la risa por cosas muy simples." },
-        { question: "¿Qué es lo que más te gusta de trabajar con nosotros?", answer: "Lo que más me gusta de trabajar con ustedes es acompañarlos en sus procesos; me gusta que crezcan, que sean autónomos, que puedan elegir y decidir. Lo que más me gusta es acompañarlos en ese proceso" },
+        { question: "¿Qué es lo que mas te gusta de trabajar con nosotros?", answer: "Lo que mas me gusta de trabajar con ustedes es acompañarlos en sus procesos; me gusta que crezcan, que sean autónomos, que puedan elegir and decidir. Lo que mas me gusta es acompañarlos en ese proceso" },
         { question: "¿Qué aprendiste de este grupo?", answer: "." }
       ],
       keywords: ["Escucha", "Mateada", "Cuidado"]
     },
     members: [
-      { name: "Brian", icon: "bolt", details: ["Música y ritmo", "Fútbol con amigos", "Compartir mates"], avatarUrl: "/images/group/buenas_vibras/Brian.jpg" },
+      { name: "Brian", icon: "bolt", details: ["Videojuegos", "Fútbol con amigos", "Sacar fotos", "Chocolates", "Tecnología", "Playa"], avatarUrl: "/images/group/buenas_vibras/Brian.jpg" },
       { name: "Verónica", icon: "bolt", details: ["Música y ritmo", "Fútbol con amigos", "Compartir mates"], avatarUrl: "/images/group/buenas_vibras/Brian.jpg" },
-      { name: "Gianni", icon: "star", details: ["Juegos de estrategia", "Dibujar cómics", "Escuchar rock"], avatarUrl: "/images/group/buenas_vibras/Gianni.jpg" },
-      { name: "Martina", icon: "heart", details: ["Pintar mandalas", "Hacer pulseras", "Cuidar plantas"], avatarUrl: "/images/group/buenas_vibras/Martina.jpg" },
-      { name: "Valentina", icon: "sun", details: ["Bailar coreografías", "Ver series y pelis", "Salir al parque"], avatarUrl: "/images/group/buenas_vibras/Valentina.jpg" },
-      { name: "Camilo", icon: "sun", details: ["Bailar coreografías", "Ver series y pelis", "Salir al parque"], avatarUrl: "/images/group/buenas_vibras/Camilo.jpg" },
-      { name: "Marcos", icon: "music", details: ["Escribir poesía", "Tocar el piano", "Mates dulces"], avatarUrl: "/images/group/buenas_vibras/Marcos.jpg" },
-      { name: "Juan", icon: "music", details: ["Escribir poesía", "Tocar el piano", "Mates dulces"], avatarUrl: "/images/group/buenas_vibras/Juan.jpg" },
-      { name: "Yazmin", icon: "music", details: ["Escribir poesía", "Tocar el piano", "Mates dulces"], avatarUrl: "/images/group/buenas_vibras/Yazmin.jpg" }
+      { name: "Gianni", icon: "star", details: ["Futbol", "Sorpresas", "Cantar", "Escuchar música", "Actuar", "Chocolates", "Playa"], avatarUrl: "/images/group/buenas_vibras/Gianni.jpg" },
+      { name: "Martina", icon: "heart", details: ["Chocolate", "Tecnología", "Sacar fotos","Café", "Arcoiris", "Gatos"], avatarUrl: "/images/group/buenas_vibras/Martina.jpg" },
+      { name: "Valentina", icon: "sun", details: ["Musica", "Viajar", "Arcoiris", "Perros", "Helado", "Estrellas", "Sorpresas"], avatarUrl: "/images/group/buenas_vibras/Valentina.jpg" },
+      { name: "Camilo", icon: "sun", details: ["Reir", "Viajar", "Comer", "Las estrellas", "Sorpresas"], avatarUrl: "/images/group/buenas_vibras/Valentina.jpg" },
+      { name: "Marcos", icon: "music", details: ["Mate", "Hamburguesas", "Juegos", "Animales", "Correr", "Pintar", "Sorpresas"], avatarUrl: "/images/group/buenas_vibras/Yazmin.jpg" },
+      { name: "Juan", icon: "music", details: ["Música", "Pintar", "Café", "Helado", "Actuar", "Nadar" ], avatarUrl: "/images/group/buenas_vibras/Yazmin.jpg" },
+      { name: "Yazmin", icon: "music", details: ["Mate", "Sol", "Música", "Pasear","Pochoclos", "Viajar", "Animales" ], avatarUrl: "/images/group/buenas_vibras/Yazmin.jpg" }
     ],
     messages: [
       { text: "Nos encanta trabajar con vos y buscar cosas en la compu.", author: "#Buenas vibras", color: "blue" },
@@ -152,7 +163,7 @@ export const GROUPS_DATA: GroupDetail[] = [
       ]
     },
     objective: {
-      resume: "Promover la autonomía, la comunicación y el compromiso con el grupo, desarrollando habilidades para la vida cotidiana, la convivencia y la participación social.", 
+      resume: "Promover la autonomía, la comunicación y el compromiso con el grupo, desarrollando habilidades para la vida cotidiana, la convivencia y la participación en distintos espacios", 
       items: [
         { subtitle: "🤝 Trabajar en equipo", text: "Aprender a compartir, colaborar y construir junto a otros." }, 
         { subtitle: "💬 Comunicarnos mejor", text: "Encontrar nuevas formas de expresar lo que pensamos, sentimos y necesitamos." },
@@ -163,21 +174,21 @@ export const GROUPS_DATA: GroupDetail[] = [
     },
     interview: {
       qaList: [
-        { question: "¿Cómo surge Corazones en Equipo?", answer: "Nace del deseo de unir nuestras pasiones por el arte, la música y el juego en un solo gran latido." },
-        { question: "¿Qué rol juega la música en tus talleres?", answer: "Es fundamental, nos ayuda a sintonizar nuestros ritmos, liberar tensiones y crear un clima alegre." },
-        { question: "¿Qué es lo que más valorás del grupo?", answer: "La inmensa empatía que demuestran. Siempre están listos para escucharse y apoyarse." }
+        { question: "Cómo surge Corazones en Equipo?", answer: "Nace del deseo de unir nuestras pasiones por el arte, la música y el juego en un solo gran latido." },
+        { question: "Qué rol juega la música en tus talleres?", answer: "Es fundamental, nos ayuda a sintonizar nuestros ritmos, liberar tensiones y crear un clima alegre." },
+        { question: "Qué es lo que más valorás del grupo?", answer: "La inmensa empatía que demuestran. Siempre están listos para escucharse y apoyarse." }
       ],
       keywords: ["Unidad", "Expresión", "Empatía"]
     },
     members: [
       { name: "Dalila", icon: "heart", details: ["Pintar y dibujar", "Escuchar música pop", "Juegos de mesa"], avatarUrl: "/images/group/corazones_en_equipo/Dalila.jpg" },
-      { name: "Rodrigo", icon: "heart", details: ["Pintar y dibujar", "Escuchar música pop", "Juegos de mesa"], avatarUrl: "/images/group/corazones_en_equipo/Rodrigo.jpg" },
-      { name: "Lucia", icon: "sun", details: ["Hacer manualidades", "Tomar mates charlando", "Pasear"], avatarUrl: "/images/group/corazones_en_equipo/Lucia.jpg" },
-      { name: "Lujan", icon: "star", details: ["Cocinar cosas ricas", "Cuidar las plantas", "Escuchar radio"], avatarUrl: "/images/group/corazones_en_equipo/Lujan.jpg" },
-      { name: "Miguel", icon: "smile", details: ["Fútbol", "Jugar a las cartas", "Compartir risas"], avatarUrl: "/images/group/corazones_en_equipo/Miguel.jpg" },
-      { name: "Milagros", icon: "music", details: ["Bailar y cantar", "Hacer pulseras", "Ver películas"], avatarUrl: "/images/group/corazones_en_equipo/Milagros.jpg" },
-      { name: "Valentin", icon: "bolt", details: ["Videojuegos", "Hacer chistes", "Salir a caminar"], avatarUrl: "/images/group/corazones_en_equipo/Valentin.jpg" },
-      { name: "Micaela", icon: "heart", details: ["Expresión artística", "Compartir con el grupo"], avatarUrl: "/images/group/corazones_en_equipo/Micaela.jpg" }
+      { name: "Rodrigo", icon: "heart", details: ["Playa", "Música", "Chocolates", "Regalos", "Perros", "Pintar", "Música"], avatarUrl: "/images/group/corazones_en_equipo/Dalila.jpg" },
+      { name: "Lucia", icon: "sun", details: ["Sol", "Fotos", "Pasear", "Perros", "Pochoclos", "Hamburguesas", "Cantar", "Pizza"], avatarUrl: "/images/group/corazones_en_equipo/Lucia.jpg" },
+      { name: "Micaela", icon: "sun", details: ["Hacer manualidades", "Tomar mates charlando", "Pasear", "Personajes de disney"], avatarUrl: "/images/group/corazones_en_equipo/Lucia.jpg" },
+      { name: "Lujan", icon: "star", details: ["Cocinar", "Peluquería", "Viajar", "Actuar", "Escuchar música", "Sol", "Gatos", "Pizza"], avatarUrl: "/images/group/corazones_en_equipo/Lujan.jpg" },
+      { name: "Miguel", icon: "smile", details: ["Pelotas", "Amarillo", "Compartir risas", "Pasear"], avatarUrl: "/images/group/corazones_en_equipo/Miguel.jpg" },
+      { name: "Milagros", icon: "music", details: ["Helado", "Bailar", "Futbol", "Nadar", "Papas fritas", "Fiesta"], avatarUrl: "/images/group/corazones_en_equipo/Milagros.jpg" },
+      { name: "Valentin", icon: "bolt", details: ["Videojuegos", "Hacer chistes", "Actuar", "Tecnología", "Bicicleta", "Frutillas"], avatarUrl: "/images/group/corazones_en_equipo/Valentin.jpg" }
     ],
     messages: [
       { text: "Gracias Sebas por traer siempre tanta buena energía y música.", author: "Dalila", color: "pink" },
@@ -204,7 +215,7 @@ export const GROUPS_DATA: GroupDetail[] = [
       name: "Tamara",
       role: "TUTORA DEL GRUPO",
       avatarUrl: "/images/group/la_banda_colorida/Tamara - Tutora.jpg",
-      bio: "Artista visual y docente de educación artística. Impulsora del muralismo comunitario como herramienta social.",
+      bio: "Artista visual and docente de educación artística. Impulsora del muralismo comunitario como herramienta social.",
       quote: "El arte no es para hacerlo bien, es para liberarse.",
       formation: [
         "Acompañante terapéutica",
@@ -232,23 +243,27 @@ export const GROUPS_DATA: GroupDetail[] = [
         }, 
         {
           subtitle: "🌱 Participar a nuestro ritmo",
-          text: "Acompañar a cada persona desde sus posibilidades, respetando sus tiempos, intereses and necesidades."
+          text: "Acompañar a cada persona desde sus posibilidades, respetando sus tiempos, intereses y necesidades."
         }
       ]
     }, 
     interview: {
       qaList: [
-        { question: "¿Por qué pintar juntos?", answer: "Porque el color colectivo tiene una fuerza que el lienzo individual no puede igualar." },
-        { question: "¿Qué hacés con los errores en la pintura?", answer: "Los transformamos en una nueva idea. El error en el arte es el inicio de tu propio estilo." },
-        { question: "¿Cuál es el mayor logro de este grupo?", answer: "Ver la sonrisa de todos cuando inauguramos el gran mural del patio. Nos llevó un mes de trabajo." }
+        { question: "Por qué pintar juntos?", answer: "Porque el color colectivo tiene una fuerza que el lienzo individual no puede igualar." },
+        { question: "Qué hacés con los errores en la pintura?", answer: "Los transformamos en una nueva idea. El error en el arte es el inicio de tu propio estilo." },
+        { question: "Cuál es el mayor logro de este grupo?", answer: "Ver la sonrisa de todos cuando inauguramos el gran mural del patio. Nos llevó un mes de trabajo." }
       ],
       keywords: ["Expresión", "Pintura", "Libertad"]
     },
     members: [
-      { name: "Lucas", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
-      { name: "Elena", icon: "heart", details: ["Pintar con acuarelas", "Escuchar música clásica", "Hacer collages"] },
-      { name: "Marcos", icon: "music", details: ["Tocar la batería", "Grafiti y lettering", "Ver pelis de acción"] },
-      { name: "Cami", icon: "smile", details: ["Modelar arcilla", "Adoptar gatitos", "Decorar tortas dulces"] }
+      { name: "Jano", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
+      { name: "Jeremías", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
+      { name: "Valentina", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
+      { name: "Joel", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
+      { name: "José", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
+      { name: "Lucia", icon: "heart", details: ["Pintar con acuarelas", "Escuchar música clásica", "Hacer collages"] },
+      { name: "Mili Da Giau", icon: "music", details: ["Tocar la batería", "Grafiti y lettering", "Ver pelis de acción"] },
+      { name: "Mili Costilla", icon: "smile", details: ["Modelar arcilla", "Adoptar gatitos", "Decorar tortas dulces"] }
     ],
     messages: [
       { text: "Tamara nos diste la confianza para agarrar el pincel sin miedo.", author: "Lucas", color: "pink" },
@@ -266,8 +281,7 @@ export const GROUPS_DATA: GroupDetail[] = [
     memberCount: 10,
     establishedYear: 2025,
     heroCollage: [
-      "/images/group/quienes_somos/todos.jpg",
-      "/images/group/quienes_somos/Grupal.jpg"
+      "/images/group/quienes_somos/todos.jpg"
     ],
     tutor: {
       name: "Agustina",
@@ -294,16 +308,16 @@ export const GROUPS_DATA: GroupDetail[] = [
       keywords: ["Proceso", "Creatividad", "Expresión"]
     },
     members: [
-      { name: "Coti", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"], avatarUrl: "/images/group/quienes_somos/Constanza.jpg" },
-      { name: "Martin", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"], avatarUrl: "/images/group/quienes_somos/Martin.jpg" },
-      { name: "Mica", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"], avatarUrl: "/images/group/quienes_somos/Micaela.jpg" },
+      { name: "Coti", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"] },
+      { name: "Martin", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"] },
+      { name: "Mica", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"] },
       { name: "Pancho", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"] },
       { name: "Sofi", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"] },
-      { name: "Mauro", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"], avatarUrl: "/images/group/quienes_somos/Mauro.jpg" },
-      { name: "Andres", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"], avatarUrl: "/images/group/quienes_somos/Andrés.jpg" },
-      { name: "Mati", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"], avatarUrl: "/images/group/quienes_somos/Matias.jpg" },
-      { name: "Tomi", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"], avatarUrl: "/images/group/quienes_somos/Tomas.jpg" },
-      { name: "Lucas", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"], avatarUrl: "/images/group/quienes_somos/Lucas.jpg" }
+      { name: "Mauro", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"] },
+      { name: "Andres", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"] },
+      { name: "Mati", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"] },
+      { name: "Tomi", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"] },
+      { name: "Lucas", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"] }
     ],
     messages: [
       { text: "Nos gusta mucho viajar con ella, comer juntos, los congresos... ¡Te queremos mucho Agus!", author: "Los Pibes", color: "yellow" },
@@ -312,6 +326,6 @@ export const GROUPS_DATA: GroupDetail[] = [
     moments: [
       { imageUrl: "/images/group/quienes_somos/todos.jpg", caption: "Todo el equipo reunido", rotation: -2 }
     ],
-    momentsCaption: "El valor de recordar de dónde venimos"
+    momentsCaption: "La importancia de los procesos"
   }
 ];
