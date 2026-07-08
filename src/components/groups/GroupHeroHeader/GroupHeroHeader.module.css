@@ -368,7 +368,6 @@
 }
 
 /* Responsive Rules */
-/* Responsive Rules */
 @media (max-width: 1100px) {
   .mainGrid {
     grid-template-columns: 1fr 1.2fr;
@@ -400,12 +399,32 @@
 @media (max-width: 768px) {
   .mainGrid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .polaroidContainerOuter {
     grid-column: auto;
     grid-row: auto;
+    max-width: 480px;
+    margin: 0 auto; /* Center Polaroid on mobile */
+  }
+
+  /* Shrink offsets to prevent horizontal page overflow */
+  .decorStar {
+    left: 0px;
+    top: -20px;
+    font-size: 3rem;
+  }
+
+  .orangeBrushStroke {
+    left: 0px;
+    bottom: 10px;
+    width: 100px;
+  }
+
+  .decorScribble {
+    right: 0px;
+    bottom: -5px;
   }
 
   .infoContainer {
@@ -413,6 +432,7 @@
     grid-row: auto;
     align-items: center;
     text-align: center;
+    padding: 0.5rem 0;
   }
 
   .objectiveWrapper {
@@ -423,18 +443,48 @@
   .tutorColumn {
     grid-column: auto;
     grid-row: auto;
+    padding: 1.25rem;
   }
 
   .titleRow {
     justify-content: center;
   }
 
+  .title {
+    font-size: clamp(2.2rem, 8vw, 3rem); /* Smaller clamp to fit long group names on mobile */
+  }
+
   .description {
     max-width: 100%;
+    font-size: 1rem;
   }
 
   .metaRow {
     justify-content: center;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tutorColumn {
+    padding: 1rem; /* Compact padding for small viewports */
+  }
+
+  .tutorProfileRow {
+    gap: 1rem;
+  }
+
+  .tutorSquareAvatarWrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .tutorName {
+    font-size: 1.2rem;
+  }
+
+  .quoteText {
+    font-size: 1rem;
   }
 }
 
