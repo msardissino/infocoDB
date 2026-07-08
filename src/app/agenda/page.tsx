@@ -92,6 +92,18 @@ export default function AgendaPage() {
     fetchEvents();
   }, [fetchEvents]);
 
+  // Lock scroll on background when modal is open
+  useEffect(() => {
+    if (selectedEvent) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedEvent]);
+
   // Filter events based on active category filter
   const filteredEvents = useMemo(() => {
     if (activeFilter === "all") return events;
