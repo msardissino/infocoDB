@@ -2,6 +2,8 @@
   max-width: 900px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  /* Override --ink-mute locally to increase contrast for WCAG AA compliance (4.5:1 ratio) */
+  --ink-mute: #595959; 
 }
 
 /* Magazine Tabs Section */
@@ -21,7 +23,8 @@
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 500;
-  padding: 0.75rem 1rem;
+  padding: 0.9rem 1rem; /* Meets 48px minimum touch target height */
+  min-height: 48px;
   border: none;
   background: none;
   color: var(--ink-soft);
@@ -33,10 +36,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .monthLabel {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-family: var(--font-text);
   font-weight: 700;
   color: var(--ink-mute);
@@ -61,23 +65,35 @@
 /* Category Filter Bar */
 .filterBar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-  margin-bottom: 3rem;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+  overflow-x: auto; /* Horizontal scroll on mobile */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.5rem 1rem;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  justify-content: flex-start;
+}
+
+.filterBar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Safari/Chrome */
 }
 
 .filterChip {
   font-family: var(--font-text);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  padding: 0.35rem 1rem;
+  padding: 0.5rem 1.1rem; /* Increased for touch friendliness */
+  min-height: 40px;
   border: 1px solid var(--line);
   background-color: var(--paper);
   color: var(--ink-soft);
   cursor: pointer;
   border-radius: var(--r-pill);
   transition: all 0.2s ease;
+  white-space: nowrap; /* Don't let chips break lines */
+  display: inline-flex;
+  align-items: center;
 }
 
 .filterChip:hover {
@@ -103,9 +119,9 @@
   background-color: var(--bg-elevated);
   border: 1px solid var(--line);
   border-radius: var(--r-xl);
-  padding: 1.5rem;
+  padding: 1.75rem;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.75rem;
   box-shadow: var(--elevation-1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
@@ -120,8 +136,8 @@
 
 /* Left Date Stamp */
 .dateStamp {
-  width: 70px;
-  height: 70px;
+  width: 75px;
+  height: 75px;
   background-color: var(--cream);
   border-radius: var(--r-lg);
   display: flex;
@@ -134,7 +150,7 @@
 
 .dateNumber {
   font-family: var(--font-display);
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   font-weight: 700;
   line-height: 1;
   color: var(--ink);
@@ -142,10 +158,11 @@
 
 .dateDayName {
   font-family: var(--font-text);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 800;
   color: var(--ink-mute);
-  margin-top: 0.1rem;
+  margin-top: 0.15rem;
+  letter-spacing: 0.05em;
 }
 
 /* Right Content Info */
@@ -154,6 +171,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 100%;
 }
 
 .headerRow {
@@ -167,7 +185,7 @@
 .categoryTag {
   font-size: 0.75rem;
   font-weight: 700;
-  padding: 0.2rem 0.6rem;
+  padding: 0.25rem 0.75rem;
   border-radius: var(--r-pill);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -202,22 +220,23 @@
   color: var(--ink);
   line-height: 1.2;
   letter-spacing: 0.02em;
+  margin: 0.25rem 0;
 }
 
 .metaRow {
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--ink-mute);
   font-family: var(--font-text);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.4rem;
 }
 
 .metaItem {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
 }
 
 .metaItem svg {
@@ -226,16 +245,18 @@
 
 .shortDesc {
   font-family: var(--font-text);
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 0.98rem;
+  line-height: 1.55;
   color: var(--ink-soft);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .actionRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .readMoreBtn {
@@ -247,10 +268,11 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0;
+  gap: 0.4rem;
+  padding: 0.6rem 0; /* Expanded touch target height */
   transition: color 0.2s;
   letter-spacing: 0.05em;
+  font-weight: 600;
 }
 
 .readMoreBtn:hover {
@@ -262,7 +284,7 @@
   font-weight: 700;
   color: var(--brand-blue);
   background-color: rgba(0, 80, 181, 0.06);
-  padding: 0.2rem 0.5rem;
+  padding: 0.25rem 0.6rem;
   border-radius: var(--r-sm);
   text-transform: uppercase;
 }
@@ -291,6 +313,8 @@
   box-shadow: var(--elevation-2);
   overflow: hidden;
   animation: modalEnter 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes modalEnter {
@@ -310,6 +334,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding-right: 1.5rem;
 }
 
 .modalTitle {
@@ -324,15 +349,16 @@
   background-color: rgba(29, 28, 26, 0.05);
   border: none;
   color: var(--ink-soft);
-  width: 36px;
-  height: 36px;
+  width: 44px; /* Accessible 44px touch size */
+  height: 44px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background-color 0.2s;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
+  flex-shrink: 0;
 }
 
 .closeBtn:hover {
@@ -344,6 +370,8 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  overflow-y: auto;
+  max-height: 60vh;
 }
 
 .modalMetaList {
@@ -361,7 +389,7 @@
   align-items: center;
   gap: 0.75rem;
   font-family: var(--font-text);
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   color: var(--ink-soft);
 }
 
@@ -373,7 +401,7 @@
 .eventDescription {
   font-family: var(--font-text);
   font-size: 1.05rem;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--ink-soft);
 }
 
@@ -409,4 +437,115 @@
   color: var(--ink-mute);
   font-family: var(--font-text);
   font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MOBILE & TABLET OPTIMIZATIONS)
+   ========================================================================== */
+
+@media (min-width: 600px) {
+  .filterBar {
+    justify-content: center;
+    overflow-x: visible;
+    padding: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Month Selection Tabs responsive scaling */
+  .magazineTabs {
+    margin: 1.5rem 0 1rem 0;
+    gap: 0.25rem;
+  }
+
+  .monthTab {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.25rem;
+    min-height: 48px;
+  }
+
+  .monthLabel {
+    font-size: 0.65rem;
+  }
+
+  /* List & Cards Mobile layouts (No horizontal squeezing) */
+  .eventCard {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  /* Left Date Stamp transforms into a horizontal top bar badge */
+  .dateStamp {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--cream);
+    border-radius: var(--r-md);
+  }
+
+  .dateNumber {
+    font-size: 1.5rem;
+  }
+
+  .dateDayName {
+    font-size: 0.85rem;
+    margin-top: 0;
+    padding-left: 0.75rem;
+    border-left: 1px solid var(--line-solid);
+    line-height: 1.6;
+  }
+
+  .eventTitle {
+    font-size: 1.5rem;
+  }
+
+  .metaRow {
+    gap: 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .shortDesc {
+    font-size: 0.92rem;
+  }
+
+  /* Mobile bottom sheet style dialog (M3 standard for small viewports) */
+  .modalOverlay {
+    padding: 0;
+    align-items: flex-end; /* Align to bottom */
+  }
+
+  .modalContent {
+    max-width: 100%;
+    border-radius: 28px 28px 0 0; /* Bottom sheet rounding */
+    max-height: 85vh;
+    animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .modalHeader {
+    padding: 1.5rem;
+  }
+
+  .modalTitle {
+    font-size: 1.7rem;
+  }
+
+  .modalBody {
+    padding: 1.5rem;
+    max-height: 65vh;
+  }
+
+  .modalMetaList {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }

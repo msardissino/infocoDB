@@ -142,12 +142,14 @@ export default function AgendaPage() {
           <Breadcrumb items={[{ label: "AGENDA" }]} />
 
           {/* Monthly Navigation Tabs */}
-          <div className={styles.magazineTabs}>
+          <div className={styles.magazineTabs} role="tablist" aria-label="Seleccionar mes de la agenda">
             {tabMonths.map((tab, index) => {
               const isActive = currentMonth === tab.date.getMonth() && currentYear === tab.date.getFullYear();
               return (
                 <button
                   key={index}
+                  role="tab"
+                  aria-selected={isActive}
                   onClick={() => setSelectedTabDate(tab.date)}
                   className={`${styles.monthTab} ${isActive ? styles.active : ""}`}
                 >
@@ -159,10 +161,11 @@ export default function AgendaPage() {
           </div>
 
           {/* Category Filter Chips */}
-          <div className={styles.filterBar}>
+          <div className={styles.filterBar} role="group" aria-label="Filtrar por categoría">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat.id}
+                aria-pressed={activeFilter === cat.id}
                 onClick={() => setActiveFilter(cat.id)}
                 className={`${styles.filterChip} ${activeFilter === cat.id ? styles.active : ""}`}
               >
@@ -237,6 +240,7 @@ export default function AgendaPage() {
                         <button 
                           className={styles.readMoreBtn}
                           onClick={() => setSelectedEvent(ev)}
+                          aria-label={`Ver más detalles de ${ev.title}`}
                         >
                           VER MÁS DETALLES <FontAwesomeIcon icon={faArrowRight} />
                         </button>
@@ -253,15 +257,25 @@ export default function AgendaPage() {
       {/* Modal Detail Overlay (M3 Style Dialog) */}
       {selectedEvent && (
         <div className={styles.modalOverlay} onClick={() => setSelectedEvent(null)}>
-          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+          <div 
+            className={styles.modalContent} 
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
+          >
             <div className={styles.modalHeader}>
               <div className={styles.modalTitleWrapper}>
                 <span className={`${styles.categoryTag} ${styles[selectedEvent.category]}`}>
                   {getCategoryLabel(selectedEvent.category)}
                 </span>
-                <h3 className={styles.modalTitle}>{selectedEvent.title}</h3>
+                <h3 id="modal-title" className={styles.modalTitle}>{selectedEvent.title}</h3>
               </div>
-              <button className={styles.closeBtn} onClick={() => setSelectedEvent(null)}>
+              <button 
+                className={styles.closeBtn} 
+                onClick={() => setSelectedEvent(null)}
+                aria-label="Cerrar modal"
+              >
                 <FontAwesomeIcon icon={faTimes} />
               </button>
             </div>
