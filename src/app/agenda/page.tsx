@@ -1,17 +1,16 @@
 "use client";
 
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { SectionHero } from "@/ui/SectionHero/SectionHero";
 import { Breadcrumb } from "@/ui/Breadcrumb/Breadcrumb";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faCalendarDay, 
-  faChevronLeft, 
-  faChevronRight, 
   faTimes,
   faClock,
   faMapMarkerAlt,
-  faUsers
+  faUsers,
+  faArrowRight
 } from "@fortawesome/free-solid-svg-icons";
 import { supabase } from "@/lib/supabase/client";
 import styles from "./agenda.module.css";
@@ -32,9 +31,8 @@ const MONTHS = [
   "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"
 ];
 
-const WEEKDAYS = ["LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB", "DOM"];
-
 const CATEGORIES = [
+  { id: "all", label: "Todos" },
   { id: "taller", label: "Talleres" },
   { id: "salida", label: "Salidas" },
   { id: "evento", label: "Eventos" },
@@ -42,21 +40,33 @@ const CATEGORIES = [
 ];
 
 export default function AgendaPage() {
-  const [currentDate, setCurrentDate] = useState(new Date(2026, 4, 1)); // Default to May 2026 as in original pages
+  // Use a base date for current month. Let's make it dynamic.
+  const today = useMemo(() => new Date(), []);
+  const [selectedTabDate, setSelectedTabDate] = useState<Date>(new Date(today.getFullYear(), today.getMonth(), 1));
   const [events, setEvents] = useState<AgendaEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedEvent, setSelectedEvent] = useState<AgendaEvent | null>(null);
   
-  // Category filters state (all active by default)
-  const [activeFilters, setActiveFilters] = useState<string[]>(["taller", "salida", "evento", "feriado"]);
+  // Category filter (single selection or all)
+  const [activeFilter, setActiveFilter] = useState<string>("all");
 
-  const currentYear = currentDate.getFullYear();
-  const currentMonth = currentDate.getMonth();
+  const currentYear = selectedTabDate.getFullYear();
+  const currentMonth = selectedTabDate.getMonth();
+
+  // Generate the 3 tabs dynamically: Previous, Current, Next month
+  const tabMonths = useMemo(() => {
+    const prev = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+    const curr = new Date(today.getFullYear(), today.getMonth(), 1);
+    const next = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+    return [
+      { date: prev, subLabel: "MES PASADO", name: MONTHS[prev.getMonth()] },
+      { date: curr, subLabel: "MES ACTUAL", name: MONTHS[curr.getMonth()] },
+      { date: next, subLabel: "MES SIGUIENTE", name: MONTHS[next.getMonth()] }
+    ];
+  }, [today]);
 
   const fetchEvents = useCallback(async () => {
     setLoading(true);
-    // Start of month: YYYY-MM-01
-    // End of month: YYYY-MM-lastDay
     const firstDay = `${currentYear}-${String(currentMonth + 1).padStart(2, "0")}-01`;
     const lastDayVal = new Date(currentYear, currentMonth + 1, 0).getDate();
     const lastDay = `${currentYear}-${String(currentMonth + 1).padStart(2, "0")}-${String(lastDayVal).padStart(2, "0")}`;
@@ -66,7 +76,8 @@ export default function AgendaPage() {
         .from("agenda")
         .select("*")
         .gte("date", firstDay)
-        .lte("date", lastDay);
+        .lte("date", lastDay)
+        .order("date", { ascending: true });
 
       if (error) throw error;
       setEvents(data || []);
@@ -81,82 +92,23 @@ export default function AgendaPage() {
     fetchEvents();
   }, [fetchEvents]);
 
-  const handlePrevMonth = () => {
-    setCurrentDate(new Date(currentYear, currentMonth - 1, 1));
+  // Filter events based on active category filter
+  const filteredEvents = useMemo(() => {
+    if (activeFilter === "all") return events;
+    return events.filter(ev => ev.category === activeFilter);
+  }, [events, activeFilter]);
+
+  // Helper to parse dates into Day Number and Weekday Name
+  const getDayInfo = (dateStr: string) => {
+    const [year, month, day] = dateStr.split("-").map(Number);
+    const dateObj = new Date(year, month - 1, day);
+    const dayName = dateObj.toLocaleDateString("es-AR", { weekday: "short" }).toUpperCase().replace(".", "");
+    return {
+      dayNum: String(day).padStart(2, "0"),
+      dayName: dayName
+    };
   };
 
-  const handleNextMonth = () => {
-    setCurrentDate(new Date(currentYear, currentMonth + 1, 1));
-  };
-
-  const toggleFilter = (catId: string) => {
-    if (activeFilters.includes(catId)) {
-      // Don't allow empty filters, keep at least one or toggle off
-      if (activeFilters.length > 1) {
-        setActiveFilters(activeFilters.filter(f => f !== catId));
-      } else {
-        // If it's the last one, toggle all back on
-        setActiveFilters(["taller", "salida", "evento", "feriado"]);
-      }
-    } else {
-      setActiveFilters([...activeFilters, catId]);
-    }
-  };
-
-  // Calendar calculations
-  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-  
-  // Get day of week for 1st of month (0 = Monday, 6 = Sunday)
-  const getStartingDay = () => {
-    const day = new Date(currentYear, currentMonth, 1).getDay();
-    return day === 0 ? 6 : day - 1;
-  };
-  
-  const startingDay = getStartingDay();
-  
-  // Days in previous month
-  const prevMonthDays = new Date(currentYear, currentMonth, 0).getDate();
-
-  // Generate grid cells
-  const gridCells = [];
-
-  // Prefix cells (days of previous month)
-  for (let i = startingDay - 1; i >= 0; i--) {
-    gridCells.push({
-      day: prevMonthDays - i,
-      isCurrentMonth: false,
-      dateString: `${currentMonth === 0 ? currentYear - 1 : currentYear}-${String(currentMonth === 0 ? 12 : currentMonth).padStart(2, "0")}-${String(prevMonthDays - i).padStart(2, "0")}`
-    });
-  }
-
-  // Current month cells
-  for (let i = 1; i <= daysInMonth; i++) {
-    gridCells.push({
-      day: i,
-      isCurrentMonth: true,
-      dateString: `${currentYear}-${String(currentMonth + 1).padStart(2, "0")}-${String(i).padStart(2, "0")}`
-    });
-  }
-
-  // Suffix cells (days of next month to complete row grid)
-  const totalCellsSoFar = gridCells.length;
-  const remainingCells = totalCellsSoFar % 7 === 0 ? 0 : 7 - (totalCellsSoFar % 7);
-  for (let i = 1; i <= remainingCells; i++) {
-    gridCells.push({
-      day: i,
-      isCurrentMonth: false,
-      dateString: `${currentMonth === 11 ? currentYear + 1 : currentYear}-${String(currentMonth === 11 ? 1 : currentMonth + 2).padStart(2, "0")}-${String(i).padStart(2, "0")}`
-    });
-  }
-
-  // Helper to check if dateString is today
-  const isToday = (dateString: string) => {
-    const today = new Date();
-    const compareStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
-    return dateString === compareStr;
-  };
-
-  // Group name helper
   const getGroupName = (slug: string | null) => {
     if (!slug) return "";
     const groupMap: Record<string, string> = {
@@ -169,140 +121,182 @@ export default function AgendaPage() {
     return groupMap[slug] || slug;
   };
 
+  const getCategoryLabel = (catId: string) => {
+    const match = CATEGORIES.find(c => c.id === catId);
+    return match ? match.label : catId;
+  };
+
   return (
     <main>
       <SectionHero
         variant="dark"
         category="AGENDA"
-        subCategory="SECCIÓN"
+        subCategory="REVISTA INFORMATIVA"
         title="LO QUE VIENE: ACTIVIDADES Y EVENTOS"
         subtitle="Mantenete al tanto de los próximos talleres, salidas y fechas especiales."
-        metadata={`AÑO ${currentYear}`}
+        metadata={`EDICIÓN ${MONTHS[today.getMonth()]} ${today.getFullYear()}`}
         icon={faCalendarDay}
         backgroundImage="/images/covers/cover_agenda.jpeg"
       >
         <div className={styles.container}>
           <Breadcrumb items={[{ label: "AGENDA" }]} />
 
-          <div className={styles.calendarWrapper}>
-            {/* Header controls */}
-            <div className={styles.controlsHeader}>
-              <div className={styles.monthSelector}>
-                <button onClick={handlePrevMonth} className={styles.navBtn} title="Mes anterior">
-                  <FontAwesomeIcon icon={faChevronLeft} />
+          {/* Monthly Navigation Tabs */}
+          <div className={styles.magazineTabs}>
+            {tabMonths.map((tab, index) => {
+              const isActive = currentMonth === tab.date.getMonth() && currentYear === tab.date.getFullYear();
+              return (
+                <button
+                  key={index}
+                  onClick={() => setSelectedTabDate(tab.date)}
+                  className={`${styles.monthTab} ${isActive ? styles.active : ""}`}
+                >
+                  <span>{tab.name}</span>
+                  <span className={styles.monthLabel}>{tab.subLabel}</span>
                 </button>
-                <h2 className={styles.monthTitle}>
-                  {MONTHS[currentMonth]} {currentYear}
-                </h2>
-                <button onClick={handleNextMonth} className={styles.navBtn} title="Mes siguiente">
-                  <FontAwesomeIcon icon={faChevronRight} />
-                </button>
-              </div>
+              );
+            })}
+          </div>
 
-              {/* Filters */}
-              <div className={styles.filtersBar}>
-                <span className={styles.filterLabel}>FILTRAR:</span>
-                {CATEGORIES.map((cat) => (
-                  <button
-                    key={cat.id}
-                    onClick={() => toggleFilter(cat.id)}
-                    className={`${styles.filterBtn} ${activeFilters.includes(cat.id) ? styles.active : ""} ${styles[cat.id]}`}
-                  >
-                    {cat.label}
-                  </button>
-                ))}
-              </div>
+          {/* Category Filter Chips */}
+          <div className={styles.filterBar}>
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveFilter(cat.id)}
+                className={`${styles.filterChip} ${activeFilter === cat.id ? styles.active : ""}`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Magazine List Feed */}
+          {loading ? (
+            <div className={styles.loadingContainer}>
+              <div className={styles.spinner}></div>
+              <p style={{ fontFamily: "var(--font-display)", color: "var(--ink-mute)", letterSpacing: "0.05em" }}>
+                CARGANDO AGENDA...
+              </p>
             </div>
-
-            {/* Weekdays Header */}
-            <div className={styles.calendarGrid}>
-              {WEEKDAYS.map((day) => (
-                <div key={day} className={styles.weekdayHeader}>
-                  {day}
-                </div>
-              ))}
+          ) : filteredEvents.length === 0 ? (
+            <div className={styles.emptyState}>
+              No hay actividades programadas para este mes en la categoría seleccionada.
             </div>
+          ) : (
+            <div className={styles.eventsList}>
+              {filteredEvents.map((ev) => {
+                const { dayNum, dayName } = getDayInfo(ev.date);
+                return (
+                  <div key={ev.id} className={styles.eventCard}>
+                    {/* Left Date Block */}
+                    <div className={styles.dateStamp}>
+                      <span className={styles.dateNumber}>{dayNum}</span>
+                      <span className={styles.dateDayName}>{dayName}</span>
+                    </div>
 
-            {/* Grid days */}
-            {loading ? (
-              <div className={styles.loadingContainer}>
-                <div className={styles.spinner}></div>
-                <p style={{ fontFamily: "var(--font-display)", color: "var(--ink-mute)", letterSpacing: "0.05em" }}>
-                  CARGANDO CALENDARIO...
-                </p>
-              </div>
-            ) : (
-              <div className={styles.calendarGrid}>
-                {gridCells.map((cell, idx) => {
-                  // Find events for this specific date and filter them
-                  const dayEvents = events
-                    .filter((ev) => ev.date === cell.dateString)
-                    .filter((ev) => activeFilters.includes(ev.category));
-
-                  return (
-                    <div
-                      key={idx}
-                      className={`${styles.dayCell} ${!cell.isCurrentMonth ? styles.otherMonth : ""} ${isToday(cell.dateString) ? styles.today : ""}`}
-                    >
-                      <div className={styles.dayHeader}>
-                        <span className={styles.dayNumber}>{cell.day}</span>
+                    {/* Right Details */}
+                    <div className={styles.eventContent}>
+                      <div className={styles.headerRow}>
+                        <span className={`${styles.categoryTag} ${styles[ev.category]}`}>
+                          {getCategoryLabel(ev.category)}
+                        </span>
+                        {ev.group_slug && (
+                          <span className={styles.groupBadge}>
+                            {getGroupName(ev.group_slug)}
+                          </span>
+                        )}
                       </div>
-                      <div className={styles.eventsList}>
-                        {dayEvents.map((ev) => (
-                          <div
-                            key={ev.id}
-                            className={`${styles.eventBadge} ${styles[ev.category]}`}
-                            onClick={() => setSelectedEvent(ev)}
-                            title={ev.title}
-                          >
-                            {ev.title}
+
+                      <h2 className={styles.eventTitle}>{ev.title}</h2>
+
+                      <div className={styles.metaRow}>
+                        {ev.time && (
+                          <div className={styles.metaItem}>
+                            <FontAwesomeIcon icon={faClock} />
+                            <span>{ev.time}</span>
                           </div>
-                        ))}
+                        )}
+                        {ev.location && (
+                          <div className={styles.metaItem}>
+                            <FontAwesomeIcon icon={faMapMarkerAlt} />
+                            <span>{ev.location}</span>
+                          </div>
+                        )}
+                      </div>
+
+                      {ev.description && (
+                        <p className={styles.shortDesc}>
+                          {ev.description.length > 140 
+                            ? `${ev.description.substring(0, 137)}...` 
+                            : ev.description}
+                        </p>
+                      )}
+
+                      <div className={styles.actionRow}>
+                        <button 
+                          className={styles.readMoreBtn}
+                          onClick={() => setSelectedEvent(ev)}
+                        >
+                          VER MÁS DETALLES <FontAwesomeIcon icon={faArrowRight} />
+                        </button>
                       </div>
                     </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </SectionHero>
 
-      {/* Modal Detail Overlay */}
+      {/* Modal Detail Overlay (M3 Style Dialog) */}
       {selectedEvent && (
         <div className={styles.modalOverlay} onClick={() => setSelectedEvent(null)}>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <div className={`${styles.modalHeader} ${styles[selectedEvent.category]}`}>
-              <h3 className={styles.modalTitle}>{selectedEvent.title}</h3>
+            <div className={styles.modalHeader}>
+              <div className={styles.modalTitleWrapper}>
+                <span className={`${styles.categoryTag} ${styles[selectedEvent.category]}`}>
+                  {getCategoryLabel(selectedEvent.category)}
+                </span>
+                <h3 className={styles.modalTitle}>{selectedEvent.title}</h3>
+              </div>
               <button className={styles.closeBtn} onClick={() => setSelectedEvent(null)}>
                 <FontAwesomeIcon icon={faTimes} />
               </button>
             </div>
             
             <div className={styles.modalBody}>
-              <div className={styles.eventMetaList}>
-                <div className={styles.metaItem}>
+              <div className={styles.modalMetaList}>
+                <div className={styles.modalMetaItem}>
                   <FontAwesomeIcon icon={faCalendarDay} />
                   <span>
                     {selectedEvent.date.split("-").reverse().join("/")}
                   </span>
                 </div>
                 {selectedEvent.time && (
-                  <div className={styles.metaItem}>
+                  <div className={styles.modalMetaItem}>
                     <FontAwesomeIcon icon={faClock} />
                     <span>{selectedEvent.time}</span>
                   </div>
                 )}
                 {selectedEvent.location && (
-                  <div className={styles.metaItem}>
+                  <div className={styles.modalMetaItem}>
                     <FontAwesomeIcon icon={faMapMarkerAlt} />
                     <span>{selectedEvent.location}</span>
                   </div>
                 )}
                 {selectedEvent.group_slug && (
-                  <div className={styles.metaItem}>
+                  <div className={styles.modalMetaItem}>
                     <FontAwesomeIcon icon={faUsers} />
-                    <span className={styles.groupTag}>
+                    <span className={styles.groupTag} style={{
+                      fontSize: "0.8rem",
+                      fontWeight: 700,
+                      color: "var(--brand-blue)",
+                      backgroundColor: "rgba(0, 80, 181, 0.08)",
+                      padding: "0.2rem 0.6rem",
+                      borderRadius: "var(--r-pill)"
+                    }}>
                       {getGroupName(selectedEvent.group_slug)}
                     </span>
                   </div>

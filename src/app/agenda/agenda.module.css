@@ -1,250 +1,273 @@
 .container {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-.calendarWrapper {
-  margin-top: 2rem;
-  background-color: var(--bg-elevated);
-  border: 1px solid var(--line);
+/* Magazine Tabs Section */
+.magazineTabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2.5rem 0 1.5rem 0;
+  padding: 0.35rem;
+  background-color: rgba(29, 28, 26, 0.04);
   border-radius: var(--r-xl);
-  box-shadow: var(--elevation-1);
-  overflow: hidden;
+  border: 1px solid var(--line);
 }
 
-/* Controls Header */
-.controlsHeader {
+.monthTab {
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: none;
+  color: var(--ink-soft);
+  cursor: pointer;
+  border-radius: var(--r-lg);
+  transition: all 0.2s ease;
+  text-align: center;
+  letter-spacing: 0.05em;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  padding: 2rem;
-  border-bottom: 1px solid var(--line);
-  background-color: rgba(29, 28, 26, 0.02);
-}
-
-@media (min-width: 768px) {
-  .controlsHeader {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
-
-.monthSelector {
-  display: flex;
   align-items: center;
-  gap: 1.5rem;
 }
 
-.monthTitle {
-  font-family: var(--font-display);
-  font-size: 2.2rem;
+.monthLabel {
+  font-size: 0.7rem;
+  font-family: var(--font-text);
   font-weight: 700;
-  color: var(--ink);
-  letter-spacing: 0.05em;
-  min-width: 180px;
-  text-align: center;
-}
-
-.navBtn {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--line-solid);
-  background-color: var(--paper);
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-size: 1rem;
-}
-
-.navBtn:hover {
-  background-color: var(--cream);
-  border-color: var(--ink);
-}
-
-/* Filters Bar */
-.filtersBar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.filterLabel {
-  font-family: var(--font-display);
-  font-size: 0.9rem;
   color: var(--ink-mute);
   letter-spacing: 0.05em;
-  margin-right: 0.5rem;
+  margin-top: 0.15rem;
 }
 
-.filterBtn {
+.monthTab:hover {
+  background-color: rgba(29, 28, 26, 0.03);
+}
+
+.monthTab.active {
+  background-color: var(--bg-elevated);
+  color: var(--accent);
+  box-shadow: var(--elevation-1);
+}
+
+.monthTab.active .monthLabel {
+  color: var(--accent-hover);
+}
+
+/* Category Filter Bar */
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.filterChip {
   font-family: var(--font-text);
   font-size: 0.85rem;
   font-weight: 600;
-  padding: 0.4rem 1rem;
-  border-radius: var(--r-pill);
-  border: 1px solid var(--line-solid);
+  padding: 0.35rem 1rem;
+  border: 1px solid var(--line);
   background-color: var(--paper);
   color: var(--ink-soft);
   cursor: pointer;
-  transition: all 0.2s;
+  border-radius: var(--r-pill);
+  transition: all 0.2s ease;
 }
 
-.filterBtn:hover {
+.filterChip:hover {
+  background-color: var(--cream);
+  border-color: var(--line-solid);
+}
+
+.filterChip.active {
   border-color: var(--ink);
-}
-
-.filterBtn.active.taller {
-  background-color: #deebff;
-  color: #0747a6;
-  border-color: #0747a6;
-}
-
-.filterBtn.active.salida {
-  background-color: #e3fcef;
-  color: #006644;
-  border-color: #006644;
-}
-
-.filterBtn.active.evento {
-  background-color: #fffae6;
-  color: #172b4d;
-  border-color: #f7d070;
-}
-
-.filterBtn.active.feriado {
-  background-color: #ffebe6;
-  color: #bf2600;
-  border-color: #bf2600;
-}
-
-/* Calendar Grid */
-.calendarGrid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  width: 100%;
-}
-
-.weekdayHeader {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--ink-mute);
-  text-align: center;
-  padding: 1rem 0.5rem;
-  background-color: rgba(29, 28, 26, 0.04);
-  border-bottom: 1px solid var(--line);
-  letter-spacing: 0.05em;
-}
-
-.dayCell {
-  min-height: 100px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--paper);
-  transition: background-color 0.15s;
-}
-
-.dayCell:nth-child(7n) {
-  border-right: none;
-}
-
-.dayCell.otherMonth {
-  background-color: rgba(29, 28, 26, 0.02);
-  color: var(--ink-mute);
-}
-
-.dayCell.today {
-  background-color: rgba(255, 108, 47, 0.04);
-}
-
-.dayHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
-.dayNumber {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  color: var(--ink-soft);
-}
-
-.dayCell.today .dayNumber {
-  background-color: var(--accent);
+  background-color: var(--ink);
   color: var(--paper);
 }
 
-.dayCell.otherMonth .dayNumber {
-  color: var(--ink-mute);
-}
-
-/* Event Badges */
+/* Event List Card Layout (Magazine Feed) */
 .eventsList {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  flex-grow: 1;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
 }
 
-.eventBadge {
+.eventCard {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  box-shadow: var(--elevation-1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  align-items: flex-start;
+}
+
+.eventCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--elevation-2);
+}
+
+/* Left Date Stamp */
+.dateStamp {
+  width: 70px;
+  height: 70px;
+  background-color: var(--cream);
+  border-radius: var(--r-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-solid);
+  flex-shrink: 0;
+}
+
+.dateNumber {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.dateDayName {
   font-family: var(--font-text);
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--ink-mute);
+  margin-top: 0.1rem;
+}
+
+/* Right Content Info */
+.eventContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.categoryTag {
   font-size: 0.75rem;
   font-weight: 700;
-  padding: 0.25rem 0.5rem;
-  border-radius: var(--r-sm);
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  transition: transform 0.15s, opacity 0.15s;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--r-pill);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: fit-content;
 }
 
-.eventBadge:hover {
-  transform: translateY(-1px);
-  opacity: 0.9;
-}
-
-.eventBadge.taller {
+.categoryTag.taller {
   background-color: #deebff;
   color: #0747a6;
-  border-left: 3px solid #0747a6;
 }
 
-.eventBadge.salida {
+.categoryTag.salida {
   background-color: #e3fcef;
   color: #006644;
-  border-left: 3px solid #006644;
 }
 
-.eventBadge.evento {
+.categoryTag.evento {
   background-color: #fffae6;
   color: #172b4d;
-  border-left: 3px solid #f7d070;
+  border: 1px solid #ffebac;
 }
 
-.eventBadge.feriado {
+.categoryTag.feriado {
   background-color: #ffebe6;
   color: #bf2600;
-  border-left: 3px solid #bf2600;
 }
 
-/* Modal Event Detail */
+.eventTitle {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--ink-mute);
+  font-family: var(--font-text);
+  margin-bottom: 0.25rem;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.metaItem svg {
+  color: var(--accent);
+}
+
+.shortDesc {
+  font-family: var(--font-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-bottom: 0.5rem;
+}
+
+.actionRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.readMoreBtn {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0;
+  transition: color 0.2s;
+  letter-spacing: 0.05em;
+}
+
+.readMoreBtn:hover {
+  color: var(--accent-hover);
+}
+
+.groupBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--brand-blue);
+  background-color: rgba(0, 80, 181, 0.06);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--r-sm);
+  text-transform: uppercase;
+}
+
+/* Modal Event Detail (M3 Style Dialog) */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -252,7 +275,7 @@
   right: 0;
   bottom: 0;
   background-color: rgba(29, 28, 26, 0.6);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -262,48 +285,58 @@
 
 .modalContent {
   background-color: var(--bg-elevated);
-  border-radius: var(--r-xl);
+  border-radius: 28px; /* M3 extra rounded */
   width: 100%;
-  max-width: 520px;
+  max-width: 540px;
   box-shadow: var(--elevation-2);
   overflow: hidden;
-  animation: modalEnter 0.25s ease-out;
+  animation: modalEnter 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @keyframes modalEnter {
-  from { transform: scale(0.95); opacity: 0; }
+  from { transform: scale(0.92); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
 
 .modalHeader {
-  padding: 1.5rem 2rem;
-  color: var(--paper);
+  padding: 2rem 2rem 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--line);
 }
 
-.modalHeader.taller { background-color: #0747a6; }
-.modalHeader.salida { background-color: #006644; }
-.modalHeader.evento { background-color: #ffaa00; color: #1d1c1a; }
-.modalHeader.feriado { background-color: #bf2600; }
+.modalTitleWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
 
 .modalTitle {
   font-family: var(--font-display);
-  font-size: 1.8rem;
-  letter-spacing: 0.03em;
+  font-size: 2.2rem;
+  color: var(--ink);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
 }
 
 .closeBtn {
-  background: none;
+  background-color: rgba(29, 28, 26, 0.05);
   border: none;
-  color: inherit;
-  font-size: 1.3rem;
+  color: var(--ink-soft);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   cursor: pointer;
-  padding: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.2s;
+  font-size: 1.1rem;
+}
+
+.closeBtn:hover {
+  background-color: rgba(29, 28, 26, 0.1);
 }
 
 .modalBody {
@@ -313,13 +346,17 @@
   gap: 1.5rem;
 }
 
-.eventMetaList {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+.modalMetaList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  background-color: var(--bg);
+  padding: 1.25rem;
+  border-radius: var(--r-xl);
+  border: 1px solid var(--line);
 }
 
-.metaItem {
+.modalMetaItem {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -328,31 +365,16 @@
   color: var(--ink-soft);
 }
 
-.metaItem svg {
+.modalMetaItem svg {
   color: var(--accent);
   width: 18px;
 }
 
 .eventDescription {
   font-family: var(--font-text);
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.6;
-  color: var(--ink);
-  background-color: var(--bg);
-  padding: 1.25rem;
-  border-radius: var(--r-md);
-  border: 1px solid var(--line);
-}
-
-.groupTag {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--brand-blue);
-  background-color: rgba(0, 80, 181, 0.08);
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--r-pill);
-  width: fit-content;
-  text-transform: uppercase;
+  color: var(--ink-soft);
 }
 
 .loadingContainer {
@@ -360,38 +382,31 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 5rem 2rem;
+  padding: 6rem 2rem;
 }
 
 .spinner {
-  width: 50px;
-  height: 50px;
-  border: 4px solid var(--line);
-  border-top: 4px solid var(--accent);
+  width: 44px;
+  height: 44px;
+  border: 3px solid var(--line);
+  border-top: 3px solid var(--accent);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1.5rem;
 }
 
-/* Responsiveness for small mobile displays */
-@media (max-width: 600px) {
-  .weekdayHeader {
-    font-size: 0.8rem;
-    padding: 0.5rem 0;
-  }
-  .dayCell {
-    min-height: 65px;
-    padding: 0.25rem;
-  }
-  .dayNumber {
-    font-size: 0.9rem;
-    width: 20px;
-    height: 20px;
-  }
-  .eventBadge {
-    padding: 0.1rem 0.2rem;
-    font-size: 0.65rem;
-    border-left: none;
-    border-radius: 2px;
-  }
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.emptyState {
+  padding: 5rem 2rem;
+  text-align: center;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  color: var(--ink-mute);
+  font-family: var(--font-text);
+  font-size: 1.05rem;
 }
