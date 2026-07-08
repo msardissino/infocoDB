@@ -81,6 +81,9 @@
   .container {
     padding: 1.5rem;
   }
+  .boardHeader {
+    display: none;
+  }
   .boardBody {
     grid-template-columns: 1fr;
     gap: 1.25rem;

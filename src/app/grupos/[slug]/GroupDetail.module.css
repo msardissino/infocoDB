@@ -131,13 +131,15 @@
   display: none; /* Oculto en desktop, se comporta como sección abierta común */
 }
 
-.accordionContent {
-  /* Expandido por defecto en desktop */
-  max-height: none !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  overflow: visible !important;
-  display: block !important;
+@media (min-width: 769px) {
+  .accordionContent {
+    /* Expandido por defecto en desktop */
+    max-height: none;
+    opacity: 1;
+    visibility: visible;
+    overflow: visible;
+    display: block;
+  }
 }
 
 .mobileStickyFooter {

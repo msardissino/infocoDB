@@ -132,6 +132,10 @@
 }
 
 @media (max-width: 768px) {
+  .sectionTitle {
+    display: none;
+  }
+
   .desktopGrid {
     display: none;
   }
