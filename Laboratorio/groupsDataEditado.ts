@@ -99,9 +99,9 @@ export const GROUPS_DATA: GroupDetail[] = [
       items: [
         { subtitle: "🤝 Participar", text: "Animarnos a involucrarnos y ser parte de distintas actividades." },
         { subtitle: "🚶 Autonomía", text: "Ganar confianza para movernos en la comunidad" },
-        { subtitle: "❤️ Bienestar", text: "Cuidar nuestras emociones and los vínculos con los demás." },
+        { subtitle: "❤️ Bienestar", text: "Cuidar nuestras emociones y los vínculos con los demás." },
         { subtitle: "👥 Trabajo en equipo", text: "Aprender a compartir, colaborar y construir juntos." },
-        { subtitle: "💬 Comunicación", text: "Esucharnos and encontrar nuevas formas de expresar lo que pensamos y sentimos." }
+        { subtitle: "💬 Comunicación", text: "Esucharnos y encontrar nuevas formas de expresar lo que pensamos y sentimos." }
       ]
     },
     interview: {
@@ -111,7 +111,7 @@ export const GROUPS_DATA: GroupDetail[] = [
         { question: "¿Qué deporte te gusta?", answer: "Mi deporte favorito es el Hockey, desde los 7 años que juego al Hockey. También me gusta mucho el Futbol, ahora con el mundial intento mirar todos los partidos, me gusta el deporte." },
         { question: "¿Qué te gusta comer?", answer: "Me gusta comer de todo, las hamburguesas me gustan mucho, lo confieso (ríe). También la comida que no puede faltar es la milanesa napolitana con papas fritas, me encanta" },
         { question: "¿Qué cosas te hacen reír?", answer: "Las ocurrencias espontáneas. A veces nos quedamos tentados de la risa por cosas muy simples." },
-        { question: "¿Qué es lo que mas te gusta de trabajar con nosotros?", answer: "Lo que mas me gusta de trabajar con ustedes es acompañarlos en sus procesos; me gusta que crezcan, que sean autónomos, que puedan elegir and decidir. Lo que mas me gusta es acompañarlos en ese proceso" },
+        { question: "¿Qué es lo que mas te gusta de trabajar con nosotros?", answer: "Lo que mas me gusta de trabajar con ustedes es acompañarlos en sus procesos; me gusta que crezcan, que sean autónomos, que puedan elegir y decidir. Lo que mas me gusta es acompañarlos en ese proceso" },
         { question: "¿Qué aprendiste de este grupo?", answer: "." }
       ],
       keywords: ["Escucha", "Mateada", "Cuidado"]
@@ -174,9 +174,9 @@ export const GROUPS_DATA: GroupDetail[] = [
     },
     interview: {
       qaList: [
-        { question: "Cómo surge Corazones en Equipo?", answer: "Nace del deseo de unir nuestras pasiones por el arte, la música y el juego en un solo gran latido." },
-        { question: "Qué rol juega la música en tus talleres?", answer: "Es fundamental, nos ayuda a sintonizar nuestros ritmos, liberar tensiones y crear un clima alegre." },
-        { question: "Qué es lo que más valorás del grupo?", answer: "La inmensa empatía que demuestran. Siempre están listos para escucharse y apoyarse." }
+        { question: "¿Cómo surge Corazones en Equipo?", answer: "Nace del deseo de unir nuestras pasiones por el arte, la música y el juego en un solo gran latido." },
+        { question: "¿Qué rol juega la música en tus talleres?", answer: "Es fundamental, nos ayuda a sintonizar nuestros ritmos, liberar tensiones y crear un clima alegre." },
+        { question: "¿Qué es lo que más valorás del grupo?", answer: "La inmensa empatía que demuestran. Siempre están listos para escucharse y apoyarse." }
       ],
       keywords: ["Unidad", "Expresión", "Empatía"]
     },
@@ -215,7 +215,7 @@ export const GROUPS_DATA: GroupDetail[] = [
       name: "Tamara",
       role: "TUTORA DEL GRUPO",
       avatarUrl: "/images/group/la_banda_colorida/Tamara - Tutora.jpg",
-      bio: "Artista visual and docente de educación artística. Impulsora del muralismo comunitario como herramienta social.",
+      bio: "Artista visual y docente de educación artística. Impulsora del muralismo comunitario como herramienta social.",
       quote: "El arte no es para hacerlo bien, es para liberarse.",
       formation: [
         "Acompañante terapéutica",
@@ -249,9 +249,9 @@ export const GROUPS_DATA: GroupDetail[] = [
     }, 
     interview: {
       qaList: [
-        { question: "Por qué pintar juntos?", answer: "Porque el color colectivo tiene una fuerza que el lienzo individual no puede igualar." },
-        { question: "Qué hacés con los errores en la pintura?", answer: "Los transformamos en una nueva idea. El error en el arte es el inicio de tu propio estilo." },
-        { question: "Cuál es el mayor logro de este grupo?", answer: "Ver la sonrisa de todos cuando inauguramos el gran mural del patio. Nos llevó un mes de trabajo." }
+        { question: "¿Por qué pintar juntos?", answer: "Porque el color colectivo tiene una fuerza que el lienzo individual no puede igualar." },
+        { question: "¿Qué hacés con los errores en la pintura?", answer: "Los transformamos en una nueva idea. El error en el arte es el inicio de tu propio estilo." },
+        { question: "¿Cuál es el mayor logro de este grupo?", answer: "Ver la sonrisa de todos cuando inauguramos el gran mural del patio. Nos llevó un mes de trabajo." }
       ],
       keywords: ["Expresión", "Pintura", "Libertad"]
     },
@@ -326,6 +326,6 @@ export const GROUPS_DATA: GroupDetail[] = [
     moments: [
       { imageUrl: "/images/group/quienes_somos/todos.jpg", caption: "Todo el equipo reunido", rotation: -2 }
     ],
-    momentsCaption: "La importance de los procesos"
+    momentsCaption: "La importancia de los procesos"
   }
 ];
