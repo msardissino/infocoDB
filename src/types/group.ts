@@ -12,6 +12,7 @@ export interface GroupTutor {
   bio: string;
   quote: string;
   formation: string[];
+  interests?: string[];
 }
 
 export interface GroupInterviewQA {

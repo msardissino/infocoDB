@@ -33,7 +33,7 @@ export const GroupHeroHeader: React.FC<GroupHeroHeaderProps> = ({ group }) => {
           <PolaroidPhoto 
             src={group.heroCollage[0]} // First image as main landscape group photo
             alt={group.name}
-            aspectRatio="landscape"
+            aspectRatio="square"
             rotation={-3}
             width="100%"
             tape={true}
@@ -112,6 +112,26 @@ export const GroupHeroHeader: React.FC<GroupHeroHeaderProps> = ({ group }) => {
               <FontAwesomeIcon icon={faHeart} />
             </span>
           </div>
+
+          {/* Tutor Interests/Keywords */}
+          {group.tutor.interests && group.tutor.interests.length > 0 && (
+            <div className={styles.interestsSection}>
+              <div className={styles.interestsContainer}>
+                {group.tutor.interests.map((interest, idx) => {
+                  const rotation = [-3, 2, -1, 3][idx % 4];
+                  return (
+                    <span 
+                      key={idx} 
+                      className={styles.interestTag}
+                      style={{ transform: `rotate(${rotation}deg)` }}
+                    >
+                      {interest.toUpperCase()}
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           {/* Formation list */}
           <div className={styles.formationSection}>

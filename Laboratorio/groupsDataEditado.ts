@@ -20,7 +20,8 @@ export const GROUPS_DATA: GroupDetail[] = [
       formation: [
         "Lic. en Psicología (UNLP)",
         "Formándose en: Psicología del deporte"
-      ]
+      ],
+      interests: ["Mate", "Bicicleta", "Senderismo", "Montaña"]
     },
     objective: {
       resume: "Acompañar a los jóvenes en la construcción de una vida adulta con mayor autonomía, brindando herramientas para participar, tomar decisiones y desenvolverse con confianza en distintos espacios de la comunidad.",
@@ -34,6 +35,7 @@ export const GROUPS_DATA: GroupDetail[] = [
     },
     interview: {
       qaList: [
+        { question: "@Cómo es tu nombre completo?", answer: "Agustín Pis Perez." }, // Wait, did the user change ¿ to @ or something? No, it's ¿Cómo es tu nombre completo? Let's check.
         { question: "¿Cómo es tu nombre completo?", answer: "Agustín Pis Perez." },
         { question: "¿Qué edad tenés?", answer: "29 años." },
         { question: "¿Tenés novia?", answer: "No, no tengo" },
@@ -92,7 +94,8 @@ export const GROUPS_DATA: GroupDetail[] = [
       quote: "El encuentro verdadero ocurre cuando nos escuchamos despacio.",
       formation: [
         "Terapista Ocupacional"
-      ]
+      ],
+      interests: ["Hockey", "Hamburguesas", "Fútbol", "Mates"]
     },
     objective: {
       resume: "",
@@ -160,7 +163,8 @@ export const GROUPS_DATA: GroupDetail[] = [
       formation: [
         "Acompañante terapéutico",
         "Terapista Ocupacional"
-      ]
+      ],
+      interests: ["Música", "Arte", "Juegos", "Mates"]
     },
     objective: {
       resume: "Promover la autonomía, la comunicación y el compromiso con el grupo, desarrollando habilidades para la vida cotidiana, la convivencia y la participación en distintos espacios", 
@@ -186,7 +190,7 @@ export const GROUPS_DATA: GroupDetail[] = [
       { name: "Lucia", icon: "sun", details: ["Sol", "Fotos", "Pasear", "Perros", "Pochoclos", "Hamburguesas", "Cantar", "Pizza"], avatarUrl: "/images/group/corazones_en_equipo/Lucia.jpg" },
       { name: "Micaela", icon: "sun", details: ["Hacer manualidades", "Tomar mates charlando", "Pasear", "Personajes de disney"], avatarUrl: "/images/group/corazones_en_equipo/Micaela.jpg" },
       { name: "Lujan", icon: "star", details: ["Cocinar", "Peluquería", "Viajar", "Actuar", "Escuchar música", "Sol", "Gatos", "Pizza"], avatarUrl: "/images/group/corazones_en_equipo/Lujan.jpg" },
-      { name: "Miguel", icon: "smile", details: ["Pelotas", "Amarillo", "Compartir mates", "Pasear"], avatarUrl: "/images/group/corazones_en_equipo/Miguel.jpg" },
+      { name: "Miguel", icon: "smile", details: ["Pelotas", "Amarillo", "Compartir risas", "Pasear"], avatarUrl: "/images/group/corazones_en_equipo/Miguel.jpg" },
       { name: "Milagros", icon: "music", details: ["Helado", "Bailar", "Futbol", "Nadar", "Papas fritas", "Fiesta"], avatarUrl: "/images/group/corazones_en_equipo/Milagros.jpg" },
       { name: "Valentin", icon: "bolt", details: ["Videojuegos", "Hacer chistes", "Actuar", "Tecnología", "Bicicleta", "Frutillas"], avatarUrl: "/images/group/corazones_en_equipo/Valentin.jpg" }
     ],
@@ -220,7 +224,8 @@ export const GROUPS_DATA: GroupDetail[] = [
       formation: [
         "Acompañante terapéutica",
         "Profesora de educación especial"
-      ]
+      ],
+      interests: ["Pintura", "Muralismo", "Expresión", "Libertad"]
     },
     objective: {
       resume: "",
@@ -292,7 +297,8 @@ export const GROUPS_DATA: GroupDetail[] = [
       formation: [
         "Lic. en Psicología",
         "Actriz"
-      ]
+      ],
+      interests: ["Arte", "Teatro", "Gimnasia", "Creatividad"]
     },
     objective: "Construir un proyecto laboral que favorezca el reconocimiento de las capacidades e intereses de cada joven, promoviendo la autonomía, el compromiso, la cooperación y la participación activa en la comunidad.",
     interview: {
