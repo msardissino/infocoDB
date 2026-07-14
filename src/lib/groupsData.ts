@@ -81,6 +81,7 @@ export const GROUPS_DATA: GroupDetail[] = [
     memberCount: 10,
     establishedYear: 2026,
     heroCollage: [
+      "/images/group/buenas_vibras/Grupal.jpg",
       "/images/group/buenas_vibras/Brian.jpg",
       "/images/group/buenas_vibras/Gianni.jpg",
       "/images/group/buenas_vibras/Martina.jpg"
