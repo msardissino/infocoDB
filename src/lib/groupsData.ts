@@ -120,14 +120,15 @@ export const GROUPS_DATA: GroupDetail[] = [
     },
     members: [
       { name: "Brian", icon: "bolt", details: ["Videojuegos", "Fútbol con amigos", "Sacar fotos", "Chocolates", "Tecnología", "Playa"], avatarUrl: "/images/group/buenas_vibras/Brian.jpg" },
-      { name: "Verónica", icon: "bolt", details: ["Música y ritmo", "Fútbol con amigos", "Compartir mates"] },
+      { name: "Verónica", icon: "bolt", details: ["Música y ritmo", "Fútbol con amigos", "Compartir mates"], avatarUrl: "/images/group/buenas_vibras/Vero.jpg" },
       { name: "Gianni", icon: "star", details: ["Futbol", "Sorpresas", "Cantar", "Escuchar música", "Actuar", "Chocolates", "Playa"], avatarUrl: "/images/group/buenas_vibras/Gianni.jpg" },
       { name: "Martina", icon: "heart", details: ["Chocolate", "Tecnología", "Sacar fotos","Café", "Arcoiris", "Gatos"], avatarUrl: "/images/group/buenas_vibras/Martina.jpg" },
       { name: "Valentina", icon: "sun", details: ["Musica", "Viajar", "Arcoiris", "Perros", "Helado", "Estrellas", "Sorpresas"], avatarUrl: "/images/group/buenas_vibras/Valentina.jpg" },
       { name: "Camilo", icon: "sun", details: ["Reir", "Viajar", "Comer", "Las estrellas", "Sorpresas"], avatarUrl: "/images/group/buenas_vibras/Camilo.jpg" },
       { name: "Marcos", icon: "music", details: ["Mate", "Hamburguesas", "Juegos", "Animales", "Correr", "Pintar", "Sorpresas"], avatarUrl: "/images/group/buenas_vibras/Marcos.jpg" },
       { name: "Juan", icon: "music", details: ["Música", "Pintar", "Café", "Helado", "Actuar", "Nadar" ], avatarUrl: "/images/group/buenas_vibras/Juan.jpg" },
-      { name: "Yazmin", icon: "music", details: ["Mate", "Sol", "Música", "Pasear","Pochoclos", "Viajar", "Animales" ], avatarUrl: "/images/group/buenas_vibras/Yazmin.jpg" }
+      { name: "Yazmin", icon: "music", details: ["Mate", "Sol", "Música", "Pasear","Pochoclos", "Viajar", "Animales" ], avatarUrl: "/images/group/buenas_vibras/Yazmin.jpg" },
+      { name: "Joaquín", icon: "smile", details: ["Fútbol con amigos", "Compartir mates", "Videojuegos"], avatarUrl: "/images/group/buenas_vibras/Joaquin.jpg" }
     ],
     messages: [
       { text: "Nos encanta trabajar con vos y buscar cosas en la compu.", author: "#Buenas vibras", color: "blue" },
@@ -282,15 +283,15 @@ export const GROUPS_DATA: GroupDetail[] = [
     slug: "quienes-somos",
     name: "¿Quiénes somos?",
     description: "Preguntas compartidas para pensar la identidad, la historia y los vínculos.",
-    memberCount: 10,
+    memberCount: 8,
     establishedYear: 2025,
     heroCollage: [
-      "/images/group/quienes_somos/todos.jpg"
+      "/images/group/quienes_somos/Grupal.jpg"
     ],
     tutor: {
       name: "Agustina",
       role: "TUTORA DEL GRUPO",
-      avatarUrl: "/images/group/quienes_somos/Agustina - tutora.jpg",
+      avatarUrl: "/images/group/quienes_somos/AgustinaTutora.jpg",
       bio: "Licenciada en Psicología. Acompaña procesos grupales y creativos potenciando la expresión en primera persona.",
       quote: "Nuestra historia no está cerrada, la seguimos escribiendo hoy.",
       formation: [
@@ -316,10 +317,8 @@ export const GROUPS_DATA: GroupDetail[] = [
       { name: "Coti", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"], avatarUrl: "/images/group/quienes_somos/Constanza.jpg" },
       { name: "Martin", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"], avatarUrl: "/images/group/quienes_somos/Martin.jpg" },
       { name: "Mica", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"], avatarUrl: "/images/group/quienes_somos/Micaela.jpg" },
-      { name: "Pancho", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"] },
-      { name: "Sofi", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"] },
       { name: "Mauro", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"], avatarUrl: "/images/group/quienes_somos/Mauro.jpg" },
-      { name: "Andres", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"], avatarUrl: "/images/group/quienes_somos/Andrés.jpg" },
+      { name: "Andres", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"], avatarUrl: "/images/group/quienes_somos/Andres.jpg" },
       { name: "Mati", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"], avatarUrl: "/images/group/quienes_somos/Matias.jpg" },
       { name: "Tomi", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"], avatarUrl: "/images/group/quienes_somos/Tomas.jpg" },
       { name: "Lucas", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"], avatarUrl: "/images/group/quienes_somos/Lucas.jpg" }
@@ -329,7 +328,10 @@ export const GROUPS_DATA: GroupDetail[] = [
       { text: "Gracias por todo lo que aprendemos con vos y por las gorras que hicimos nuevas.", author: "Los Pibes", color: "green" }
     ],
     moments: [
-      { imageUrl: "/images/group/quienes_somos/todos.jpg", caption: "Todo el equipo reunido", rotation: -2 }
+      { imageUrl: "/images/group/quienes_somos/momento2.jpg", caption: "Encuentro al aire libre", rotation: -2 },
+      { imageUrl: "/images/group/quienes_somos/momento3.jpg", caption: "Creando juntos", rotation: 3 },
+      { imageUrl: "/images/group/quienes_somos/momento4.jpg", caption: "Pensando palabras", rotation: -4 },
+      { imageUrl: "/images/group/quienes_somos/momento5.jpg", caption: "Nuestros diseños", rotation: 2 }
     ],
     momentsCaption: "La importancia de los procesos"
   }

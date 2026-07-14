@@ -5,26 +5,21 @@ import { GROUPS_DATA } from "@/lib/groupsData";
 import styles from "./grupos.module.css";
 
 // Static display properties to merge with detail data
-const GROUP_META_MAP: Record<string, { category: string; metadata: string }> = {
+const GROUP_META_MAP: Record<string, { category: string }> = {
   "campeones-del-flow": {
     category: "IDENTIDAD",
-    metadata: "COORDINACIÓN EDITORIAL · 4 MIN LECTURA",
   },
   "buenas-vibras": {
     category: "ENCUENTROS",
-    metadata: "COORDINACIÓN EDITORIAL · 3 MIN LECTURA",
   },
   "la-banda-colorida": {
     category: "EXPRESIÓN",
-    metadata: "COORDINACIÓN EDITORIAL · 5 MIN LECTURA",
   },
   "quienes-somos": {
     category: "REFLEXIÓN",
-    metadata: "COORDINACIÓN EDITORIAL · 6 MIN LECTURA",
   },
   "corazones-en-equipo": {
     category: "UNIDAD",
-    metadata: "COORDINACIÓN EDITORIAL · 4 MIN LECTURA",
   },
 };
 
@@ -33,7 +28,6 @@ export default function GruposPage() {
   const grupos = GROUPS_DATA.map((group) => {
     const meta = GROUP_META_MAP[group.slug] || {
       category: "GRUPO",
-      metadata: "COORDINACIÓN EDITORIAL",
     };
     return {
       slug: group.slug,
@@ -41,7 +35,6 @@ export default function GruposPage() {
       description: group.description,
       image: group.heroCollage[0] || "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?q=80&w=1000&auto=format&fit=crop",
       category: meta.category,
-      metadata: meta.metadata,
     };
   });
 
@@ -65,6 +58,7 @@ export default function GruposPage() {
               className={`${styles.grupoItem} ${index % 2 !== 0 ? styles.reverse : ""}`}
             >
               <div className={styles.imageContainer}>
+                <img src={grupo.image} alt={grupo.title} className={styles.backgroundImage} />
                 <img src={grupo.image} alt={grupo.title} className={styles.image} />
                 <div className={styles.imageOverlay}></div>
               </div>
@@ -72,7 +66,6 @@ export default function GruposPage() {
                 <span className={styles.itemCategory}>{grupo.category}</span>
                 <h2 className={styles.itemTitle}>{grupo.title}</h2>
                 <p className={styles.itemDescription}>{grupo.description}</p>
-                <span className={styles.itemMetadata}>{grupo.metadata}</span>
               </div>
             </Link>
           ))}
