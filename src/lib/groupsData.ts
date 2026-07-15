@@ -8,6 +8,7 @@ export const GROUPS_DATA: GroupDetail[] = [
     memberCount: 10,
     establishedYear: 2026,
     heroCollage: [
+      "/images/group/campeones_del_flow/grupal.jpg",
       "/images/group/campeones_del_flow/todos.jpg",
       "/images/group/campeones_del_flow/todosDos.jpg"
     ],
