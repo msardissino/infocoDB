@@ -214,12 +214,16 @@ export const GROUPS_DATA: GroupDetail[] = [
     memberCount: 8,
     establishedYear: 2026,
     heroCollage: [
-      "/images/group/la_banda_colorida/Tamara - Tutora.jpg"
+      "/images/group/la_banda_colorida/TamaraTutora.jpg",
+      "/images/group/la_banda_colorida/Jano.jpg",
+      "/images/group/la_banda_colorida/Joel.jpg",
+      "/images/group/la_banda_colorida/Jose.jpg",
+      "/images/group/la_banda_colorida/Lucia.jpg"
     ],
     tutor: {
       name: "Tamara",
       role: "TUTORA DEL GRUPO",
-      avatarUrl: "/images/group/la_banda_colorida/Tamara - Tutora.jpg",
+      avatarUrl: "/images/group/la_banda_colorida/TamaraTutora.jpg",
       bio: "Artista visual y docente de educación artística. Impulsora del muralismo comunitario como herramienta social.",
       quote: "El arte no es para hacerlo bien, es para liberarse.",
       formation: [
@@ -262,21 +266,24 @@ export const GROUPS_DATA: GroupDetail[] = [
       keywords: ["Expresión", "Pintura", "Libertad"]
     },
     members: [
-      { name: "Jano", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
+      { name: "Jano", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Jano.jpg" },
       { name: "Jeremías", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
-      { name: "Valentina", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
-      { name: "Joel", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
-      { name: "José", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
-      { name: "Lucia", icon: "heart", details: ["Pintar con acuarelas", "Escuchar música clásica", "Hacer collages"] },
-      { name: "Mili Da Giau", icon: "music", details: ["Tocar la batería", "Grafiti y lettering", "Ver pelis de acción"] },
-      { name: "Mili Costilla", icon: "smile", details: ["Modelar arcilla", "Adoptar gatitos", "Decorar tortas dulces"] }
+      { name: "Valentina", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Valen.jpg" },
+      { name: "Joel", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Joel.jpg" },
+      { name: "José", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Jose.jpg" },
+      { name: "Lucia", icon: "heart", details: ["Pintar con acuarelas", "Escuchar música clásica", "Hacer collages"], avatarUrl: "/images/group/la_banda_colorida/Lucia.jpg" },
+      { name: "Mili Da Giau", icon: "music", details: ["Tocar la batería", "Grafiti y lettering", "Ver pelis de acción"], avatarUrl: "/images/group/la_banda_colorida/MiliDaGiau.jpg" },
+      { name: "Mili Costilla", icon: "smile", details: ["Modelar arcilla", "Adoptar gatitos", "Decorar tortas dulces"], avatarUrl: "/images/group/la_banda_colorida/MiliCostilla.jpg" }
     ],
     messages: [
       { text: "Tamara nos diste la confianza para agarrar el pincel sin miedo.", author: "Lucas", color: "pink" },
       { text: "El taller de arte es mi cable a tierra. ¡Gracias totales!", author: "Elena", color: "yellow" }
     ],
     moments: [
-      { imageUrl: "/images/group/la_banda_colorida/Tamara - Tutora.jpg", caption: "Espacio creativo", rotation: 3 }
+      { imageUrl: "/images/group/la_banda_colorida/TamaraTutora.jpg", caption: "Espacio creativo", rotation: 3 },
+      { imageUrl: "/images/group/la_banda_colorida/MiliCostilla.jpg", caption: "Creando con Mili C.", rotation: -2 },
+      { imageUrl: "/images/group/la_banda_colorida/MiliDaGiau.jpg", caption: "Arte de Mili D.G.", rotation: 4 },
+      { imageUrl: "/images/group/la_banda_colorida/Valen.jpg", caption: "Momento de Valen", rotation: -3 }
     ],
     momentsCaption: "El color que nos une y nos expresa"
   },
@@ -284,10 +291,11 @@ export const GROUPS_DATA: GroupDetail[] = [
     slug: "quienes-somos",
     name: "¿Quiénes somos?",
     description: "Preguntas compartidas para pensar la identidad, la historia y los vínculos.",
-    memberCount: 8,
+    memberCount: 10,
     establishedYear: 2025,
     heroCollage: [
-      "/images/group/quienes_somos/Grupal.jpg"
+      "/images/group/quienes_somos/Grupal.jpg",
+      "/images/group/quienes_somos/todos.jpg"
     ],
     tutor: {
       name: "Agustina",
@@ -315,14 +323,16 @@ export const GROUPS_DATA: GroupDetail[] = [
       keywords: ["Proceso", "Creatividad", "Expresión"]
     },
     members: [
-      { name: "Coti", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"], avatarUrl: "/images/group/quienes_somos/Constanza.jpg" },
-      { name: "Martin", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"], avatarUrl: "/images/group/quienes_somos/Martin.jpg" },
-      { name: "Mica", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"], avatarUrl: "/images/group/quienes_somos/Micaela.jpg" },
-      { name: "Mauro", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"], avatarUrl: "/images/group/quienes_somos/Mauro.jpg" },
-      { name: "Andres", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"], avatarUrl: "/images/group/quienes_somos/Andres.jpg" },
-      { name: "Mati", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"], avatarUrl: "/images/group/quienes_somos/Matias.jpg" },
-      { name: "Tomi", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"], avatarUrl: "/images/group/quienes_somos/Tomas.jpg" },
-      { name: "Lucas", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"], avatarUrl: "/images/group/quienes_somos/Lucas.jpg" }
+      { name: "Coti", icon: "sun", details: ["Animales", "Gatos", "Cantar", "Pizza", "Hamburguesa", "Pintar", "Pasear", "Moda"], avatarUrl: "/images/group/quienes_somos/Constanza.jpg" },
+      { name: "Martin", icon: "heart", details: ["Cantar", "Escuchar música", "Pasear", "Bailar", "Cocinar tortilla", "Futbol", "Arquero", "Sol"], avatarUrl: "/images/group/quienes_somos/Martin.jpg" },
+      { name: "Mica", icon: "coffee", details: ["Viajar", "Nadar", "Taekwondo", "Sacar fotos", "Escuchar música", "Hamburguesas", "Café", "Futbol", "Perros"], avatarUrl: "/images/group/quienes_somos/Micaela.jpg" },
+      { name: "Mauro", icon: "heart", details: ["Futbol", "Deporte", "Bailar", "Actuar"], avatarUrl: "/images/group/quienes_somos/Mauro.jpg" },
+      { name: "Andres", icon: "smile", details: ["Reir", "Viajar", "Pasear", "Hamburguesas", "Bailar"], avatarUrl: "/images/group/quienes_somos/Andres.jpg" },
+      { name: "Mati", icon: "music", details: ["Música", "Bailar", "Reir", "Sol", "Pizza", "Futbol"], avatarUrl: "/images/group/quienes_somos/Matias.jpg" },
+      { name: "Tomi", icon: "sun", details: ["Escuchar música", "Frutillas", "Sol", "Actuar", "Perros", "Nadar", "Helado", "Tecnología", "Pintar"], avatarUrl: "/images/group/quienes_somos/Tomas.jpg" },
+      { name: "Lucas", icon: "heart", details: ["Actuar", "Videojuegos", "Cantar", "Escuchar música", "Viajar", "Sandía", "Sacar fotos", "Perros", "Helado", "Nadar", "Tecnología"], avatarUrl: "/images/group/quienes_somos/Lucas.jpg" },
+      { name: "Sofi", icon: "sun", details: ["Sol", "Pochoclos", "Cantar", "Escuchar música", "Hamburguesas", "Fiesta", "Sorpresas", "Pintar", "Pizza"], avatarUrl: "/images/group/quienes_somos/Sofi.jpg" },
+      { name: "Pancho", icon: "smile", details: ["Futbol", "Nadar", "Helado"], avatarUrl: "/images/group/quienes_somos/Pancho.jpg" }
     ],
     messages: [
       { text: "Nos gusta mucho viajar con ella, comer juntos, los congresos... ¡Te queremos mucho Agus!", author: "Los Pibes", color: "yellow" },

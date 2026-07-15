@@ -50,25 +50,39 @@ export default function GruposPage() {
         icon={faUsers}
         backgroundImage="/images/covers/cover_grupos.jpeg"
       >
-        <div className={styles.gruposList}>
-          {grupos.map((grupo, index) => (
-            <Link 
-              key={grupo.title} 
-              href={`/grupos/${grupo.slug}`}
-              className={`${styles.grupoItem} ${index % 2 !== 0 ? styles.reverse : ""}`}
-            >
-              <div className={styles.imageContainer}>
-                <img src={grupo.image} alt={grupo.title} className={styles.backgroundImage} />
-                <img src={grupo.image} alt={grupo.title} className={styles.image} />
-                <div className={styles.imageOverlay}></div>
-              </div>
-              <div className={styles.content}>
-                <span className={styles.itemCategory}>{grupo.category}</span>
-                <h2 className={styles.itemTitle}>{grupo.title}</h2>
-                <p className={styles.itemDescription}>{grupo.description}</p>
-              </div>
-            </Link>
-          ))}
+        <div className={styles.pageContainer}>
+          {/* Background Watercolor Stains */}
+          <img src="/images/svg/acuarela.svg" alt="" className={`${styles.watercolorStain} ${styles.stainLarge} ${styles.stainPos1}`} />
+          <img src="/images/svg/acuarela.svg" alt="" className={`${styles.watercolorStain} ${styles.stainMedium} ${styles.stainPos2}`} />
+          <img src="/images/svg/acuarela.svg" alt="" className={`${styles.watercolorStain} ${styles.stainSmall} ${styles.stainPos3}`} />
+          <img src="/images/svg/acuarela.svg" alt="" className={`${styles.watercolorStain} ${styles.stainLarge} ${styles.stainPos4}`} />
+          <img src="/images/svg/acuarela.svg" alt="" className={`${styles.watercolorStain} ${styles.stainMedium} ${styles.stainPos5}`} />
+          <img src="/images/svg/acuarela.svg" alt="" className={`${styles.watercolorStain} ${styles.stainMedium} ${styles.stainPos6}`} />
+          <img src="/images/svg/acuarela.svg" alt="" className={`${styles.watercolorStain} ${styles.stainTiny} ${styles.stainPos7}`} />
+          <img src="/images/svg/acuarela.svg" alt="" className={`${styles.watercolorStain} ${styles.stainTiny} ${styles.stainPos8}`} />
+          <img src="/images/svg/acuarela.svg" alt="" className={`${styles.watercolorStain} ${styles.stainTiny} ${styles.stainPos9}`} />
+          <img src="/images/svg/acuarela.svg" alt="" className={`${styles.watercolorStain} ${styles.stainTiny} ${styles.stainPos10}`} />
+
+          <div className={styles.gruposList}>
+            {grupos.map((grupo, index) => (
+              <Link
+                key={grupo.title}
+                href={`/grupos/${grupo.slug}`}
+                className={`${styles.grupoItem} ${index % 2 !== 0 ? styles.reverse : ""}`}
+              >
+                <div className={styles.imageContainer}>
+                  <img src={grupo.image} alt={grupo.title} className={styles.backgroundImage} />
+                  <img src={grupo.image} alt={grupo.title} className={styles.image} />
+                  <div className={styles.imageOverlay}></div>
+                </div>
+                <div className={styles.content}>
+                  <span className={styles.itemCategory}>{grupo.category}</span>
+                  <h2 className={styles.itemTitle}>{grupo.title}</h2>
+                  <p className={styles.itemDescription}>{grupo.description}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </SectionHero>
     </main>
