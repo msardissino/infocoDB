@@ -27,7 +27,7 @@ export const NewsSection = () => {
           .from("noticias")
           .select("id, slug, title, date, image_url")
           .order("created_at", { ascending: false })
-          .limit(3);
+          .limit(2);
 
         if (error) throw error;
         setNewsItems(data || []);
