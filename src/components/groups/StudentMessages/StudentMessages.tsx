@@ -33,7 +33,9 @@ export const StudentMessages: React.FC<StudentMessagesProps> = ({ messages }) =>
                 className={styles.boardPostIt}
               >
                 <p className={styles.messageText}>&quot;{msg.text}&quot;</p>
-                <span className={styles.author}>— {msg.author}</span>
+                {msg.author && msg.author.trim() !== "" && (
+                  <span className={styles.author}>— {msg.author}</span>
+                )}
               </PostItNote>
             </div>
           );

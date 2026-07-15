@@ -132,15 +132,17 @@ export default function GroupDetailPage() {
               <GroupMembers members={group.members} />
             </AccordionPanel>
 
-            <AccordionPanel 
-              title="¿QUÉ LE QUIEREN DECIR LOS PIBES AL TUTOR?"
-              panelKey="messages"
-              isOpen={openPanels.messages}
-              onToggle={() => togglePanel("messages")}
-              className={styles.messagesPanel}
-            >
-              <StudentMessages messages={group.messages} />
-            </AccordionPanel>
+            {group.messages && group.messages.length > 0 && (
+              <AccordionPanel 
+                title="¿QUÉ LE QUIEREN DECIR LOS PIBES AL TUTOR?"
+                panelKey="messages"
+                isOpen={openPanels.messages}
+                onToggle={() => togglePanel("messages")}
+                className={styles.messagesPanel}
+              >
+                <StudentMessages messages={group.messages} />
+              </AccordionPanel>
+            )}
           </div>
 
           {/* Gallery Moments */}

@@ -63,10 +63,8 @@ export const GROUPS_DATA: GroupDetail[] = [
       { name: "Miguel", icon: "coffee", details: ["Fútbol", "Compartir mates", "Ver películas"], avatarUrl: "/images/group/campeones_del_flow/Miguel.jpg" }
     ],
     messages: [
-      { text: "Gracias por bancarnos siempre y por escucharnos.", author: "Miguel", color: "yellow" },
-      { text: "Sos buen compañero, siempre estás.", author: "Antonella", color: "pink" },
-      { text: "Gracias por enseñar desde el corazón.", author: "Clara", color: "green" },
-      { text: "Por más mates y charlas como las de siempre :)", author: "Antonio", color: "pink" }
+      { text: "Gracias agus por estar siempre con nosotros", author: "", color: "yellow" },
+      { text: "Por mas mates y charlas", author: "", color: "pink" }
     ],
     moments: [
       { imageUrl: "/images/group/campeones_del_flow/momento.jpg", caption: "❤️", rotation: -3 },
@@ -92,7 +90,7 @@ export const GROUPS_DATA: GroupDetail[] = [
       role: "TUTORA DEL GRUPO",
       avatarUrl: "/images/group/buenas_vibras/CatalinaTutor.jpg",
       bio: "Coordinadora de talleres de integración. Cree en el poder de la cotidianidad y el juego para sanar vínculos.",
-      quote: "El encuentro verdadero ocurre cuando nos escuchamos despacio.",
+      quote: "Me gusta acompañarlos en sus procesos",
       formation: [
         "Terapista Ocupacional"
       ],
@@ -110,13 +108,11 @@ export const GROUPS_DATA: GroupDetail[] = [
     },
     interview: {
       qaList: [
-        { question: "¿Cómo surgió el nombre 'Buenas Vibras'?", answer: "" },
         { question: "¿De qué te vas a recibir?", answer: "Este año me recibo de terapista ocupacional si todo sale bien el 13 de Julio, ya falta poco, solo un mes." },
         { question: "¿Qué deporte te gusta?", answer: "Mi deporte favorito es el Hockey, desde los 7 años que juego al Hockey. También me gusta mucho el Futbol, ahora con el mundial intento mirar todos los partidos, me gusta el deporte." },
         { question: "¿Qué te gusta comer?", answer: "Me gusta comer de todo, las hamburguesas me gustan mucho, lo confieso (ríe). También la comida que no puede faltar es la milanesa napolitana con papas fritas, me encanta" },
         { question: "¿Qué cosas te hacen reír?", answer: "Las ocurrencias espontáneas. A veces nos quedamos tentados de la risa por cosas muy simples." },
-        { question: "¿Qué es lo que mas te gusta de trabajar con nosotros?", answer: "Lo que mas me gusta de trabajar con ustedes es acompañarlos en sus procesos; me gusta que crezcan, que sean autónomos, que puedan elegir y decidir. Lo que mas me gusta es acompañarlos en ese proceso" },
-        { question: "¿Qué aprendiste de este grupo?", answer: "." }
+        { question: "¿Qué es lo que mas te gusta de trabajar con nosotros?", answer: "Lo que mas me gusta de trabajar con ustedes es acompañarlos en sus procesos; me gusta que crezcan, que sean autónomos, que puedan elegir y decidir. Lo que mas me gusta es acompañarlos en ese proceso" }
       ],
       keywords: ["Escucha", "Mateada", "Cuidado"]
     },
@@ -139,9 +135,11 @@ export const GROUPS_DATA: GroupDetail[] = [
       { text: "No te vayas . Te queremos.", author: "#Buenas vibras", color: "green" }
     ],
     moments: [
-      { imageUrl: "/images/group/buenas_vibras/Brian.jpg", caption: "Compartiendo momentos", rotation: -2 },
-      { imageUrl: "/images/group/buenas_vibras/Gianni.jpg", caption: "Tarde de risas", rotation: 3 },
-      { imageUrl: "/images/group/buenas_vibras/Martina.jpg", caption: "Risas compartidas", rotation: -4 }
+      { imageUrl: "/images/group/buenas_vibras/momento.jpg", caption: "Compartiendo momentos", rotation: -2 },
+      { imageUrl: "/images/group/buenas_vibras/momento2.jpg", caption: "Tarde de risas", rotation: 3 },
+      { imageUrl: "/images/group/buenas_vibras/momento3.jpg", caption: "Risas compartidas", rotation: -4 },
+      { imageUrl: "/images/group/buenas_vibras/momento4.jpg", caption: "Creando juntos", rotation: 2 },
+      { imageUrl: "/images/group/buenas_vibras/momento5.jpg", caption: "Nuestro espacio", rotation: -3 }
     ],
     momentsCaption: "El valor de compartir momentos simples"
   },
@@ -160,13 +158,13 @@ export const GROUPS_DATA: GroupDetail[] = [
       name: "Sebastián",
       role: "TUTOR DEL GRUPO",
       avatarUrl: "/images/group/corazones_en_equipo/SebastianTutor.jpg",
-      bio: "Coordinador de actividades recreativas y artísticas. Apasionado por la música y el trabajo grupal.",
+      bio: "Me gusta verlos trabajar tanto grupal como individualmente",
       quote: "La música y el juego nos conectan desde el alma.",
       formation: [
-        "Acompañante terapéutico",
-        "Terapista Ocupacional"
+        "Estudiante avanzado de Terapia Ocupacional",
+        "Acompañante terapéutico"
       ],
-      interests: ["Música", "Arte", "Juegos", "Mates"]
+      interests: ["Fútbol", "Tenis", "Asado", "Pasear", "Mate", "Cancha"]
     },
     objective: {
       resume: "Promover la autonomía, la comunicación y el compromiso con el grupo, desarrollando habilidades para la vida cotidiana, la convivencia y la participación en distintos espacios", 
@@ -180,9 +178,15 @@ export const GROUPS_DATA: GroupDetail[] = [
     },
     interview: {
       qaList: [
-        { question: "¿Cómo surge Corazones en Equipo?", answer: "Nace del deseo de unir nuestras pasiones por el arte, la música y el juego en un solo gran latido." },
-        { question: "¿Qué rol juega la música en tus talleres?", answer: "Es fundamental, nos ayuda a sintonizar nuestros ritmos, liberar tensiones y crear un clima alegre." },
-        { question: "¿Qué es lo que más valorás del grupo?", answer: "La inmensa empatía que demuestran. Siempre están listos para escucharse y apoyarse." }
+        { question: "¿Qué edad tenés?", answer: "30 añitos." },
+        { question: "¿Tenés novia?", answer: "Sí, Rocío." },
+        { question: "¿Te gusta algún deporte? ¿Cuál?", answer: "Soy fanático del fútbol. Me gusta mirarlo y jugarlo. También me gusta jugar al tenis 🎾." },
+        { question: "¿De qué cuadro sos?", answer: "De Gimnasia y Esgrima La Plata, el lobito 🐺." },
+        { question: "¿Tenés algún hobbie?", answer: "Me gusta mucho hacer asado y estar al lado del fueguito 🔥. También me gusta salir a pasear algún domingo/feriado. Tomar mate 🧉 ir a la cancha." },
+        { question: "¿Qué comida te gusta?", answer: "Milanesa napolitana con puré, peceto a la naranja con puré y guiso de lentejas. Mi top." },
+        { question: "¿Cuál es tu profesión? / ¿Qué estás estudiando?", answer: "Soy estudiante avanzado de Terapia Ocupacional. Además soy acompañante terapéutico." },
+        { question: "¿Cómo surge \"Corazones en equipo\"?", answer: "Tardamos varios días en definirlo. Surgían palabras muy sueltas. Entonces decidimos empezar a jugar con ellas hasta que formamos \"Corazones En Equipo\"." },
+        { question: "¿Qué es lo que más te gusta de trabajar en Intres y con este grupo?", answer: "El estar con y para los pibes básicamente. Y con el grupo ver los procesos diariamente, tanto grupalmente como individualmente." }
       ],
       keywords: ["Unidad", "Expresión", "Empatía"]
     },
@@ -197,9 +201,8 @@ export const GROUPS_DATA: GroupDetail[] = [
       { name: "Valentin", icon: "bolt", details: ["Videojuegos", "Hacer chistes", "Actuar", "Tecnología", "Bicicleta", "Frutillas"], avatarUrl: "/images/group/corazones_en_equipo/Valentin.jpg" }
     ],
     messages: [
-      { text: "Gracias Sebas por traer siempre tanta buena energía y música.", author: "Dalila", color: "pink" },
-      { text: "Nos hacés sentir parte de un equipo de verdad.", author: "Valentin", color: "green" },
-      { text: "Gracias por la paciencia y los momentos compartidos.", author: "Lucia", color: "yellow" }
+      { text: "Gracias por ser bueno con nosotros", author: "", color: "pink" },
+      { text: "Aprendemos un monton con vos", author: "", color: "green" }
     ],
     moments: [
       { imageUrl: "/images/group/corazones_en_equipo/Dalila.jpg", caption: "Talleres y expresión", rotation: -2 },
@@ -225,8 +228,8 @@ export const GROUPS_DATA: GroupDetail[] = [
       name: "Tamara",
       role: "TUTORA DEL GRUPO",
       avatarUrl: "/images/group/la_banda_colorida/TamaraTutora.jpg",
-      bio: "Artista visual y docente de educación artística. Impulsora del muralismo comunitario como herramienta social.",
-      quote: "El arte no es para hacerlo bien, es para liberarse.",
+      bio: "Busca promover espacios tanto de disfrute como de tranquilidad.",
+      quote: "No hay una forma de hacerlo bien",
       formation: [
         "Acompañante terapéutica",
         "Profesora de educación especial"
@@ -276,10 +279,7 @@ export const GROUPS_DATA: GroupDetail[] = [
       { name: "Mili Da Giau", icon: "music", details: ["Tocar la batería", "Grafiti y lettering", "Ver pelis de acción"], avatarUrl: "/images/group/la_banda_colorida/MiliDaGiau.jpg" },
       { name: "Mili Costilla", icon: "smile", details: ["Modelar arcilla", "Adoptar gatitos", "Decorar tortas dulces"], avatarUrl: "/images/group/la_banda_colorida/MiliCostilla.jpg" }
     ],
-    messages: [
-      { text: "Tamara nos diste la confianza para agarrar el pincel sin miedo.", author: "Lucas", color: "pink" },
-      { text: "El taller de arte es mi cable a tierra. ¡Gracias totales!", author: "Elena", color: "yellow" }
-    ],
+    messages: [],
     moments: [
       { imageUrl: "/images/group/la_banda_colorida/TamaraTutora.jpg", caption: "Espacio creativo", rotation: 3 },
       { imageUrl: "/images/group/la_banda_colorida/MiliCostilla.jpg", caption: "Creando con Mili C.", rotation: -2 },
@@ -303,12 +303,12 @@ export const GROUPS_DATA: GroupDetail[] = [
       role: "TUTORA DEL GRUPO",
       avatarUrl: "/images/group/quienes_somos/AgustinaTutora.jpg",
       bio: "Licenciada en Psicología. Acompaña procesos grupales y creativos potenciando la expresión en primera persona.",
-      quote: "Nuestra historia no está cerrada, la seguimos escribiendo hoy.",
+      quote: "Quiero que logren hablar en primera persona",
       formation: [
         "Lic. en Psicología",
         "Actriz"
       ],
-      interests: ["Arte", "Teatro", "Gimnasia", "Creatividad"]
+      interests: ["Arte", "Teatro", "Creatividad"]
     },
     objective: "Construir un proyecto laboral que favorezca el reconocimiento de las capacidades e intereses de cada joven, promoviendo la autonomía, el compromiso, la cooperación y la participación activa en la comunidad.",
     interview: {
@@ -318,7 +318,6 @@ export const GROUPS_DATA: GroupDetail[] = [
         { question: "¿De qué te recibiste?", answer: "Me recibí de Licenciada en Psicología. Tuve la suerte de que me estén acompañando y disfrutando conmigo." },
         { question: "¿Qué edad tenés?", answer: "26 años." },
         { question: "¿Tenés novio?", answer: "Sí." },
-        { question: "¿Te gusta el fútbol?", answer: "No le doy mucha bolilla pero soy de Gimnasia." },
         { question: "¿Y algún otro deporte?", answer: "Soy más del palo del arte." }
       ],
       keywords: ["Proceso", "Creatividad", "Expresión"]

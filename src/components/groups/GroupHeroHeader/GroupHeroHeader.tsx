@@ -29,7 +29,12 @@ export const GroupHeroHeader: React.FC<GroupHeroHeaderProps> = ({ group }) => {
           <PolaroidPhoto 
             src={group.heroCollage[0]} // First image as main landscape group photo
             alt={group.name}
-            aspectRatio="square"
+            aspectRatio={
+              group.heroCollage[0]?.toLowerCase().includes("grupal") || 
+              group.heroCollage[0]?.toLowerCase().includes("todos")
+                ? "landscape"
+                : "square"
+            }
             rotation={-3}
             width="100%"
             tape={true}
