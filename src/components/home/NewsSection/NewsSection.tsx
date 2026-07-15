@@ -88,7 +88,7 @@ export const NewsSection = () => {
               <div className={styles.content}>
                 <div className={styles.textContent}>
                   <h3 className={styles.cardTitle}>{item.title}</h3>
-                  <span className={styles.date}>{item.date}</span>
+                  <span className={styles.date}>{item.date?.toUpperCase()}</span>
                 </div>
                 <div className={styles.arrowIcon}>
                   <FontAwesomeIcon icon={faChevronRight} />

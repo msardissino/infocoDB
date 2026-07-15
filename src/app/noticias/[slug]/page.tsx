@@ -140,7 +140,7 @@ export default function NewsDetailPage() {
                 </div>
                 <div>
                   <div className={styles.metaLabel}>FECHA</div>
-                  <div className={styles.metaValue}>{news.date}</div>
+                  <div className={styles.metaValue}>{news.date?.toUpperCase()}</div>
                 </div>
               </div>
 

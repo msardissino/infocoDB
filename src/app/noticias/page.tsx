@@ -133,7 +133,7 @@ export default function NoticiasPage() {
                       <div className={styles.meta}>
                         <div className={styles.metaItem}>
                           <FontAwesomeIcon icon={faCalendarAlt} />
-                          <span>{item.date}</span>
+                          <span>{item.date?.toUpperCase()}</span>
                         </div>
                         <div className={styles.metaItem}>
                           <FontAwesomeIcon icon={faClock} />

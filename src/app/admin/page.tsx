@@ -1099,7 +1099,7 @@ export default function AdminDashboard() {
                             </span>
                           </td>
                           <td>
-                            <div>{item.date}</div>
+                            <div>{item.date?.toUpperCase()}</div>
                             <div style={{ fontSize: "0.85rem", color: "var(--ink-mute)" }}>{item.time}</div>
                           </td>
                           <td>
