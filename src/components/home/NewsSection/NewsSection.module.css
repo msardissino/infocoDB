@@ -112,3 +112,8 @@
     padding: 1.5rem;
   }
 }
+
+.cardLink {
+  text-decoration: none;
+  display: block;
+}
