@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
-  faArrowLeft, 
   faCalendarAlt, 
   faClock, 
   faMapMarkerAlt, 
@@ -97,8 +96,7 @@ export default function NewsDetailPage() {
       <div className={styles.container}>
         <div className={styles.topNav}>
           <button onClick={() => router.back()} className={styles.backButton}>
-            <FontAwesomeIcon icon={faArrowLeft} />
-            <span>VOLVER</span>
+            ← VOLVER
           </button>
         </div>
 
