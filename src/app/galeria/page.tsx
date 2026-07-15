@@ -1,6 +1,5 @@
 import { SectionHero } from "@/ui/SectionHero/SectionHero";
 import { faCamera, faHammer } from "@fortawesome/free-solid-svg-icons";
-import { Breadcrumb } from "@/ui/Breadcrumb/Breadcrumb";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./galeria.module.css";
 
@@ -19,7 +18,6 @@ export default function GaleriaPage() {
         showOverlay={true}
       >
         <div className={styles.container}>
-          <Breadcrumb items={[{ label: "GALERÍA" }]} />
           
           <div className={styles.grid}>
             {[1, 2, 3, 4, 5, 6].map((i) => (

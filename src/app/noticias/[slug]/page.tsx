@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { Breadcrumb } from "@/ui/Breadcrumb/Breadcrumb";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faArrowLeft, 
@@ -101,12 +100,6 @@ export default function NewsDetailPage() {
             <FontAwesomeIcon icon={faArrowLeft} />
             <span>VOLVER</span>
           </button>
-          <Breadcrumb 
-            items={[
-              { label: "NOTICIAS", path: "/noticias" },
-              { label: news.title.toUpperCase() }
-            ]} 
-          />
         </div>
 
         <div className={styles.layoutGrid}>

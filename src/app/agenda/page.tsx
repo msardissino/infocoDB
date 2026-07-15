@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { SectionHero } from "@/ui/SectionHero/SectionHero";
-import { Breadcrumb } from "@/ui/Breadcrumb/Breadcrumb";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faCalendarDay, 
@@ -151,7 +150,6 @@ export default function AgendaPage() {
         backgroundImage="/images/covers/cover_agenda.jpeg"
       >
         <div className={styles.container}>
-          <Breadcrumb items={[{ label: "AGENDA" }]} />
 
           {/* Monthly Navigation Tabs */}
           <div className={styles.magazineTabs} role="tablist" aria-label="Seleccionar mes de la agenda">

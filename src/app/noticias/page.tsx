@@ -11,8 +11,7 @@ import {
   faUtensils,
   faCalendarAlt,
   faClock,
-  faMapMarkerAlt,
-  faArrowRight
+  faMapMarkerAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { supabase } from "@/lib/supabase/client";
@@ -77,11 +76,6 @@ export default function NoticiasPage() {
         backgroundImage="/bg-actividades.jpg"
       >
         <div className={styles.timelineContainer}>
-          <div className={styles.headerAction}>
-            <Link href="/agenda" className={styles.agendaButton}>
-              VER AGENDA COMPLETA <FontAwesomeIcon icon={faArrowRight} />
-            </Link>
-          </div>
 
           {loading ? (
             <div style={{ display: "flex", justifyContent: "center", padding: "4rem 0" }}>

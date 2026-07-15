@@ -15,14 +15,10 @@ interface GroupHeroHeaderProps {
 export const GroupHeroHeader: React.FC<GroupHeroHeaderProps> = ({ group }) => {
   return (
     <div className={styles.heroSection}>
-      {/* Breadcrumbs */}
-      <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
-        <Link href="/" className={styles.breadcrumbLink}>INICIO</Link>
-        <span className={styles.separator}>›</span>
-        <Link href="/grupos" className={styles.breadcrumbLink}>GRUPOS</Link>
-        <span className={styles.separator}>›</span>
-        <span className={styles.activeBreadcrumb}>{group.name.toUpperCase()}</span>
-      </nav>
+      {/* Volver Button */}
+      <Link href="/grupos" className={styles.backBtn}>
+        ← VOLVER
+      </Link>
 
       <div className={styles.mainGrid}>
         {/* Column 1: Left - Landscape Group Polaroid */}

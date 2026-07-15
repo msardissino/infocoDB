@@ -1,6 +1,5 @@
 import { SectionHero } from "@/ui/SectionHero/SectionHero";
 import { faComments, faHammer } from "@fortawesome/free-solid-svg-icons";
-import { Breadcrumb } from "@/ui/Breadcrumb/Breadcrumb";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./voces.module.css";
 
@@ -18,7 +17,6 @@ export default function VocesPage() {
         backgroundImage="/images/covers/cover-voces.jpeg"
       >
         <div className={styles.container}>
-          <Breadcrumb items={[{ label: "VOCES" }]} />
           
           <div className={styles.constructionView}>
             <div className={styles.iconCircle}>
