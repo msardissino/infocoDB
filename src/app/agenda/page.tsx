@@ -297,7 +297,11 @@ export default function AgendaPage() {
                 <div className={styles.modalMetaItem}>
                   <FontAwesomeIcon icon={faCalendarDay} />
                   <span>
-                    {selectedEvent.date.split("-").reverse().join("/")}
+                    {(() => {
+                      const parts = selectedEvent.date.split("-");
+                      if (parts.length !== 3) return selectedEvent.date;
+                      return `${parts[2]}/${parts[1]}/${parts[0].substring(2)}`;
+                    })()}
                   </span>
                 </div>
                 {selectedEvent.time && (

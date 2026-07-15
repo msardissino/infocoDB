@@ -64,6 +64,29 @@ const NEWS_ICONS = [
   { value: "utensils", label: "Cocina / Comida (utensils)" }
 ];
 
+const formatDateToUi = (dbDateStr: string | null): string => {
+  if (!dbDateStr) return "";
+  const parts = dbDateStr.split("-");
+  if (parts.length !== 3) return dbDateStr;
+  const year = parts[0].substring(2); // Extract last 2 digits (yy)
+  const month = parts[1];
+  const day = parts[2];
+  return `${day}/${month}/${year}`;
+};
+
+const parseDateToDb = (uiDateStr: string | null): string => {
+  if (!uiDateStr) return "";
+  const parts = uiDateStr.split("/");
+  if (parts.length !== 3) return uiDateStr;
+  const day = parts[0].padStart(2, "0");
+  const month = parts[1].padStart(2, "0");
+  let year = parts[2];
+  if (year.length === 2) {
+    year = "20" + year;
+  }
+  return `${year}-${month}-${day}`;
+};
+
 export default function AdminDashboard() {
   const router = useRouter();
   const [authLoading, setAuthLoading] = useState(true);
@@ -194,12 +217,20 @@ export default function AdminDashboard() {
     e.preventDefault();
     setErrorMsg("");
     setSuccessMsg("");
+
+    // Validate format dd/mm/yy or dd/mm/yyyy
+    const dateRegex = /^\d{2}\/\d{2}\/(\d{2}|\d{4})$/;
+    if (!dateRegex.test(agDate)) {
+      setErrorMsg("La fecha debe estar en formato dd/mm/yy (ej: 15/07/26)");
+      return;
+    }
+
     setSubmitting(true);
 
     const payload = {
       title: agTitle,
       description: agDescription || null,
-      date: agDate,
+      date: parseDateToDb(agDate),
       time: agTime || null,
       location: agLocation || null,
       category: agCategory,
@@ -238,7 +269,7 @@ export default function AdminDashboard() {
     setAgEditingId(event.id);
     setAgTitle(event.title);
     setAgDescription(event.description || "");
-    setAgDate(event.date);
+    setAgDate(formatDateToUi(event.date));
     setAgTime(event.time || "");
     setAgLocation(event.location || "");
     setAgCategory(event.category);
@@ -287,7 +318,25 @@ export default function AdminDashboard() {
   const previewDateInfo = useMemo(() => {
     if (!agDate) return { dayNum: "00", dayName: "DIA" };
     try {
-      const [year, month, day] = agDate.split("-").map(Number);
+      let day, month, year;
+      if (agDate.includes("/")) {
+        const parts = agDate.split("/");
+        day = Number(parts[0]);
+        month = Number(parts[1]);
+        let yearStr = parts[2];
+        if (yearStr.length === 2) yearStr = "20" + yearStr;
+        year = Number(yearStr);
+      } else {
+        const parts = agDate.split("-");
+        year = Number(parts[0]);
+        month = Number(parts[1]);
+        day = Number(parts[2]);
+      }
+      
+      if (isNaN(day) || isNaN(month) || isNaN(year)) {
+        return { dayNum: "00", dayName: "DIA" };
+      }
+      
       const dateObj = new Date(year, month - 1, day);
       const dayName = dateObj.toLocaleDateString("es-AR", { weekday: "short" }).toUpperCase().replace(".", "");
       return {
@@ -543,10 +592,11 @@ export default function AdminDashboard() {
                   <div className={styles.formGroup}>
                     <label className={styles.label}>FECHA *</label>
                     <input
-                      type="date"
+                      type="text"
                       className={styles.input}
                       value={agDate}
                       onChange={(e) => setAgDate(e.target.value)}
+                      placeholder="dd/mm/yy (ej: 15/07/26)"
                       required
                     />
                   </div>
@@ -734,7 +784,7 @@ export default function AdminDashboard() {
                       {filteredEvents.map((ev) => (
                         <tr key={ev.id}>
                           <td style={{ whiteSpace: "nowrap" }}>
-                            {ev.date.split("-").reverse().join("/")}
+                            {formatDateToUi(ev.date)}
                           </td>
                           <td>
                             <strong>{ev.title}</strong>
