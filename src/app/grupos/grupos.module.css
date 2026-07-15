@@ -131,8 +131,9 @@
 
 .imageContainer {
   flex: 1;
+  max-width: 480px;
   position: relative;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   border-radius: var(--r-lg);
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
@@ -157,7 +158,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   transition: transform 0.5s ease;
   z-index: 2;
 }
@@ -266,6 +267,7 @@
 
   .imageContainer {
     width: 100%;
+    max-width: 100%;
   }
 
   .itemTitle {
