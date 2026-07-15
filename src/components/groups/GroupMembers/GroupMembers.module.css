@@ -90,9 +90,11 @@
 /* Details list */
 .detailsList {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: column;
+  grid-template-rows: repeat(5, auto);
+  gap: 0.25rem 1rem;
   padding-left: 0.25rem;
 }
 
@@ -205,7 +207,7 @@
   }
   
   .expanded {
-    max-height: 150px; /* Ajuste para desplegar la lista */
+    max-height: 400px; /* Ajuste para desplegar la lista completa */
     padding: 0 1rem 1rem 3.25rem; /* Alineado con el nombre */
     border-top: 1px dashed rgba(29, 28, 26, 0.05);
     padding-top: 0.75rem;
@@ -232,5 +234,12 @@
   .viewAllBtn:hover {
     background-color: var(--accent);
     color: var(--paper);
+  }
+
+  .detailsList {
+    grid-template-columns: 1fr;
+    grid-auto-flow: row;
+    grid-template-rows: none;
+    gap: 0.25rem;
   }
 }

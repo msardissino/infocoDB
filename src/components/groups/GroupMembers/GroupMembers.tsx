@@ -67,7 +67,7 @@ export const GroupMembers: React.FC<GroupMembersProps> = ({ members }) => {
                 )}
               </div>
               <ul className={styles.detailsList}>
-                {member.details.map((detail, dIdx) => (
+                {member.details.slice(0, 10).map((detail, dIdx) => (
                   <li key={dIdx} className={styles.detailItem}>{detail}</li>
                 ))}
               </ul>
@@ -109,7 +109,7 @@ export const GroupMembers: React.FC<GroupMembersProps> = ({ members }) => {
               {/* Collapsible details for mobile */}
               <div className={`${styles.mobileDetails} ${isExpanded ? styles.expanded : ""}`}>
                 <ul className={styles.detailsList}>
-                  {member.details.map((detail, dIdx) => (
+                  {member.details.slice(0, 10).map((detail, dIdx) => (
                     <li key={dIdx} className={styles.detailItem}>{detail}</li>
                   ))}
                 </ul>
