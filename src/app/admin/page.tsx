@@ -115,6 +115,7 @@ export default function AdminDashboard() {
   const [noImageUrl, setNoImageUrl] = useState("");
   const [noContentMarkdown, setNoContentMarkdown] = useState("");
   const [noEditingId, setNoEditingId] = useState<string | null>(null);
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   // --------------------------------------------------
   // 🔒 AUTH CHECK & DATA LOADING
@@ -311,6 +312,45 @@ export default function AdminDashboard() {
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/(^-|-$)/g, "");
       setNoSlug(generatedSlug);
+    }
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingImage(true);
+    setErrorMsg("");
+    setSuccessMsg("");
+
+    try {
+      const fileExt = file.name.split(".").pop();
+      const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 15)}.${fileExt}`;
+      const filePath = `noticias/${fileName}`;
+
+      // Upload file to Supabase Storage in "images" bucket
+      const { error } = await supabase.storage
+        .from("images")
+        .upload(filePath, file, {
+          cacheControl: "3600",
+          upsert: false
+        });
+
+      if (error) throw error;
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from("images")
+        .getPublicUrl(filePath);
+
+      setNoImageUrl(publicUrl);
+      setSuccessMsg("¡Imagen subida correctamente a Supabase!");
+    } catch (err: unknown) {
+      console.error("Error al subir imagen:", err);
+      const message = err instanceof Error ? err.message : "Error al subir la imagen a Supabase Storage.";
+      setErrorMsg(`No se pudo subir la imagen: ${message}`);
+    } finally {
+      setUploadingImage(false);
     }
   };
 
@@ -833,16 +873,49 @@ export default function AdminDashboard() {
                     </select>
                   </div>
 
-                  <div className={styles.formGroup}>
-                    <label className={styles.label}>URL DE LA IMAGEN *</label>
-                    <input
-                      type="url"
-                      className={styles.input}
-                      value={noImageUrl}
-                      onChange={(e) => setNoImageUrl(e.target.value)}
-                      placeholder="https://images.unsplash.com/photo-..."
-                      required
-                    />
+                   <div className={styles.formGroup}>
+                    <label className={styles.label}>IMAGEN DE LA NOTICIA *</label>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                      <input
+                        type="url"
+                        className={styles.input}
+                        value={noImageUrl}
+                        onChange={(e) => setNoImageUrl(e.target.value)}
+                        placeholder="Pegar dirección de imagen (ej. Unsplash) o subir un archivo local..."
+                        required
+                      />
+                      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                        <label className={styles.uploadLabel} style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "0.5rem",
+                          backgroundColor: "var(--cream)",
+                          border: "1.5px dashed var(--accent)",
+                          color: "var(--accent)",
+                          padding: "0.5rem 1rem",
+                          borderRadius: "var(--r-md)",
+                          cursor: "pointer",
+                          fontFamily: "var(--font-text)",
+                          fontSize: "0.8rem",
+                          fontWeight: "800",
+                          transition: "all 0.2s ease"
+                        }}>
+                          📂 SUBIR ARCHIVO LOCAL
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageUpload}
+                            style={{ display: "none" }}
+                            disabled={uploadingImage}
+                          />
+                        </label>
+                        {uploadingImage && (
+                          <span style={{ fontSize: "0.8rem", color: "var(--accent)", fontWeight: "bold" }}>
+                            ⏳ Subiendo imagen...
+                          </span>
+                        )}
+                      </div>
+                    </div>
                   </div>
 
                   <div className={styles.formGroup}>
