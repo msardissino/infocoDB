@@ -14,8 +14,8 @@ interface GalleryImage {
 }
 
 const GALLERY_IMAGES: GalleryImage[] = [
-  { src: "/images/galeria/galeria.jpg", title: "Encuentro Grupal", category: "Encuentros" },
-  { src: "/images/galeria/galeria2.jpg", title: "Taller Creativo", category: "Talleres" },
+  { src: "/images/galeria/galeria.jpg", title: "Fulbito", category: "Deporte" },
+  { src: "/images/galeria/galeria2.jpg", title: "Un emotivo encuentro", category: "Momentos" },
   { src: "/images/galeria/galeria3.jpg", title: "Momento de Esparcimiento", category: "Recreación" },
   { src: "/images/galeria/galeria4.jpg", title: "Actividad Artística", category: "Talleres" },
   { src: "/images/galeria/galeria5.jpg", title: "Paseo al Aire Libre", category: "Salidas" },
