@@ -277,7 +277,7 @@ export const GROUPS_DATA: GroupDetail[] = [
     },
     members: [
       { name: "Jano", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Jano.jpg" },
-      { name: "Jeremías", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
+      { name: "Jere", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Jere.jpg" },
       { name: "Valentina", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Valen.jpg" },
       { name: "Joel", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Joel.jpg" },
       { name: "José", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Jose.jpg" },
@@ -336,7 +336,7 @@ export const GROUPS_DATA: GroupDetail[] = [
       { name: "Martin", icon: "heart", details: ["Cantar", "Escuchar música", "Pasear", "Bailar", "Cocinar tortilla", "Futbol", "Arquero", "Sol"], avatarUrl: "/images/group/quienes_somos/Martin.jpg" },
       { name: "Mica", icon: "coffee", details: ["Viajar", "Nadar", "Taekwondo", "Sacar fotos", "Escuchar música", "Hamburguesas", "Café", "Futbol", "Perros"], avatarUrl: "/images/group/quienes_somos/Micaela.jpg" },
       { name: "Mauro", icon: "heart", details: ["Futbol", "Deporte", "Bailar", "Actuar"], avatarUrl: "/images/group/quienes_somos/Mauro.jpg" },
-      { name: "Andres", icon: "smile", details: ["Reir", "Viajar", "Pasear", "Hamburguesas", "Bailar"], avatarUrl: "/images/group/quienes_somos/Andres.jpg" },
+      { name: "Andres", icon: "smile", details: ["Estar con amigos", "Pasear al perro", "Gimnasio", "Teatro", "Pastas", "Pizza"], avatarUrl: "/images/group/quienes_somos/Andres.jpg" },
       { name: "Mati", icon: "music", details: ["Música", "Bailar", "Reir", "Sol", "Pizza", "Futbol"], avatarUrl: "/images/group/quienes_somos/Matias.jpg" },
       { name: "Tomi", icon: "sun", details: ["Escuchar música", "Frutillas", "Sol", "Actuar", "Perros", "Nadar", "Helado", "Tecnología", "Pintar"], avatarUrl: "/images/group/quienes_somos/Tomas.jpg" },
       { name: "Lucas", icon: "heart", details: ["Actuar", "Videojuegos", "Cantar", "Escuchar música", "Viajar", "Sandía", "Sacar fotos", "Perros", "Helado", "Nadar", "Tecnología"], avatarUrl: "/images/group/quienes_somos/Lucas.jpg" },

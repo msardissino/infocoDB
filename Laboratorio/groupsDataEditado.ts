@@ -269,7 +269,7 @@ export const GROUPS_DATA: GroupDetail[] = [
     },
     members: [
       { name: "Jano", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
-      { name: "Jeremías", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
+      { name: "Jere", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Jere.jpg" },
       { name: "Valentina", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
       { name: "Joel", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
       { name: "José", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"] },
@@ -327,7 +327,7 @@ export const GROUPS_DATA: GroupDetail[] = [
       { name: "Pancho", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"] },
       { name: "Sofi", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"] },
       { name: "Mauro", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"], avatarUrl: "/images/group/quienes_somos/Mauro.jpg" },
-      { name: "Andres", icon: "coffee", details: ["Jugar al ajedrez", "Leer novelas históricas", "Café negro bien caliente"], avatarUrl: "/images/group/quienes_somos/Andrés.jpg" },
+      { name: "Andres", icon: "coffee", details: ["Estar con amigos", "Pasear al perro", "Gimnasio", "Teatro", "Pastas", "Pizza"], avatarUrl: "/images/group/quienes_somos/Andrés.jpg" },
       { name: "Mati", icon: "smile", details: ["Tejer historias de vida", "Bailar folklore nacional", "Plantas de interiores"], avatarUrl: "/images/group/quienes_somos/Matias.jpg" },
       { name: "Tomi", icon: "sun", details: ["Escuchar viejos tangos", "Escribir un diario personal", "Cuidar a sus nietos"], avatarUrl: "/images/group/quienes_somos/Tomas.jpg" },
       { name: "Lucas", icon: "heart", details: ["Conversar largo", "Flores del jardín", "Escuchar la radio a la noche"], avatarUrl: "/images/group/quienes_somos/Lucas.jpg" }
