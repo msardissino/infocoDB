@@ -24,7 +24,7 @@ const GALLERY_IMAGES: GalleryImage[] = [
   { src: "/images/galeria/galeria8.jpg", title: "Producción y Manualidades", category: "Arte" },
   { src: "/images/galeria/galeria9.jpg", title: "Almuerzo y Conversaciones", category: "Recreación" },
   { src: "/images/galeria/galeria10.jpg", title: "Trabajo en Equipo", category: "Talleres" },
-  { src: "/images/galeria/galeria11.jpg", title: "Tarde de Juegos de Mesa", category: "Recreación" },
+  { src: "/images/galeria/galeria11.jpg", title: "Berisso 8 de Julio", category: "Torneo" },
   { src: "/images/galeria/galeria12.jpg", title: "Cierre de Jornada", category: "Encuentros" },
 ];
 
