@@ -228,13 +228,13 @@ export const GROUPS_DATA: GroupDetail[] = [
       name: "Tamara",
       role: "TUTORA DEL GRUPO",
       avatarUrl: "/images/group/la_banda_colorida/TamaraTutora.jpg",
-      bio: "Busca promover espacios tanto de disfrute como de tranquilidad.",
+      bio: "Ejerce como acompañante terapéutica en domicilios y tutora en Intres. Estudia Profesorado en Educación Especial.",
       quote: "No hay una forma de hacerlo bien",
       formation: [
         "Acompañante terapéutica",
-        "Profesora de educación especial"
+        "Estudiante del Profesorado en Educación Especial"
       ],
-      interests: ["Pintura", "Muralismo", "Expresión", "Libertad"]
+      interests: ["Gimnasio", "Funcional", "Boca Juniors"]
     },
     objective: {
       resume: "",
@@ -263,11 +263,17 @@ export const GROUPS_DATA: GroupDetail[] = [
     }, 
     interview: {
       qaList: [
-        { question: "¿Por qué pintar juntos?", answer: "Porque el color colectivo tiene una fuerza que el lienzo individual no puede igualar." },
-        { question: "¿Qué hacés con los errores en la pintura?", answer: "Los transformamos en una nueva idea. El error en el arte es el inicio de tu propio estilo." },
-        { question: "¿Cuál es el mayor logro de este grupo?", answer: "Ver la sonrisa de todos cuando inauguramos el gran mural del patio. Nos llevó un mes de trabajo." }
+        { question: "¿Qué edad tenés?", answer: "28 años." },
+        { question: "¿Tenés novio?", answer: "Sí, ¡tengo novio!" },
+        { question: "¿Te gusta algún deporte?", answer: "Me gusta ir al gimnasio a hacer funcional." },
+        { question: "¿De qué cuadro sos?", answer: "De Boca Juniors." },
+        { question: "¿Tenés algún hobbie?", answer: "No, no tengo hobbie." },
+        { question: "¿Qué comida te gusta?", answer: "Milanesas napolitana con papas fritas." },
+        { question: "¿Cuál es tu profesión?", answer: "Mi profesión es Acompañante Terapéutica. Ejerzo en domicilios y trabajo como tutora en Intres. Además, estoy estudiando Profesorado en Educación Especial." },
+        { question: "¿Cómo surge \"La banda colorida\"?", answer: "La Banda Colorida surge por todos los colores que usan los chicos en sus vestimentas." },
+        { question: "¿Qué es lo que más te gusta de trabajar en Intres y con este grupo?", answer: "Lo que más me gusta de trabajar en Intres es la libertad que tenemos en poder trabajar en lo que queremos y ponerle mi impronta. Y lo que más me gusta de trabajar con La Banda Colorida es trabajar lo sensorial." }
       ],
-      keywords: ["Expresión", "Pintura", "Libertad"]
+      keywords: ["Perseverancia", "Paciencia", "Escucha"]
     },
     members: [
       { name: "Jano", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Jano.jpg" },
@@ -279,7 +285,10 @@ export const GROUPS_DATA: GroupDetail[] = [
       { name: "Mili Da Giau", icon: "music", details: ["Tocar la batería", "Grafiti y lettering", "Ver pelis de acción"], avatarUrl: "/images/group/la_banda_colorida/MiliDaGiau.jpg" },
       { name: "Mili Costilla", icon: "smile", details: ["Modelar arcilla", "Adoptar gatitos", "Decorar tortas dulces"], avatarUrl: "/images/group/la_banda_colorida/MiliCostilla.jpg" }
     ],
-    messages: [],
+    messages: [
+      { text: "Nos une la coincidencia en los gustos sensoriales y musicales.", author: "La Banda Colorida", color: "pink" },
+      { text: "Palabras que nos caracterizan: Sonrisas, Abrazos, Salidas, Momentos.", author: "La Banda Colorida", color: "green" }
+    ],
     moments: [
       { imageUrl: "/images/group/la_banda_colorida/TamaraTutora.jpg", caption: "Espacio creativo", rotation: 3 },
       { imageUrl: "/images/group/la_banda_colorida/MiliCostilla.jpg", caption: "Creando con Mili C.", rotation: -2 },
