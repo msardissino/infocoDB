@@ -27,6 +27,7 @@ interface NewsItem {
   location: string;
   icon: string;
   image_url: string;
+  additional_images?: string[];
 }
 
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";

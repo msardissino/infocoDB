@@ -24,6 +24,7 @@ interface AgendaEvent {
   location: string | null;
   category: string;
   group_slug: string | null;
+  image_url?: string | null;
 }
 
 interface NewsItem {
@@ -38,6 +39,7 @@ interface NewsItem {
   icon: string;
   image_url: string;
   content_markdown: string | null;
+  additional_images?: string[];
 }
 
 const AGENDA_CATEGORIES = [
@@ -116,6 +118,8 @@ export default function AdminDashboard() {
   const [agLocation, setAgLocation] = useState("");
   const [agCategory, setAgCategory] = useState("taller");
   const [agGroupSlug, setAgGroupSlug] = useState("");
+  const [agImageUrl, setAgImageUrl] = useState("");
+  const [uploadingAgendaImage, setUploadingAgendaImage] = useState(false);
   const [agEditingId, setAgEditingId] = useState<string | null>(null);
 
   // --------------------------------------------------
@@ -137,8 +141,10 @@ export default function AdminDashboard() {
   const [noIcon, setNoIcon] = useState("newspaper");
   const [noImageUrl, setNoImageUrl] = useState("");
   const [noContentMarkdown, setNoContentMarkdown] = useState("");
+  const [noAdditionalImages, setNoAdditionalImages] = useState<string[]>([]);
   const [noEditingId, setNoEditingId] = useState<string | null>(null);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [uploadingAdditionalImage, setUploadingAdditionalImage] = useState(false);
 
   // --------------------------------------------------
   // 🔒 AUTH CHECK & DATA LOADING
@@ -210,7 +216,45 @@ export default function AdminDashboard() {
     setAgLocation("");
     setAgCategory("taller");
     setAgGroupSlug("");
+    setAgImageUrl("");
     setAgEditingId(null);
+  };
+
+  const handleAgendaImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingAgendaImage(true);
+    setErrorMsg("");
+    setSuccessMsg("");
+
+    try {
+      const fileExt = file.name.split(".").pop();
+      const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 15)}.${fileExt}`;
+      const filePath = `agenda/${fileName}`;
+
+      const { error } = await supabase.storage
+        .from("images")
+        .upload(filePath, file, {
+          cacheControl: "3600",
+          upsert: false
+        });
+
+      if (error) throw error;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from("images")
+        .getPublicUrl(filePath);
+
+      setAgImageUrl(publicUrl);
+      setSuccessMsg("¡Flyer subido correctamente a Supabase!");
+    } catch (err: unknown) {
+      console.error("Error al subir flyer:", err);
+      const message = err instanceof Error ? err.message : "Error al subir el flyer a Supabase Storage.";
+      setErrorMsg(`No se pudo subir el flyer: ${message}`);
+    } finally {
+      setUploadingAgendaImage(false);
+    }
   };
 
   const handleAgendaSubmit = async (e: React.FormEvent) => {
@@ -234,7 +278,8 @@ export default function AdminDashboard() {
       time: agTime || null,
       location: agLocation || null,
       category: agCategory,
-      group_slug: agGroupSlug || null
+      group_slug: agGroupSlug || null,
+      image_url: agImageUrl || null
     };
 
     try {
@@ -274,6 +319,7 @@ export default function AdminDashboard() {
     setAgLocation(event.location || "");
     setAgCategory(event.category);
     setAgGroupSlug(event.group_slug || "");
+    setAgImageUrl(event.image_url || "");
     setErrorMsg("");
     setSuccessMsg("");
   };
@@ -403,6 +449,47 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleAdditionalImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingAdditionalImage(true);
+    setErrorMsg("");
+    setSuccessMsg("");
+
+    try {
+      const fileExt = file.name.split(".").pop();
+      const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 15)}.${fileExt}`;
+      const filePath = `noticias/${fileName}`;
+
+      const { error } = await supabase.storage
+        .from("images")
+        .upload(filePath, file, {
+          cacheControl: "3600",
+          upsert: false
+        });
+
+      if (error) throw error;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from("images")
+        .getPublicUrl(filePath);
+
+      setNoAdditionalImages(prev => [...prev, publicUrl]);
+      setSuccessMsg("¡Imagen adicional subida correctamente!");
+    } catch (err: unknown) {
+      console.error("Error al subir imagen adicional:", err);
+      const message = err instanceof Error ? err.message : "Error al subir la imagen adicional a Supabase Storage.";
+      setErrorMsg(`No se pudo subir la imagen adicional: ${message}`);
+    } finally {
+      setUploadingAdditionalImage(false);
+    }
+  };
+
+  const handleRemoveAdditionalImage = (indexToRemove: number) => {
+    setNoAdditionalImages(prev => prev.filter((_, idx) => idx !== indexToRemove));
+  };
+
   const clearNewsForm = () => {
     setNoTitle("");
     setNoSlug("");
@@ -414,6 +501,7 @@ export default function AdminDashboard() {
     setNoIcon("newspaper");
     setNoImageUrl("");
     setNoContentMarkdown("");
+    setNoAdditionalImages([]);
     setNoEditingId(null);
   };
 
@@ -433,7 +521,8 @@ export default function AdminDashboard() {
       location: noLocation,
       icon: noIcon,
       image_url: noImageUrl,
-      content_markdown: noContentMarkdown || null
+      content_markdown: noContentMarkdown || null,
+      additional_images: noAdditionalImages
     };
 
     try {
@@ -476,6 +565,7 @@ export default function AdminDashboard() {
     setNoIcon(item.icon);
     setNoImageUrl(item.image_url);
     setNoContentMarkdown(item.content_markdown || "");
+    setNoAdditionalImages(item.additional_images || []);
     setErrorMsg("");
     setSuccessMsg("");
   };
@@ -665,6 +755,50 @@ export default function AdminDashboard() {
                     />
                   </div>
 
+                  <div className={styles.formGroup}>
+                    <label className={styles.label}>IMAGEN DEL FLYER (OPCIONAL)</label>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                      <input
+                        type="url"
+                        className={styles.input}
+                        value={agImageUrl}
+                        onChange={(e) => setAgImageUrl(e.target.value)}
+                        placeholder="Pegar dirección de imagen o subir un archivo local..."
+                      />
+                      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                        <label className={styles.uploadLabel} style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "0.5rem",
+                          backgroundColor: "var(--cream)",
+                          border: "1.5px dashed var(--accent)",
+                          color: "var(--accent)",
+                          padding: "0.5rem 1rem",
+                          borderRadius: "var(--r-md)",
+                          cursor: "pointer",
+                          fontFamily: "var(--font-text)",
+                          fontSize: "0.8rem",
+                          fontWeight: "800",
+                          transition: "all 0.2s ease"
+                        }}>
+                          📂 SUBIR FLYER LOCAL
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleAgendaImageUpload}
+                            style={{ display: "none" }}
+                            disabled={uploadingAgendaImage}
+                          />
+                        </label>
+                        {uploadingAgendaImage && (
+                          <span style={{ fontSize: "0.8rem", color: "var(--accent)", fontWeight: "bold" }}>
+                            ⏳ Subiendo flyer...
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
                   <div className={styles.buttonGroup}>
                     <button type="submit" className={styles.submitBtn} disabled={submitting}>
                       {submitting ? "GUARDANDO..." : agEditingId ? "ACTUALIZAR" : "CREAR"}
@@ -734,6 +868,11 @@ export default function AdminDashboard() {
                       <p style={{ margin: 0, fontSize: "0.9rem", color: "var(--ink-soft)", lineHeight: 1.4 }}>
                         {agDescription}
                       </p>
+                    )}
+                    {agImageUrl && (
+                      <div style={{ marginTop: "0.5rem", borderRadius: "8px", overflow: "hidden", maxHeight: "150px" }}>
+                        <img src={agImageUrl} alt="Flyer" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                      </div>
                     )}
                   </div>
                 </div>
@@ -965,6 +1104,84 @@ export default function AdminDashboard() {
                           </span>
                         )}
                       </div>
+                    </div>
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label className={styles.label}>IMÁGENES ADICIONALES DE LA NOTICIA (OPCIONAL)</label>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                        <label className={styles.uploadLabel} style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "0.5rem",
+                          backgroundColor: "var(--cream)",
+                          border: "1.5px dashed var(--accent)",
+                          color: "var(--accent)",
+                          padding: "0.5rem 1rem",
+                          borderRadius: "var(--r-md)",
+                          cursor: "pointer",
+                          fontFamily: "var(--font-text)",
+                          fontSize: "0.8rem",
+                          fontWeight: "800",
+                          transition: "all 0.2s ease"
+                        }}>
+                          📂 AÑADIR IMAGEN LOCAL
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleAdditionalImageUpload}
+                            style={{ display: "none" }}
+                            disabled={uploadingAdditionalImage}
+                          />
+                        </label>
+                        {uploadingAdditionalImage && (
+                          <span style={{ fontSize: "0.8rem", color: "var(--accent)", fontWeight: "bold" }}>
+                            ⏳ Subiendo imagen adicional...
+                          </span>
+                        )}
+                      </div>
+
+                      {noAdditionalImages.length > 0 && (
+                        <div style={{ 
+                          display: "grid", 
+                          gridTemplateColumns: "repeat(auto-fill, minmax(60px, 1fr))", 
+                          gap: "0.5rem", 
+                          marginTop: "0.5rem",
+                          border: "1px solid var(--line)",
+                          padding: "0.5rem",
+                          borderRadius: "8px",
+                          backgroundColor: "var(--bg)"
+                        }}>
+                          {noAdditionalImages.map((imgUrl, index) => (
+                            <div key={index} style={{ position: "relative", width: "60px", height: "60px", borderRadius: "4px", overflow: "hidden" }}>
+                              <img src={imgUrl} alt={`Adicional ${index}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                              <button 
+                                type="button" 
+                                onClick={() => handleRemoveAdditionalImage(index)}
+                                style={{ 
+                                  position: "absolute", 
+                                  top: "2px", 
+                                  right: "2px", 
+                                  backgroundColor: "rgba(255, 0, 0, 0.8)", 
+                                  color: "white", 
+                                  border: "none", 
+                                  borderRadius: "50%", 
+                                  width: "16px", 
+                                  height: "16px", 
+                                  fontSize: "10px", 
+                                  display: "flex", 
+                                  alignItems: "center", 
+                                  justifyContent: "center", 
+                                  cursor: "pointer" 
+                                }}
+                              >
+                                ✕
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
 

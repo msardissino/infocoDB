@@ -565,3 +565,28 @@
   from { transform: translateY(100%); }
   to { transform: translateY(0); }
 }
+
+.flyerContainer {
+  margin-top: 1.5rem;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--elevation-1);
+  background-color: var(--bg);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flyerImage {
+  width: 100%;
+  max-height: 380px;
+  object-fit: contain;
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+  display: block;
+}
+
+.flyerImage:hover {
+  transform: scale(1.025);
+}

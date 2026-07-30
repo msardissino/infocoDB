@@ -25,6 +25,7 @@ interface NewsItem {
   icon: string;
   image_url: string;
   content_markdown: string | null;
+  additional_images?: string[];
 }
 
 export default function NewsDetailPage() {
@@ -34,6 +35,35 @@ export default function NewsDetailPage() {
 
   const [news, setNews] = useState<NewsItem | null>(null);
   const [loading, setLoading] = useState(true);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  // Lock scroll on background when lightbox is open
+  useEffect(() => {
+    if (lightboxIndex !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [lightboxIndex]);
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (lightboxIndex === null || !news?.additional_images) return;
+      if (e.key === "Escape") setLightboxIndex(null);
+      if (e.key === "ArrowLeft" && news.additional_images.length > 1) {
+        setLightboxIndex((prev) => (prev! === 0 ? news.additional_images!.length - 1 : prev! - 1));
+      }
+      if (e.key === "ArrowRight" && news.additional_images.length > 1) {
+        setLightboxIndex((prev) => (prev! === news.additional_images!.length - 1 ? 0 : prev! + 1));
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxIndex, news]);
 
   useEffect(() => {
     async function fetchNews() {
@@ -127,6 +157,27 @@ export default function NewsDetailPage() {
                 </p>
               )}
             </div>
+
+            {/* Galería de fotos adicionales */}
+            {news.additional_images && news.additional_images.length > 0 && (
+              <div className={styles.gallerySection}>
+                <h3 className={styles.galleryTitle}>IMÁGENES RELACIONADAS</h3>
+                <div className={styles.galleryGrid}>
+                  {news.additional_images.map((imgUrl, index) => (
+                    <div 
+                      key={index} 
+                      className={styles.galleryItem}
+                      onClick={() => setLightboxIndex(index)}
+                    >
+                      <img src={imgUrl} alt={`Imagen adicional ${index + 1}`} className={styles.galleryImage} />
+                      <div className={styles.galleryOverlay}>
+                        <span>Ver Foto</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Sidebar Info Column */}
@@ -177,6 +228,44 @@ export default function NewsDetailPage() {
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {lightboxIndex !== null && news.additional_images && (
+        <div className={styles.lightboxOverlay} onClick={() => setLightboxIndex(null)}>
+          <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.lightboxClose} onClick={() => setLightboxIndex(null)}>✕</button>
+            
+            {news.additional_images.length > 1 && (
+              <button 
+                className={styles.lightboxPrev} 
+                onClick={() => setLightboxIndex((prev) => (prev! === 0 ? news.additional_images!.length - 1 : prev! - 1))}
+              >
+                ‹
+              </button>
+            )}
+
+            <div className={styles.lightboxImageWrapper}>
+              <img 
+                src={news.additional_images[lightboxIndex]} 
+                alt={`Imagen ${lightboxIndex + 1}`} 
+                className={styles.lightboxImage} 
+              />
+              <span className={styles.lightboxCounter}>
+                {lightboxIndex + 1} / {news.additional_images.length}
+              </span>
+            </div>
+
+            {news.additional_images.length > 1 && (
+              <button 
+                className={styles.lightboxNext} 
+                onClick={() => setLightboxIndex((prev) => (prev! === news.additional_images!.length - 1 ? 0 : prev! + 1))}
+              >
+                ›
+              </button>
+            )}
+          </div>
+        </div>
+      )}
     </main>
   );
 }

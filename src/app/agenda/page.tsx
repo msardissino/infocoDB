@@ -23,6 +23,7 @@ interface AgendaEvent {
   location: string | null;
   category: string;
   group_slug: string | null;
+  image_url?: string | null;
 }
 
 const MONTHS = [
@@ -334,6 +335,18 @@ export default function AgendaPage() {
               {selectedEvent.description && (
                 <div className={styles.eventDescription}>
                   {selectedEvent.description}
+                </div>
+              )}
+
+              {selectedEvent.image_url && (
+                <div className={styles.flyerContainer}>
+                  <img 
+                    src={selectedEvent.image_url} 
+                    alt={`Flyer de ${selectedEvent.title}`} 
+                    className={styles.flyerImage}
+                    onClick={() => window.open(selectedEvent.image_url!, "_blank")}
+                    title="Hacé clic para ver en pantalla completa"
+                  />
                 </div>
               )}
             </div>
