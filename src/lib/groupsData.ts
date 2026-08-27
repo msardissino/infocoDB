@@ -51,16 +51,16 @@ export const GROUPS_DATA: GroupDetail[] = [
       keywords: ["Confianza", "Humor", "Compañerismo"]
     },
     members: [
-      { name: "Adrián", icon: "star", details: ["Escuchar cumbia", "Jugar a la pelota", "Juegos de mesa"], avatarUrl: "/images/group/campeones_del_flow/Adrian.jpg" },
-      { name: "Antonella", icon: "heart", details: ["Pintar mandalas", "Cantar", "Las plantas"], avatarUrl: "/images/group/campeones_del_flow/Antonella.jpg" },
-      { name: "Clara", icon: "sun", details: ["Hacer pulseras", "Escuchar música", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/Clara.jpg" },
+      { name: "Adrián", icon: "star", details: ["Jugar a la pelota", "Básquet", "Hockey", "Perros", "Asado", "Pizza", "Playa", "Andar en bici", "Café", "Escuchar cumbia", "Juegos de mesa"], avatarUrl: "/images/group/campeones_del_flow/Adrian.jpg" },
+      { name: "Antonella", icon: "heart", details: ["Parte de «La Misen»", "Taekwondo", "Fútbol", "Atajar", "Pastas", "Música", "Cocinar", "Videojuegos", "Cine", "Pijamada con amigos", "Pintar mandalas", "Cantar", "Las plantas"], avatarUrl: "/images/group/campeones_del_flow/Antonella.jpg" },
+      { name: "Clara", icon: "sun", details: ["Correr", "Música", "Asado", "Dormir", "Verano", "Hacer pulseras", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/Clara.jpg" },
       { name: "Paula", icon: "sun", details: ["Hacer pulseras", "Escuchar música", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/Paula.jpg" },
-      { name: "Magalí", icon: "sun", details: ["Hacer pulseras", "Escuchar música", "Pasear en el parque"] },
+      { name: "Magalí", icon: "sun", details: ["Sushi", "Dormir", "Escuchar música", "Leer", "Básquet", "Rompecabezas", "Café", "Mate", "Hacer pulseras", "Pasear en el parque"] },
       { name: "Armando", icon: "sun", details: ["Hacer pulseras", "Escuchar música", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/Armando.jpg" },
-      { name: "Juan Pedro", icon: "sun", details: ["Hacer pulseras", "Escuchar música", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/JuanPedro.jpg" },
-      { name: "Matías", icon: "sun", details: ["Hacer pulseras", "Escuchar música", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/Matias.jpg" },
-      { name: "Erwin", icon: "music", details: ["Jugar al ajedrez", "Cocinar para amigos", "Tocar la guitarra"], avatarUrl: "/images/group/campeones_del_flow/Erwin.jpg" },
-      { name: "Miguel", icon: "coffee", details: ["Fútbol", "Compartir mates", "Ver películas"], avatarUrl: "/images/group/campeones_del_flow/Miguel.jpg" }
+      { name: "Juan Pedro", icon: "sun", details: ["Dibujar", "Pintar", "Tecnología", "Sacar fotos", "Personajes de villanos", "Tarta de verduras y cherry", "Teatro", "Baile", "Hacer pulseras", "Escuchar música", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/JuanPedro.jpg" },
+      { name: "Matías", icon: "sun", details: ["Jugar a la pelota", "Pizza", "Música", "Videojuegos", "Perros", "Lluvia", "Hamburguesas", "Hacer pulseras", "Pasear en el parque"], avatarUrl: "/images/group/campeones_del_flow/Matias.jpg" },
+      { name: "Erwin", icon: "music", details: ["Sol", "Pescado", "Escuchar música", "Fútbol", "Básquet", "Cantar", "Amor", "Scout", "Jugar al ajedrez", "Cocinar para amigos", "Tocar la guitarra"], avatarUrl: "/images/group/campeones_del_flow/Erwin.jpg" },
+      { name: "Miguel", icon: "coffee", details: ["Acariciar gatos", "Computadora", "Celular", "Inteligencia artificial", "Aros de cebolla", "Locro", "Goulash", "Fútbol", "Compartir mates", "Ver películas"], avatarUrl: "/images/group/campeones_del_flow/Miguel.jpg" }
     ],
     messages: [
       { text: "Gracias agus por estar siempre con nosotros", author: "", color: "yellow" },
@@ -118,11 +118,11 @@ export const GROUPS_DATA: GroupDetail[] = [
     },
     members: [
       { name: "Brian", icon: "bolt", details: ["Videojuegos", "Fútbol con amigos", "Sacar fotos", "Chocolates", "Tecnología", "Playa"], avatarUrl: "/images/group/buenas_vibras/Brian.jpg" },
-      { name: "Verónica", icon: "bolt", details: ["Música y ritmo", "Fútbol con amigos", "Compartir mates"], avatarUrl: "/images/group/buenas_vibras/Vero.jpg" },
+      { name: "Verónica", icon: "bolt", details: ["Música y ritmo", "Cocinar", "Compartir mates", "Fútbol con amigos"], avatarUrl: "/images/group/buenas_vibras/Vero.jpg" },
       { name: "Gianni", icon: "star", details: ["Futbol", "Sorpresas", "Cantar", "Escuchar música", "Actuar", "Chocolates", "Playa"], avatarUrl: "/images/group/buenas_vibras/Gianni.jpg" },
       { name: "Martina", icon: "heart", details: ["Chocolate", "Tecnología", "Sacar fotos","Café", "Arcoiris", "Gatos"], avatarUrl: "/images/group/buenas_vibras/Martina.jpg" },
       { name: "Valentina", icon: "sun", details: ["Musica", "Viajar", "Arcoiris", "Perros", "Helado", "Estrellas", "Sorpresas"], avatarUrl: "/images/group/buenas_vibras/Valentina.jpg" },
-      { name: "Camilo", icon: "sun", details: ["Reir", "Viajar", "Comer", "Las estrellas", "Sorpresas"], avatarUrl: "/images/group/buenas_vibras/Camilo.jpg" },
+      { name: "Camilo", icon: "sun", details: ["Reír", "Viajar", "Comer", "Las estrellas", "Sorpresas", "Paseos", "Cocinar", "Música", "Aventura", "Fiestas"], avatarUrl: "/images/group/buenas_vibras/Camilo.jpg" },
       { name: "Marcos", icon: "music", details: ["Mate", "Hamburguesas", "Juegos", "Animales", "Correr", "Pintar", "Sorpresas"], avatarUrl: "/images/group/buenas_vibras/Marcos.jpg" },
       { name: "Juan", icon: "music", details: ["Música", "Pintar", "Café", "Helado", "Actuar", "Nadar" ], avatarUrl: "/images/group/buenas_vibras/Juan.jpg" },
       { name: "Yazmin", icon: "music", details: ["Mate", "Sol", "Música", "Pasear","Pochoclos", "Viajar", "Animales" ], avatarUrl: "/images/group/buenas_vibras/Yazmin.jpg" },
@@ -150,6 +150,7 @@ export const GROUPS_DATA: GroupDetail[] = [
     memberCount: 9,
     establishedYear: 2026,
     heroCollage: [
+      "/images/group/corazones_en_equipo/grupal.jpg",
       "/images/group/corazones_en_equipo/Dalila.jpg",
       "/images/group/corazones_en_equipo/Lucia.jpg",
       "/images/group/corazones_en_equipo/Lujan.jpg"
@@ -191,12 +192,12 @@ export const GROUPS_DATA: GroupDetail[] = [
       keywords: ["Unidad", "Expresión", "Empatía"]
     },
     members: [
-      { name: "Dalila", icon: "heart", details: ["Pintar y dibujar", "Escuchar música pop", "Juegos de mesa"], avatarUrl: "/images/group/corazones_en_equipo/Dalila.jpg" },
+      { name: "Dalila", icon: "heart", details: ["Escribir", "Cantar", "Bailar", "Cocinar", "Comer", "Sacar fotos", "Viajar", "Pintar y dibujar", "Escuchar música pop", "Juegos de mesa"], avatarUrl: "/images/group/corazones_en_equipo/Dalila.jpg" },
       { name: "Rodrigo", icon: "heart", details: ["Playa", "Música", "Chocolates", "Regalos", "Perros", "Pintar", "Música"], avatarUrl: "/images/group/corazones_en_equipo/Rodrigo.jpg" },
       { name: "Lucia", icon: "sun", details: ["Sol", "Fotos", "Pasear", "Perros", "Pochoclos", "Hamburguesas", "Cantar", "Pizza"], avatarUrl: "/images/group/corazones_en_equipo/Lucia.jpg" },
       { name: "Micaela", icon: "sun", details: ["Hacer manualidades", "Tomar mates charlando", "Pasear", "Personajes de disney"], avatarUrl: "/images/group/corazones_en_equipo/Micaela.jpg" },
       { name: "Lujan", icon: "star", details: ["Cocinar", "Peluquería", "Viajar", "Actuar", "Escuchar música", "Sol", "Gatos", "Pizza"], avatarUrl: "/images/group/corazones_en_equipo/Lujan.jpg" },
-      { name: "Miguel", icon: "smile", details: ["Pelotas", "Amarillo", "Compartir risas", "Pasear"], avatarUrl: "/images/group/corazones_en_equipo/Miguel.jpg" },
+      { name: "Miguel", icon: "smile", details: ["Escuchar música", "El Chavo del 8", "Amarillo", "Pelotas", "Compartir risas", "Pasear"], avatarUrl: "/images/group/corazones_en_equipo/Miguel.jpg" },
       { name: "Milagros", icon: "music", details: ["Helado", "Bailar", "Futbol", "Nadar", "Papas fritas", "Fiesta"], avatarUrl: "/images/group/corazones_en_equipo/Milagros.jpg" },
       { name: "Valentin", icon: "bolt", details: ["Videojuegos", "Hacer chistes", "Actuar", "Tecnología", "Bicicleta", "Frutillas"], avatarUrl: "/images/group/corazones_en_equipo/Valentin.jpg" }
     ],
@@ -205,6 +206,7 @@ export const GROUPS_DATA: GroupDetail[] = [
       { text: "Aprendemos un monton con vos", author: "", color: "green" }
     ],
     moments: [
+      { imageUrl: "/images/group/corazones_en_equipo/grupal.jpg", caption: "Corazones en Equipo", rotation: 0 },
       { imageUrl: "/images/group/corazones_en_equipo/Dalila.jpg", caption: "Talleres y expresión", rotation: -2 },
       { imageUrl: "/images/group/corazones_en_equipo/Lucia.jpg", caption: "Creatividad compartida", rotation: 3 },
       { imageUrl: "/images/group/corazones_en_equipo/Lujan.jpg", caption: "Risas y mates", rotation: -3 }
@@ -218,6 +220,7 @@ export const GROUPS_DATA: GroupDetail[] = [
     memberCount: 8,
     establishedYear: 2026,
     heroCollage: [
+      "/images/group/la_banda_colorida/grupal.jpg",
       "/images/group/la_banda_colorida/TamaraTutora.jpg",
       "/images/group/la_banda_colorida/Jano.jpg",
       "/images/group/la_banda_colorida/Joel.jpg",
@@ -276,20 +279,21 @@ export const GROUPS_DATA: GroupDetail[] = [
       keywords: ["Perseverancia", "Paciencia", "Escucha"]
     },
     members: [
-      { name: "Jano", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Jano.jpg" },
+      { name: "Jano", icon: "star", details: ["Color amarillo", "Mirar tenis", "Música pesada", "Pasear", "Ir a la plaza", "Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Jano.jpg" },
       { name: "Jere", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Jere.jpg" },
-      { name: "Valentina", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Valen.jpg" },
-      { name: "Joel", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Joel.jpg" },
+      { name: "Valentina", icon: "star", details: ["Chamamé", "Música", "Televisión", "Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Valen.jpg" },
+      { name: "Joel", icon: "star", details: ["Salir a pasear", "Música", "Películas en inglés", "Sonreír", "Pelotas", "Sonidos", "Dibujos animados", "Programas musicales", "Juegos", "Masajes", "Mezclar colores", "Dibujar cómics y mangas"], avatarUrl: "/images/group/la_banda_colorida/Joel.jpg" },
       { name: "José", icon: "star", details: ["Mezclar colores", "Dibujar cómics y mangas", "Escuchar rap urbano"], avatarUrl: "/images/group/la_banda_colorida/Jose.jpg" },
-      { name: "Lucia", icon: "heart", details: ["Pintar con acuarelas", "Escuchar música clásica", "Hacer collages"], avatarUrl: "/images/group/la_banda_colorida/Lucia.jpg" },
-      { name: "Mili Da Giau", icon: "music", details: ["Tocar la batería", "Grafiti y lettering", "Ver pelis de acción"], avatarUrl: "/images/group/la_banda_colorida/MiliDaGiau.jpg" },
-      { name: "Mili Costilla", icon: "smile", details: ["Modelar arcilla", "Adoptar gatitos", "Decorar tortas dulces"], avatarUrl: "/images/group/la_banda_colorida/MiliCostilla.jpg" }
+      { name: "Lucia", icon: "heart", details: ["Música movida", "Novelas", "Pasear", "Descansar", "Pintar con acuarelas", "Escuchar música clásica", "Hacer collages"], avatarUrl: "/images/group/la_banda_colorida/Lucia.jpg" },
+      { name: "Mili Da Giau", icon: "music", details: ["Salir a pasear", "Torta y café", "Galletitas", "Música", "Pileta", "Tocar la batería", "Grafiti y lettering", "Ver pelis de acción"], avatarUrl: "/images/group/la_banda_colorida/MiliDaGiau.jpg" },
+      { name: "Mili Costilla", icon: "smile", details: ["Música", "Ir a pasear", "Carreras de ciclismo", "Vacaciones", "Modelar arcilla", "Adoptar gatitos", "Decorar tortas dulces"], avatarUrl: "/images/group/la_banda_colorida/MiliCostilla.jpg" }
     ],
     messages: [
       { text: "Nos une la coincidencia en los gustos sensoriales y musicales.", author: "La Banda Colorida", color: "pink" },
       { text: "Palabras que nos caracterizan: Sonrisas, Abrazos, Salidas, Momentos.", author: "La Banda Colorida", color: "green" }
     ],
     moments: [
+      { imageUrl: "/images/group/la_banda_colorida/grupal.jpg", caption: "La Banda Colorida", rotation: 0 },
       { imageUrl: "/images/group/la_banda_colorida/TamaraTutora.jpg", caption: "Espacio creativo", rotation: 3 },
       { imageUrl: "/images/group/la_banda_colorida/MiliCostilla.jpg", caption: "Creando con Mili C.", rotation: -2 },
       { imageUrl: "/images/group/la_banda_colorida/MiliDaGiau.jpg", caption: "Arte de Mili D.G.", rotation: 4 },
