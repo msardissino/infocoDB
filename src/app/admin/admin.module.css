@@ -17,6 +17,8 @@
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
   border-bottom: 2px solid var(--line);
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .title {
@@ -29,11 +31,12 @@
 
 .logoutBtn {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   background-color: transparent;
   color: #bf2600;
   border: 1px solid #ff8f73;
   padding: 0.5rem 1.25rem;
+  min-height: 44px;
   border-radius: var(--r-md);
   cursor: pointer;
   transition: all 0.2s;
@@ -55,12 +58,20 @@
   margin-bottom: 2.5rem;
   border-bottom: 1px solid var(--line);
   padding-bottom: 0.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.adminTabs::-webkit-scrollbar {
+  display: none;
 }
 
 .tabBtn {
   font-family: var(--font-display);
-  font-size: 1.3rem;
-  padding: 0.65rem 1.5rem;
+  font-size: 1.2rem;
+  padding: 0.65rem 1.4rem;
+  min-height: 46px;
   border: none;
   background: none;
   color: var(--ink-mute);
@@ -71,6 +82,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  white-space: nowrap;
 }
 
 .tabBtn:hover {
@@ -90,9 +102,17 @@
   gap: 2.5rem;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1024px) {
   .workspace {
-    grid-template-columns: 460px 1fr;
+    grid-template-columns: 480px 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .workspace {
+    grid-template-columns: 520px 1fr;
+    gap: 3rem;
   }
 }
 
@@ -138,24 +158,111 @@
 .input, .select, .textarea {
   font-family: var(--font-text);
   font-size: 0.95rem;
-  padding: 0.65rem 0.85rem;
+  padding: 0.7rem 0.9rem;
   border: 1px solid var(--line);
   border-radius: var(--r-md);
   background-color: var(--bg);
   color: var(--ink);
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  min-height: 44px;
 }
 
 .input:focus, .select:focus, .textarea:focus {
   border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(217, 56, 30, 0.12);
 }
 
 .textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 120px;
+  line-height: 1.55;
 }
 
+/* Upload Image Widget */
+.imageUploadWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.uploadControlsRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.uploadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--cream);
+  border: 1.5px dashed var(--accent);
+  color: var(--accent);
+  padding: 0.55rem 1rem;
+  min-height: 42px;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  font-family: var(--font-text);
+  font-size: 0.82rem;
+  font-weight: 800;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.uploadBtn:hover {
+  background-color: var(--accent-soft);
+}
+
+.uploadStatus {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.removeImageBtn {
+  background-color: transparent;
+  color: #bf2600;
+  border: 1px solid #ff8f73;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--r-sm);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.removeImageBtn:hover {
+  background-color: #ffebe6;
+}
+
+.uploadedPreviewBox {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.6rem 0.85rem;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+}
+
+.uploadedPreviewImg {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background-color: #222;
+}
+
+.uploadedPreviewNote {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+/* Action Buttons */
 .buttonGroup {
   display: flex;
   gap: 0.75rem;
@@ -164,30 +271,38 @@
 
 .submitBtn {
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   background-color: var(--accent);
   color: var(--paper);
   border: none;
   border-radius: var(--r-md);
-  padding: 0.65rem 1.25rem;
+  padding: 0.75rem 1.25rem;
+  min-height: 48px;
   cursor: pointer;
   flex: 1;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, transform 0.15s;
   letter-spacing: 0.03em;
+  font-weight: 600;
 }
 
-.submitBtn:hover {
+.submitBtn:hover:not(:disabled) {
   background-color: var(--accent-hover);
+}
+
+.submitBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
 }
 
 .cancelBtn {
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   background-color: transparent;
   color: var(--ink-soft);
   border: 1px solid var(--line-solid);
   border-radius: var(--r-md);
-  padding: 0.65rem 1.25rem;
+  padding: 0.75rem 1.25rem;
+  min-height: 48px;
   cursor: pointer;
   transition: background-color 0.2s;
   letter-spacing: 0.03em;
@@ -248,6 +363,7 @@
   outline: none;
   background-color: var(--bg);
   color: var(--ink);
+  min-height: 44px;
 }
 
 .searchInput:focus {
@@ -264,6 +380,7 @@
   color: var(--ink);
   outline: none;
   min-width: 180px;
+  min-height: 44px;
 }
 
 .filterSelect:focus {
@@ -277,12 +394,14 @@
   border: 1px solid var(--line);
   border-radius: var(--r-xl);
   box-shadow: var(--elevation-1);
+  -webkit-overflow-scrolling: touch;
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
+  min-width: 580px;
 }
 
 .table th, .table td {
@@ -292,7 +411,7 @@
 
 .table th {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--ink-mute);
   background-color: rgba(29, 28, 26, 0.02);
   letter-spacing: 0.05em;
@@ -313,12 +432,16 @@
 .editBtn, .deleteBtn {
   font-family: var(--font-display);
   font-size: 0.9rem;
-  padding: 0.35rem 0.75rem;
+  padding: 0.4rem 0.8rem;
+  min-height: 36px;
   border-radius: var(--r-sm);
   cursor: pointer;
   transition: all 0.2s;
   border: none;
   letter-spacing: 0.03em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .editBtn {
@@ -454,4 +577,48 @@
   color: var(--ink-mute);
   font-family: var(--font-text);
   font-size: 1rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE ADAPTATIONS (MOBILE & TABLET)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .adminPage {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .formCard {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  /* Prevent auto-zoom in mobile Safari */
+  .input, .select, .textarea, .searchInput, .filterSelect {
+    font-size: 16px;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+  }
+
+  .submitBtn, .cancelBtn {
+    width: 100%;
+  }
+
+  .searchBar {
+    padding: 1rem;
+  }
+
+  .filterSelect {
+    width: 100%;
+  }
 }

@@ -11,6 +11,7 @@ import {
   faTags 
 } from "@fortawesome/free-solid-svg-icons";
 import { supabase } from "@/lib/supabase/client";
+import { formatRichText } from "@/lib/formatText";
 import styles from "./NewsDetail.module.css";
 
 interface NewsItem {
@@ -147,10 +148,7 @@ export default function NewsDetailPage() {
             
             <div className={styles.detailBody}>
               {news.content_markdown ? (
-                news.content_markdown.split("\n").map((paragraph, index) => {
-                  if (!paragraph.trim()) return null;
-                  return <p key={index}>{paragraph}</p>;
-                })
+                formatRichText(news.content_markdown)
               ) : (
                 <p>
                   Te invitamos a conocer esta noticia y novedad de nuestra comunidad. Recordá consultar la fecha, horario y punto de encuentro/referencia en la tarjeta de detalles a la derecha. ¡Gracias por informarte con nosotros!

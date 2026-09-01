@@ -1,5 +1,5 @@
 .container {
-  max-width: 800px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 0 1rem;
   --ink-mute: #595959; 
@@ -13,7 +13,7 @@
   margin: 2rem 0 1.5rem 0;
   padding: 4px;
   background-color: rgba(29, 28, 26, 0.05);
-  border-radius: 100px; /* Fully rounded pill shape */
+  border-radius: 100px;
   border: 1px solid var(--line);
 }
 
@@ -23,12 +23,12 @@
   font-size: 1.05rem;
   font-weight: 600;
   padding: 0.6rem 0.8rem;
-  min-height: 48px; /* Touch target accessibility */
+  min-height: 48px;
   border: none;
   background: transparent;
   color: var(--ink-soft);
   cursor: pointer;
-  border-radius: 100px; /* Individual pills */
+  border-radius: 100px;
   transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
   text-align: center;
   letter-spacing: 0.02em;
@@ -53,13 +53,13 @@
 }
 
 .monthTab.active {
-  background-color: var(--ink); /* Deep M3 contrast background */
+  background-color: var(--ink);
   color: var(--paper);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .monthTab.active .monthLabel {
-  color: rgba(250, 248, 245, 0.75); /* Soft contrast text */
+  color: rgba(250, 248, 245, 0.75);
 }
 
 /* Category Filter Chips */
@@ -89,7 +89,7 @@
   background-color: var(--paper);
   color: var(--ink-soft);
   cursor: pointer;
-  border-radius: 100px; /* Fully rounded chips */
+  border-radius: 100px;
   transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
   white-space: nowrap;
   display: inline-flex;
@@ -112,7 +112,7 @@
 .eventsList {
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Compact mobile gap */
+  gap: 1.25rem;
   margin-bottom: 4rem;
 }
 
@@ -120,23 +120,23 @@
 .eventCard {
   background-color: var(--paper);
   border: 1px solid var(--line);
-  border-radius: 20px; /* M3 Medium Rounding */
+  border-radius: 20px;
   padding: 1.5rem;
   display: flex;
   gap: 1.5rem;
   transition: all 0.22s cubic-bezier(0.2, 0, 0, 1);
   position: relative;
   overflow: hidden;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .eventCard:hover {
   border-color: var(--line-solid);
-  transform: translateY(-1px);
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.06);
 }
 
-/* Left Date Stamp (Desktop Mode) */
+/* Left Date Stamp */
 .dateStamp {
   width: 75px;
   height: 75px;
@@ -168,13 +168,13 @@
   letter-spacing: 0.04em;
 }
 
-/* Right Content Info */
+/* Middle Content Info */
 .eventContent {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  width: 100%;
+  min-width: 0;
 }
 
 .headerRow {
@@ -220,7 +220,7 @@
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--brand-blue);
-  background-color: rgba(0, 80, 181, 0.06);
+  background-color: rgba(0, 80, 181, 0.08);
   padding: 0.25rem 0.65rem;
   border-radius: 4px;
   text-transform: uppercase;
@@ -228,13 +228,13 @@
 
 .eventTitle {
   font-family: var(--font-display);
-  font-size: 1.65rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--ink);
   line-height: 1.25;
   letter-spacing: 0.01em;
   margin: 0.15rem 0;
-  text-transform: capitalize; /* Clean capitalization */
+  text-transform: capitalize;
 }
 
 .metaRow {
@@ -262,7 +262,7 @@
   font-size: 0.95rem;
   line-height: 1.5;
   color: var(--ink-soft);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .actionRow {
@@ -281,7 +281,7 @@
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.5rem 0;
+  padding: 0.3rem 0;
   transition: color 0.2s;
   letter-spacing: 0.02em;
   font-weight: 600;
@@ -291,45 +291,101 @@
   color: var(--accent-hover);
 }
 
-/* Modal Event Detail (M3 Style Dialog) */
+/* Card Thumbnail on the Right */
+.cardThumbnailWrapper {
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  position: relative;
+  flex-shrink: 0;
+  cursor: pointer;
+  background-color: var(--bg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cardThumbnailWrapper:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cardThumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumbnailOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(29, 28, 26, 0.75);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  backdrop-filter: blur(2px);
+}
+
+/* ==========================================================================
+   MODAL EVENT DETAIL (RESPONSIVE 2-COLUMN & BOTTOM SHEET)
+   ========================================================================== */
 .modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(29, 28, 26, 0.45);
-  backdrop-filter: blur(4px);
+  background-color: rgba(20, 19, 18, 0.55);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .modalContent {
   background-color: var(--bg-elevated);
-  border-radius: 28px; /* M3 extra rounded */
+  border-radius: 24px;
   width: 100%;
-  max-width: 500px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+  max-width: 540px;
+  max-height: 88vh;
+  box-shadow: 0px 16px 36px rgba(0, 0, 0, 0.18);
   overflow: hidden;
-  animation: modalEnter 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  animation: modalEnter 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
+  border: 1px solid var(--line);
+}
+
+/* Expanded width when a flyer is present for 2-column layout */
+.modalContent.modalWithFlyer {
+  max-width: 880px;
 }
 
 @keyframes modalEnter {
-  from { transform: scale(0.95) translateY(10px); opacity: 0; }
+  from { transform: scale(0.96) translateY(12px); opacity: 0; }
   to { transform: scale(1) translateY(0); opacity: 1; }
 }
 
 .modalHeader {
-  padding: 1.5rem 1.5rem 1.25rem 1.5rem;
+  padding: 1.25rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   border-bottom: 1px solid var(--line);
+  background-color: var(--bg-elevated);
+  flex-shrink: 0;
 }
 
 .modalTitleWrapper {
@@ -341,7 +397,7 @@
 
 .modalTitle {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: var(--ink);
   line-height: 1.2;
   letter-spacing: 0.01em;
@@ -349,65 +405,230 @@
 }
 
 .closeBtn {
-  background-color: rgba(29, 28, 26, 0.05);
+  background-color: rgba(29, 28, 26, 0.06);
   border: none;
   color: var(--ink-soft);
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
   font-size: 1.15rem;
   flex-shrink: 0;
 }
 
 .closeBtn:hover {
-  background-color: rgba(29, 28, 26, 0.1);
+  background-color: rgba(29, 28, 26, 0.12);
+  color: var(--ink);
 }
 
+/* Modal Body Layout */
 .modalBody {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   overflow-y: auto;
-  max-height: 60vh;
+  flex-grow: 1;
+}
+
+/* 2-Column Split for Desktop / Laptop */
+.modalBodySplit {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 1.75rem;
+  align-items: start;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+/* Flyer Column */
+.flyerCol {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+}
+
+.flyerContainer {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  background-color: #1a1918;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-height: 480px;
+}
+
+.flyerContainer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.flyerImage {
+  width: 100%;
+  max-height: 460px;
+  object-fit: contain;
+  display: block;
+  background-color: #1a1918;
+  transition: transform 0.25s ease;
+}
+
+.flyerContainer:hover .flyerImage {
+  transform: scale(1.02);
+}
+
+.flyerZoomBadge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background-color: rgba(20, 19, 18, 0.85);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  padding: 0.35rem 0.75rem;
+  border-radius: 100px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  pointer-events: none;
+}
+
+/* Info Column */
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 .modalMetaList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
   background-color: var(--bg);
-  padding: 1rem;
-  border-radius: var(--r-xl);
+  padding: 0.9rem 1.1rem;
+  border-radius: 14px;
   border: 1px solid var(--line);
 }
 
 .modalMetaItem {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.55rem;
   font-family: var(--font-text);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--ink-soft);
+  font-weight: 500;
 }
 
 .modalMetaItem svg {
   color: var(--accent);
-  width: 16px;
+  width: 15px;
+  flex-shrink: 0;
 }
 
 .eventDescription {
   font-family: var(--font-text);
-  font-size: 1.02rem;
-  line-height: 1.6;
-  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink);
 }
 
+.eventDescription strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.eventDescription em {
+  font-style: italic;
+}
+
+/* ==========================================================================
+   LIGHTBOX OVERLAY (FULLSCREEN ZOOM)
+   ========================================================================== */
+.lightboxOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(12, 11, 10, 0.88);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1.5rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightboxContainer {
+  position: relative;
+  max-width: 92vw;
+  max-height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightboxImage {
+  max-width: 100%;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+  animation: zoomIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.lightboxCloseBtn {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #1d1c1a;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, background-color 0.2s;
+  z-index: 10;
+}
+
+.lightboxCloseBtn:hover {
+  transform: scale(1.1);
+  background-color: #f0f0f0;
+}
+
+/* Loading & Empty States */
 .loadingContainer {
   display: flex;
   flex-direction: column;
@@ -443,9 +664,8 @@
 }
 
 /* ==========================================================================
-   MOBILE & TABLET ADAPTIVE STYLING (M3 COMPLIANT)
+   MOBILE & LAPTOP RESPONSIVE QUERIES
    ========================================================================== */
-
 @media (min-width: 600px) {
   .filterBar {
     justify-content: center;
@@ -454,13 +674,32 @@
   }
 }
 
-@media (max-width: 600px) {
-  /* Dynamic page container gutters */
+/* Laptop / Small Notebook specific tuning (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .modalContent.modalWithFlyer {
+    max-width: 760px;
+  }
+
+  .modalBodySplit {
+    grid-template-columns: 300px 1fr;
+    gap: 1.25rem;
+  }
+
+  .flyerContainer {
+    max-height: 400px;
+  }
+
+  .flyerImage {
+    max-height: 380px;
+  }
+}
+
+/* Mobile Screens (< 768px) */
+@media (max-width: 767px) {
   .container {
     padding: 0 0.75rem;
   }
 
-  /* Segmented Month Navigation Tab layout for mobile */
   .magazineTabs {
     margin: 1.25rem 0 1rem 0;
     padding: 3px;
@@ -477,14 +716,14 @@
     margin-top: 0.05rem;
   }
 
-  /* Card Redesign for Native Mobile Feeling */
+  /* Card Redesign on Mobile */
   .eventCard {
     flex-direction: column;
     gap: 0.8rem;
     padding: 1.25rem;
+    align-items: stretch;
   }
 
-  /* Date stamp turns into a beautiful M3 pill badge instead of a box */
   .dateStamp {
     width: auto;
     height: auto;
@@ -514,7 +753,7 @@
   }
 
   .eventTitle {
-    font-size: 1.45rem;
+    font-size: 1.4rem;
   }
 
   .metaRow {
@@ -527,66 +766,75 @@
     line-height: 1.45;
   }
 
-  /* Native Mobile slide-up Bottom Sheet (M3 Modal standard) */
+  .cardThumbnailWrapper {
+    width: 100%;
+    height: 120px;
+    order: 3;
+    margin-top: 0.25rem;
+  }
+
+  /* Modal on Mobile (Bottom Sheet style) */
   .modalOverlay {
     padding: 0;
     align-items: flex-end;
   }
 
   .modalContent {
-    max-width: 100%;
-    border-radius: 28px 28px 0 0;
-    max-height: 85vh;
+    max-width: 100% !important;
+    border-radius: 24px 24px 0 0;
+    max-height: 88vh;
     animation: slideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
   .modalHeader {
-    padding: 1.25rem 1.25rem 1rem 1.25rem;
+    padding: 1.15rem 1.15rem 0.85rem 1.15rem;
   }
 
   .modalTitle {
-    font-size: 1.6rem;
+    font-size: 1.45rem;
   }
 
   .modalBody {
-    padding: 1.25rem;
-    max-height: 60vh;
+    padding: 1.15rem;
+    max-height: calc(88vh - 80px);
+  }
+
+  .modalBodySplit {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.15rem;
+  }
+
+  .flyerCol {
+    position: static;
+  }
+
+  .flyerContainer {
+    max-height: 260px;
+  }
+
+  .flyerImage {
+    max-height: 250px;
   }
 
   .modalMetaList {
     grid-template-columns: 1fr;
-    gap: 0.7rem;
+    gap: 0.6rem;
     padding: 0.85rem;
-    border-radius: 14px;
+    border-radius: 12px;
   }
-}
 
-@keyframes slideUp {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
-}
-
-.flyerContainer {
-  margin-top: 1.5rem;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  box-shadow: var(--elevation-1);
-  background-color: var(--bg);
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.flyerImage {
-  width: 100%;
-  max-height: 380px;
-  object-fit: contain;
-  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
-  display: block;
-}
-
-.flyerImage:hover {
-  transform: scale(1.025);
+  .lightboxCloseBtn {
+    top: -12px;
+    right: -12px;
+    width: 38px;
+    height: 38px;
+    font-size: 1.05rem;
+  }
 }

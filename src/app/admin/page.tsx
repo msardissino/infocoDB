@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase/client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,6 +12,8 @@ import {
   faTrash 
 } from "@fortawesome/free-solid-svg-icons";
 import { User } from "@supabase/supabase-js";
+import { TextToolbar } from "@/components/ui/TextToolbar/TextToolbar";
+import { formatRichText } from "@/lib/formatText";
 import styles from "./admin.module.css";
 
 // Interface definitions
@@ -121,6 +123,10 @@ export default function AdminDashboard() {
   const [agImageUrl, setAgImageUrl] = useState("");
   const [uploadingAgendaImage, setUploadingAgendaImage] = useState(false);
   const [agEditingId, setAgEditingId] = useState<string | null>(null);
+  
+  // Refs for textareas to allow quick formatting insertions
+  const agDescRef = useRef<HTMLTextAreaElement>(null);
+  const noContentRef = useRef<HTMLTextAreaElement>(null);
 
   // --------------------------------------------------
   // 📰 TAB 2: NOTICIAS STATE & HANDLERS
@@ -747,40 +753,32 @@ export default function AdminDashboard() {
 
                   <div className={styles.formGroup}>
                     <label className={styles.label}>DESCRIPCIÓN (OPCIONAL)</label>
+                    <TextToolbar
+                      value={agDescription}
+                      onChange={setAgDescription}
+                      textareaRef={agDescRef}
+                    />
                     <textarea
+                      ref={agDescRef}
                       className={styles.textarea}
                       value={agDescription}
                       onChange={(e) => setAgDescription(e.target.value)}
-                      placeholder="Detalle de qué trata el evento..."
+                      placeholder="Detalle del evento (usá los botones para negritas, listas o enlaces)..."
                     />
                   </div>
 
                   <div className={styles.formGroup}>
                     <label className={styles.label}>IMAGEN DEL FLYER (OPCIONAL)</label>
-                    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                    <div className={styles.imageUploadWrapper}>
                       <input
                         type="url"
                         className={styles.input}
                         value={agImageUrl}
                         onChange={(e) => setAgImageUrl(e.target.value)}
-                        placeholder="Pegar dirección de imagen o subir un archivo local..."
+                        placeholder="Pegar dirección URL de imagen o subir archivo local..."
                       />
-                      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-                        <label className={styles.uploadLabel} style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "0.5rem",
-                          backgroundColor: "var(--cream)",
-                          border: "1.5px dashed var(--accent)",
-                          color: "var(--accent)",
-                          padding: "0.5rem 1rem",
-                          borderRadius: "var(--r-md)",
-                          cursor: "pointer",
-                          fontFamily: "var(--font-text)",
-                          fontSize: "0.8rem",
-                          fontWeight: "800",
-                          transition: "all 0.2s ease"
-                        }}>
+                      <div className={styles.uploadControlsRow}>
+                        <label className={styles.uploadBtn}>
                           📂 SUBIR FLYER LOCAL
                           <input
                             type="file"
@@ -791,11 +789,26 @@ export default function AdminDashboard() {
                           />
                         </label>
                         {uploadingAgendaImage && (
-                          <span style={{ fontSize: "0.8rem", color: "var(--accent)", fontWeight: "bold" }}>
+                          <span className={styles.uploadStatus}>
                             ⏳ Subiendo flyer...
                           </span>
                         )}
+                        {agImageUrl && (
+                          <button
+                            type="button"
+                            className={styles.removeImageBtn}
+                            onClick={() => setAgImageUrl("")}
+                          >
+                            ✕ Quitar flyer
+                          </button>
+                        )}
                       </div>
+                      {agImageUrl && (
+                        <div className={styles.uploadedPreviewBox}>
+                          <img src={agImageUrl} alt="Preview flyer" className={styles.uploadedPreviewImg} />
+                          <span className={styles.uploadedPreviewNote}>Flyer cargado correctamente</span>
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -822,7 +835,8 @@ export default function AdminDashboard() {
                   background: "var(--paper)",
                   display: "flex",
                   gap: "1.25rem",
-                  boxShadow: "var(--elevation-1)"
+                  boxShadow: "var(--elevation-1)",
+                  flexWrap: "wrap"
                 }}>
                   {/* Left Date Stamp */}
                   <div style={{
@@ -846,8 +860,8 @@ export default function AdminDashboard() {
                   </div>
 
                   {/* Content */}
-                  <div style={{ flexGrow: 1, display: "flex", flexDirection: "column", gap: "0.4rem" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <div style={{ flexGrow: 1, display: "flex", flexDirection: "column", gap: "0.4rem", minWidth: "220px" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.5rem" }}>
                       <span className={`${styles.categoryTag} ${styles[agCategory]}`} style={{ fontSize: "0.7rem" }}>
                         {agCategory.toUpperCase()}
                       </span>
@@ -860,18 +874,18 @@ export default function AdminDashboard() {
                     <h3 style={{ fontFamily: "var(--font-display)", fontSize: "1.6rem", color: "var(--ink)", margin: 0 }}>
                       {agTitle || "Título del Evento"}
                     </h3>
-                    <div style={{ display: "flex", gap: "1rem", fontSize: "0.8rem", color: "var(--ink-mute)" }}>
+                    <div style={{ display: "flex", gap: "1rem", fontSize: "0.8rem", color: "var(--ink-mute)", flexWrap: "wrap" }}>
                       {agTime && <div>🕒 {agTime}</div>}
                       {agLocation && <div>📍 {agLocation}</div>}
                     </div>
                     {agDescription && (
-                      <p style={{ margin: 0, fontSize: "0.9rem", color: "var(--ink-soft)", lineHeight: 1.4 }}>
-                        {agDescription}
-                      </p>
+                      <div style={{ margin: "0.3rem 0", fontSize: "0.92rem", color: "var(--ink-soft)", lineHeight: 1.5 }}>
+                        {formatRichText(agDescription)}
+                      </div>
                     )}
                     {agImageUrl && (
-                      <div style={{ marginTop: "0.5rem", borderRadius: "8px", overflow: "hidden", maxHeight: "150px" }}>
-                        <img src={agImageUrl} alt="Flyer" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                      <div style={{ marginTop: "0.5rem", borderRadius: "10px", overflow: "hidden", maxHeight: "180px", border: "1px solid var(--line)" }}>
+                        <img src={agImageUrl} alt="Flyer" style={{ width: "100%", height: "100%", objectFit: "contain", backgroundColor: "#1d1c1a", display: "block" }} />
                       </div>
                     )}
                   </div>
@@ -1198,12 +1212,18 @@ export default function AdminDashboard() {
 
                   <div className={styles.formGroup}>
                     <label className={styles.label}>CONTENIDO DETALLADO (MARKDOWN, OPCIONAL)</label>
+                    <TextToolbar
+                      value={noContentMarkdown}
+                      onChange={setNoContentMarkdown}
+                      textareaRef={noContentRef}
+                    />
                     <textarea
+                      ref={noContentRef}
                       className={styles.textarea}
-                      style={{ minHeight: "100px" }}
+                      style={{ minHeight: "130px" }}
                       value={noContentMarkdown}
                       onChange={(e) => setNoContentMarkdown(e.target.value)}
-                      placeholder="Texto completo de la noticia (Markdown)..."
+                      placeholder="Texto completo de la noticia (usá los botones para negritas, listas o enlaces)..."
                     />
                   </div>
 

@@ -9,9 +9,12 @@ import {
   faClock,
   faMapMarkerAlt,
   faUsers,
-  faArrowRight
+  faArrowRight,
+  faSearchPlus,
+  faImage
 } from "@fortawesome/free-solid-svg-icons";
 import { supabase } from "@/lib/supabase/client";
+import { formatRichText } from "@/lib/formatText";
 import styles from "./agenda.module.css";
 
 interface AgendaEvent {
@@ -40,14 +43,14 @@ const CATEGORIES = [
 ];
 
 export default function AgendaPage() {
-  // Use a base date for current month. Let's make it dynamic.
   const today = useMemo(() => new Date(), []);
   const [selectedTabDate, setSelectedTabDate] = useState<Date>(new Date(today.getFullYear(), today.getMonth(), 1));
   const [events, setEvents] = useState<AgendaEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedEvent, setSelectedEvent] = useState<AgendaEvent | null>(null);
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   
-  // Category filter (single selection or all)
+  // Category filter
   const [activeFilter, setActiveFilter] = useState<string>("all");
 
   const currentYear = selectedTabDate.getFullYear();
@@ -92,9 +95,9 @@ export default function AgendaPage() {
     fetchEvents();
   }, [fetchEvents]);
 
-  // Lock scroll on background when modal is open
+  // Lock scroll on background when modal or lightbox is open
   useEffect(() => {
-    if (selectedEvent) {
+    if (selectedEvent || lightboxImage) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -102,7 +105,22 @@ export default function AgendaPage() {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [selectedEvent]);
+  }, [selectedEvent, lightboxImage]);
+
+  // Keyboard accessibility: Close with Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (lightboxImage) {
+          setLightboxImage(null);
+        } else if (selectedEvent) {
+          setSelectedEvent(null);
+        }
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxImage, selectedEvent]);
 
   // Filter events based on active category filter
   const filteredEvents = useMemo(() => {
@@ -209,7 +227,7 @@ export default function AgendaPage() {
                       <span className={styles.dateDayName}>{dayName}</span>
                     </div>
 
-                    {/* Right Details */}
+                    {/* Middle Details */}
                     <div className={styles.eventContent}>
                       <div className={styles.headerRow}>
                         <span className={`${styles.categoryTag} ${styles[ev.category]}`}>
@@ -240,11 +258,11 @@ export default function AgendaPage() {
                       </div>
 
                       {ev.description && (
-                        <p className={styles.shortDesc}>
+                        <div className={styles.shortDesc}>
                           {ev.description.length > 140 
                             ? `${ev.description.substring(0, 137)}...` 
                             : ev.description}
-                        </p>
+                        </div>
                       )}
 
                       <div className={styles.actionRow}>
@@ -253,10 +271,30 @@ export default function AgendaPage() {
                           onClick={() => setSelectedEvent(ev)}
                           aria-label={`Ver más detalles de ${ev.title}`}
                         >
-                          VER MÁS DETALLES <FontAwesomeIcon icon={faArrowRight} />
+                          VER DETALLES <FontAwesomeIcon icon={faArrowRight} />
                         </button>
                       </div>
                     </div>
+
+                    {/* Optional Card Thumbnail */}
+                    {ev.image_url && (
+                      <div 
+                        className={styles.cardThumbnailWrapper}
+                        onClick={() => setSelectedEvent(ev)}
+                        title="Ver flyer y detalles del evento"
+                      >
+                        <img 
+                          src={ev.image_url} 
+                          alt={`Flyer de ${ev.title}`} 
+                          className={styles.cardThumbnail}
+                          loading="lazy"
+                        />
+                        <div className={styles.thumbnailOverlay}>
+                          <FontAwesomeIcon icon={faImage} />
+                          <span>FLYER</span>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 );
               })}
@@ -265,21 +303,29 @@ export default function AgendaPage() {
         </div>
       </SectionHero>
 
-      {/* Modal Detail Overlay (M3 Style Dialog) */}
+      {/* Modal Detail Overlay */}
       {selectedEvent && (
         <div className={styles.modalOverlay} onClick={() => setSelectedEvent(null)}>
           <div 
-            className={styles.modalContent} 
+            className={`${styles.modalContent} ${selectedEvent.image_url ? styles.modalWithFlyer : ""}`} 
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-title"
           >
+            {/* Modal Header */}
             <div className={styles.modalHeader}>
               <div className={styles.modalTitleWrapper}>
-                <span className={`${styles.categoryTag} ${styles[selectedEvent.category]}`}>
-                  {getCategoryLabel(selectedEvent.category)}
-                </span>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
+                  <span className={`${styles.categoryTag} ${styles[selectedEvent.category]}`}>
+                    {getCategoryLabel(selectedEvent.category)}
+                  </span>
+                  {selectedEvent.group_slug && (
+                    <span className={styles.groupBadge}>
+                      {getGroupName(selectedEvent.group_slug)}
+                    </span>
+                  )}
+                </div>
                 <h3 id="modal-title" className={styles.modalTitle}>{selectedEvent.title}</h3>
               </div>
               <button 
@@ -291,65 +337,90 @@ export default function AgendaPage() {
               </button>
             </div>
             
-            <div className={styles.modalBody}>
-              <div className={styles.modalMetaList}>
-                <div className={styles.modalMetaItem}>
-                  <FontAwesomeIcon icon={faCalendarDay} />
-                  <span>
-                    {(() => {
-                      const parts = selectedEvent.date.split("-");
-                      if (parts.length !== 3) return selectedEvent.date;
-                      return `${parts[2]}/${parts[1]}/${parts[0].substring(2)}`;
-                    })()}
-                  </span>
+            {/* Modal Body: Two Columns if flyer exists */}
+            <div className={`${styles.modalBody} ${selectedEvent.image_url ? styles.modalBodySplit : ""}`}>
+              
+              {/* Left Column: Flyer Showcase */}
+              {selectedEvent.image_url && (
+                <div className={styles.flyerCol}>
+                  <div 
+                    className={styles.flyerContainer}
+                    onClick={() => setLightboxImage(selectedEvent.image_url!)}
+                    title="Hacé clic para ver el flyer en pantalla completa"
+                  >
+                    <img 
+                      src={selectedEvent.image_url} 
+                      alt={`Flyer de ${selectedEvent.title}`} 
+                      className={styles.flyerImage}
+                    />
+                    <div className={styles.flyerZoomBadge}>
+                      <FontAwesomeIcon icon={faSearchPlus} />
+                      <span>AMPLIAR FLYER</span>
+                    </div>
+                  </div>
                 </div>
-                {selectedEvent.time && (
+              )}
+
+              {/* Right Column: Info & Formatted Description */}
+              <div className={styles.infoCol}>
+                <div className={styles.modalMetaList}>
                   <div className={styles.modalMetaItem}>
-                    <FontAwesomeIcon icon={faClock} />
-                    <span>{selectedEvent.time}</span>
-                  </div>
-                )}
-                {selectedEvent.location && (
-                  <div className={styles.modalMetaItem}>
-                    <FontAwesomeIcon icon={faMapMarkerAlt} />
-                    <span>{selectedEvent.location}</span>
-                  </div>
-                )}
-                {selectedEvent.group_slug && (
-                  <div className={styles.modalMetaItem}>
-                    <FontAwesomeIcon icon={faUsers} />
-                    <span className={styles.groupTag} style={{
-                      fontSize: "0.8rem",
-                      fontWeight: 700,
-                      color: "var(--brand-blue)",
-                      backgroundColor: "rgba(0, 80, 181, 0.08)",
-                      padding: "0.2rem 0.6rem",
-                      borderRadius: "var(--r-pill)"
-                    }}>
-                      {getGroupName(selectedEvent.group_slug)}
+                    <FontAwesomeIcon icon={faCalendarDay} />
+                    <span>
+                      {(() => {
+                        const parts = selectedEvent.date.split("-");
+                        if (parts.length !== 3) return selectedEvent.date;
+                        return `${parts[2]}/${parts[1]}/${parts[0].substring(2)}`;
+                      })()}
                     </span>
+                  </div>
+                  {selectedEvent.time && (
+                    <div className={styles.modalMetaItem}>
+                      <FontAwesomeIcon icon={faClock} />
+                      <span>{selectedEvent.time}</span>
+                    </div>
+                  )}
+                  {selectedEvent.location && (
+                    <div className={styles.modalMetaItem}>
+                      <FontAwesomeIcon icon={faMapMarkerAlt} />
+                      <span>{selectedEvent.location}</span>
+                    </div>
+                  )}
+                  {selectedEvent.group_slug && (
+                    <div className={styles.modalMetaItem}>
+                      <FontAwesomeIcon icon={faUsers} />
+                      <span>{getGroupName(selectedEvent.group_slug)}</span>
+                    </div>
+                  )}
+                </div>
+
+                {selectedEvent.description && (
+                  <div className={styles.eventDescription}>
+                    {formatRichText(selectedEvent.description)}
                   </div>
                 )}
               </div>
-
-              {selectedEvent.description && (
-                <div className={styles.eventDescription}>
-                  {selectedEvent.description}
-                </div>
-              )}
-
-              {selectedEvent.image_url && (
-                <div className={styles.flyerContainer}>
-                  <img 
-                    src={selectedEvent.image_url} 
-                    alt={`Flyer de ${selectedEvent.title}`} 
-                    className={styles.flyerImage}
-                    onClick={() => window.open(selectedEvent.image_url!, "_blank")}
-                    title="Hacé clic para ver en pantalla completa"
-                  />
-                </div>
-              )}
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox Fullscreen Overlay */}
+      {lightboxImage && (
+        <div className={styles.lightboxOverlay} onClick={() => setLightboxImage(null)}>
+          <div className={styles.lightboxContainer} onClick={(e) => e.stopPropagation()}>
+            <button 
+              className={styles.lightboxCloseBtn}
+              onClick={() => setLightboxImage(null)}
+              aria-label="Cerrar vista completa"
+            >
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            <img 
+              src={lightboxImage} 
+              alt="Flyer ampliado en pantalla completa" 
+              className={styles.lightboxImage}
+            />
           </div>
         </div>
       )}
